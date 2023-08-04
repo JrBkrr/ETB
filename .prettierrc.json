@@ -1,0 +1,22 @@
+{
+  "endOfLine": "auto",
+  "semi": false,
+  "singleQuote": true,
+  "useTabs": false,
+  "tabWidth": 2,
+  "trailingComma": "none",
+  "bracketSpacing": true,
+  "arrowParens": "avoid",
+  "htmlWhitespaceSensitivity": "css",
+  "embeddedLanguageFormatting": "auto",
+  "overrides": [
+    {
+      "files": "*.vue",
+      "options": {
+        "printWidth": 100,
+        "embeddedLanguageFormatting": "off"
+      }
+    }
+  ],
+  "prettier.disableLanguages": [] // Bu satırı ekleyin
+}
