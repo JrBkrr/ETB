@@ -8,7 +8,7 @@
         <h3 class="fw-bold m-0">Profile Details</h3>
       </div>
       <!--end::Card title-->
-
+      
       <!--begin::Action-->
       <a
           @click="$emit('update:Settings', true)"
@@ -18,7 +18,7 @@
       <!--end::Action-->
     </div>
     <!--begin::Card header-->
-
+    
     <!--begin::Card body-->
     <div class="card-body p-9">
       <!--begin::Row-->
@@ -26,7 +26,7 @@
         <!--begin::Label-->
         <label class="col-lg-4 fw-semobold text-muted">Full Name</label>
         <!--end::Label-->
-
+        
         <!--begin::Col-->
         <div class="col-lg-8">
           <span class="fw-bold fs-6 text-dark">{{ `${(Profile?.name ?? "-")} ${(Profile?.surname ?? "-")}` }}</span>
@@ -34,13 +34,13 @@
         <!--end::Col-->
       </div>
       <!--end::Row-->
-
+      
       <!--begin::Input group-->
       <!--      <div class="row mb-7">-->
       <!--        &lt;!&ndash;begin::Label&ndash;&gt;-->
       <!--        <label class="col-lg-4 fw-semobold text-muted">Company</label>-->
       <!--        &lt;!&ndash;end::Label&ndash;&gt;-->
-
+      
       <!--        &lt;!&ndash;begin::Col&ndash;&gt;-->
       <!--        <div class="col-lg-8 fv-row">-->
       <!--          <span class="fw-semobold fs-6">Keenthemes</span>-->
@@ -48,7 +48,7 @@
       <!--        &lt;!&ndash;end::Col&ndash;&gt;-->
       <!--      </div>-->
       <!--end::Input group-->
-
+      
       <!--begin::Input group-->
       <div class="row mb-7">
         <!--begin::Label-->
@@ -61,17 +61,17 @@
           ></i>
         </label>
         <!--end::Label-->
-
+        
         <!--begin::Col-->
         <div class="col-lg-8 d-flex align-items-center">
           <span class="fw-bold fs-6 me-2">{{ (Profile?.phoneNumber ?? "-") }}</span>
-
+          
           <!--          <span class="badge badge-success">Verified</span>-->
         </div>
         <!--end::Col-->
       </div>
       <!--end::Input group-->
-
+      
       <!--begin::Input group-->
       <div class="row mb-7">
         <!--begin::Label-->
@@ -84,7 +84,7 @@
           ></i>
         </label>
         <!--end::Label-->
-
+        
         <!--begin::Col-->
         <div class="col-lg-8 d-flex align-items-center">
           <span class="fw-bold fs-6 me-2">{{ (Profile?.username ?? "-") }}</span>
@@ -92,7 +92,7 @@
         <!--end::Col-->
       </div>
       <!--end::Input group-->
-
+      
       <!--begin::Input group-->
       <div class="row mb-7">
         <!--begin::Label-->
@@ -105,7 +105,7 @@
           ></i>
         </label>
         <!--end::Label-->
-
+        
         <!--begin::Col-->
         <div class="col-lg-8 d-flex align-items-center">
           <span class="fw-bold fs-6 me-2">{{ (Profile?.email ?? "-") }}</span>
@@ -113,13 +113,13 @@
         <!--end::Col-->
       </div>
       <!--end::Input group-->
-
+      
       <!--begin::Input group-->
       <!--      <div class="row mb-7">-->
       <!--        &lt;!&ndash;begin::Label&ndash;&gt;-->
       <!--        <label class="col-lg-4 fw-semobold text-muted">Company Site</label>-->
       <!--        &lt;!&ndash;end::Label&ndash;&gt;-->
-
+      
       <!--        &lt;!&ndash;begin::Col&ndash;&gt;-->
       <!--        <div class="col-lg-8">-->
       <!--          <a href="#" class="fw-semobold fs-6 text-dark text-hover-primary"-->
@@ -129,7 +129,7 @@
       <!--        &lt;!&ndash;end::Col&ndash;&gt;-->
       <!--      </div>-->
       <!--end::Input group-->
-
+      
       <!--begin::Input group-->
       <div class="row mb-7">
         <!--begin::Label-->
@@ -142,7 +142,7 @@
           ></i>
         </label>
         <!--end::Label-->
-
+        
         <!--begin::Col-->
         <div class="col-lg-8">
           <span class="fw-bold fs-6 text-dark">{{ (Profile?.accountNonExpired ? 'Active' : 'Passive') }}</span>
@@ -150,7 +150,7 @@
         <!--end::Col-->
       </div>
       <!--end::Input group-->
-
+      
       <!--begin::Input group-->
       <div class="row mb-7">
         <!--begin::Label-->
@@ -163,7 +163,7 @@
           ></i>
         </label>
         <!--end::Label-->
-
+        
         <!--begin::Col-->
         <div class="col-lg-8">
           <span class="fw-bold fs-6 text-dark">{{ (Profile?.credentialsNonExpired ? 'Active' : 'Passive') }}</span>
@@ -171,7 +171,7 @@
         <!--end::Col-->
       </div>
       <!--end::Input group-->
-
+      
       <!--begin::Input group-->
       <div class="row mb-7">
         <!--begin::Label-->
@@ -184,7 +184,7 @@
           ></i>
         </label>
         <!--end::Label-->
-
+        
         <!--begin::Col-->
         <div class="col-lg-8">
           <span class="fw-bold fs-6 text-dark">{{ (Profile?.accountNonLocked ? 'Passive' : 'Active') }}</span>
@@ -192,7 +192,7 @@
         <!--end::Col-->
       </div>
       <!--end::Input group-->
-
+      
       <!--begin::Input group-->
       <div class="row mb-7">
         <!--begin::Label-->
@@ -205,7 +205,7 @@
           ></i>
         </label>
         <!--end::Label-->
-
+        
         <!--begin::Col-->
         <div class="col-lg-8">
           <span class="fw-bold fs-6 text-dark">{{ (Profile?.accountNonLocked ? 'Active' : 'Passive') }}</span>
@@ -213,13 +213,13 @@
         <!--end::Col-->
       </div>
       <!--end::Input group-->
-
+      
       <!--begin::Input group-->
       <div class="row mb-7">
         <!--begin::Label-->
         <label class="col-lg-4 fw-semobold text-muted">Communication</label>
         <!--end::Label-->
-
+        
         <!--begin::Col-->
         <div class="col-lg-8">
           <span class="fw-bold fs-6 text-dark">Email, Phone</span>
@@ -227,13 +227,13 @@
         <!--end::Col-->
       </div>
       <!--end::Input group-->
-
+      
       <!--begin::Input group-->
       <!--      <div class="row mb-10">-->
       <!--        &lt;!&ndash;begin::Label&ndash;&gt;-->
       <!--        <label class="col-lg-4 fw-semobold text-muted">Allow Changes</label>-->
       <!--        &lt;!&ndash;begin::Label&ndash;&gt;-->
-
+      
       <!--        &lt;!&ndash;begin::Label&ndash;&gt;-->
       <!--        <div class="col-lg-8">-->
       <!--          <span class="fw-semobold fs-6">Yes</span>-->
@@ -241,7 +241,7 @@
       <!--        &lt;!&ndash;begin::Label&ndash;&gt;-->
       <!--      </div>-->
       <!--end::Input group-->
-
+      
       <div
           class="notice d-flex bg-light-warning rounded border-warning border border-dashed p-6"
       >
@@ -254,7 +254,7 @@
           <!--begin::Content-->
           <div class="fw-semobold">
             <h4 class="text-gray-800 fw-bold">We need your attention!</h4>
-
+            
             <div class="fs-6 text-gray-600">
               Your payment was declined. To start using tools, please
               <a class="fw-bold" href="#">Add Payment Method</a>.
@@ -294,17 +294,17 @@ export default defineComponent({
   setup() {
     const {State} = GlobalStore()
     const GetLocalProfile = localStorage.getItem('user')
-
+    
     const Profile = computed(() => {
       if (Object.keys(State.Profile).length > 0) {
         return State.Profile
       } else if (GetLocalProfile) {
         return JSON.parse(GetLocalProfile)
       } else {
-        router.push('sign-in')
+        // router.push('sign-in')
       }
     })
-
+    
     return {
       getAssetPath,
       Profile

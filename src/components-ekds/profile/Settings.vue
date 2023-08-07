@@ -17,7 +17,7 @@
       <!--end::Card title-->
     </div>
     <!--begin::Card header-->
-
+    
     <!--begin::Content-->
     <div id="kt_account_profile_details" class="collapse show">
       <!--begin::Form-->
@@ -37,7 +37,7 @@
             >Avatar</label
             >
             <!--end::Label-->
-
+            
             <!--begin::Col-->
             <div class="col-lg-8">
               <!--begin::Image input-->
@@ -56,7 +56,7 @@
                     :style="`background-image: url(${profileDetails.avatar})`"
                 ></div>
                 <!--end::Preview existing avatar-->
-
+                
                 <!--begin::Label-->
                 <label
                     class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
@@ -65,14 +65,14 @@
                     title="Change avatar"
                 >
                   <i class="bi bi-pencil-fill fs-7"></i>
-
+                  
                   <!--begin::Inputs-->
-                  <input type="file" name="avatar" accept=".png, .jpg, .jpeg"/>
-                  <input type="hidden" name="avatar_remove"/>
+                  <input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
+                  <input type="hidden" name="avatar_remove" />
                   <!--end::Inputs-->
                 </label>
                 <!--end::Label-->
-
+                
                 <!--begin::Remove-->
                 <span
                     class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
@@ -86,7 +86,7 @@
                 <!--end::Remove-->
               </div>
               <!--end::Image input-->
-
+              
               <!--begin::Hint-->
               <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
               <!--end::Hint-->
@@ -94,7 +94,7 @@
             <!--end::Col-->
           </div>
           <!--end::Input group-->
-
+          
           <!--begin::Input group-->
           <div class="row mb-6">
             <!--begin::Label-->
@@ -102,7 +102,7 @@
             >Full Name</label
             >
             <!--end::Label-->
-
+            
             <!--begin::Col-->
             <div class="col-lg-8">
               <!--begin::Row-->
@@ -118,12 +118,12 @@
                   />
                   <div class="fv-plugins-message-container">
                     <div class="fv-help-block">
-                      <ErrorMessage name="fname"/>
+                      <ErrorMessage name="fname" />
                     </div>
                   </div>
                 </div>
                 <!--end::Col-->
-
+                
                 <!--begin::Col-->
                 <div class="col-lg-6 fv-row">
                   <Field
@@ -135,7 +135,7 @@
                   />
                   <div class="fv-plugins-message-container">
                     <div class="fv-help-block">
-                      <ErrorMessage name="lname"/>
+                      <ErrorMessage name="lname" />
                     </div>
                   </div>
                 </div>
@@ -146,7 +146,7 @@
             <!--end::Col-->
           </div>
           <!--end::Input group-->
-
+          
           <!--begin::Input group-->
           <div class="row mb-6">
             <!--begin::Label-->
@@ -154,7 +154,7 @@
             >Username</label
             >
             <!--end::Label-->
-
+            
             <!--begin::Col-->
             <div class="col-lg-8 fv-row">
               <Field
@@ -166,7 +166,7 @@
               />
               <div class="fv-plugins-message-container">
                 <div class="fv-help-block">
-                  <ErrorMessage name="username"/>
+                  <ErrorMessage name="username" />
                 </div>
               </div>
             </div>
@@ -180,7 +180,7 @@
             >Email</label
             >
             <!--end::Label-->
-
+            
             <!--begin::Col-->
             <div class="col-lg-8 fv-row">
               <Field
@@ -192,7 +192,7 @@
               />
               <div class="fv-plugins-message-container">
                 <div class="fv-help-block">
-                  <ErrorMessage name="email"/>
+                  <ErrorMessage name="email" />
                 </div>
               </div>
             </div>
@@ -206,7 +206,7 @@
             >Phone Number</label
             >
             <!--end::Label-->
-
+            
             <!--begin::Col-->
             <div class="col-lg-8 fv-row">
               <Field
@@ -218,17 +218,17 @@
               />
               <div class="fv-plugins-message-container">
                 <div class="fv-help-block">
-                  <ErrorMessage name="phoneNumber"/>
+                  <ErrorMessage name="phoneNumber" />
                 </div>
               </div>
             </div>
             <!--end::Col-->
           </div>
           <!--end::Input group-->
-
+        
         </div>
         <!--end::Card body-->
-
+        
         <!--begin::Actions-->
         <div class="card-footer d-flex justify-content-end py-6 px-9">
           <button
@@ -237,7 +237,7 @@
           >
             Discard
           </button>
-
+          
           <button
               type="submit"
               id="kt_account_profile_details_submit"
@@ -260,7 +260,7 @@
     <!--end::Content-->
   </div>
   <!--end::Basic info-->
-
+  
   <!--begin::Sign-in Method-->
   <div class="card mb-5 mb-xl-10">
     <!--begin::Card header-->
@@ -275,7 +275,7 @@
       </div>
     </div>
     <!--end::Card header-->
-
+    
     <!--begin::Content-->
     <div id="kt_account_signin_method" class="collapse show">
       <!--begin::Card body-->
@@ -288,7 +288,7 @@
               support@keenthemes.com
             </div>
           </div>
-
+          
           <div
               id="kt_signin_email_edit"
               :class="{ 'd-none': !emailFormDisplay }"
@@ -320,7 +320,7 @@
                     />
                     <div class="fv-plugins-message-container">
                       <div class="fv-help-block">
-                        <ErrorMessage name="emailaddress"/>
+                        <ErrorMessage name="emailaddress" />
                       </div>
                     </div>
                   </div>
@@ -340,7 +340,7 @@
                     />
                     <div class="fv-plugins-message-container">
                       <div class="fv-help-block">
-                        <ErrorMessage name="confirmemailpassword"/>
+                        <ErrorMessage name="confirmemailpassword" />
                       </div>
                     </div>
                   </div>
@@ -387,7 +387,7 @@
           </div>
         </div>
         <!--end::Email Address-->
-
+        
         <!--begin::Password-->
         <div class="d-flex flex-wrap align-items-center mb-8">
           <div
@@ -405,7 +405,7 @@
             <div class="fs-6 fw-semobold text-gray-600 mb-4">
               Password must be at least 8 character and contain symbols
             </div>
-
+            
             <!--begin::Form-->
             <VForm
                 id="kt_signin_change_password"
@@ -430,7 +430,7 @@
                     />
                     <div class="fv-plugins-message-container">
                       <div class="fv-help-block">
-                        <ErrorMessage name="currentpassword"/>
+                        <ErrorMessage name="currentpassword" />
                       </div>
                     </div>
                   </div>
@@ -450,7 +450,7 @@
                     />
                     <div class="fv-plugins-message-container">
                       <div class="fv-help-block">
-                        <ErrorMessage name="newpassword"/>
+                        <ErrorMessage name="newpassword" />
                       </div>
                     </div>
                   </div>
@@ -470,7 +470,7 @@
                     />
                     <div class="fv-plugins-message-container">
                       <div class="fv-help-block">
-                        <ErrorMessage name="confirmpassword"/>
+                        <ErrorMessage name="confirmpassword" />
                       </div>
                     </div>
                   </div>
@@ -523,7 +523,7 @@
     <!--end::Content-->
   </div>
   <!--end::Sign-in Method-->
-
+  
   <!--begin::Notifications-->
   <div class="card mb-5 mb-xl-10">
     <!--begin::Card header-->
@@ -540,234 +540,234 @@
       </div>
     </div>
     <!--begin::Card header-->
-
+    
     <!--begin::Content-->
-<!--    <div id="kt_account_notifications" class="collapse show">-->
-<!--      &lt;!&ndash;begin::Form&ndash;&gt;-->
-<!--      <form class="form" @submit.prevent="saveChanges4()">-->
-<!--        &lt;!&ndash;begin::Card body&ndash;&gt;-->
-<!--        <div class="card-body border-top px-9 pt-3 pb-4">-->
-<!--          &lt;!&ndash;begin::Table&ndash;&gt;-->
-<!--          <div class="table-responsive">-->
-<!--            <table-->
-<!--                class="table table-row-dashed border-gray-300 align-middle gy-6"-->
-<!--            >-->
-<!--              <tbody class="fs-6 fw-semobold">-->
-<!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-<!--              <tr>-->
-<!--                <td class="min-w-250px fs-4 fw-bold">Notifications</td>-->
-<!--                <td class="w-125px">-->
-<!--                  <div class="form-check form-check-solid">-->
-<!--                    <input-->
-<!--                        class="form-check-input"-->
-<!--                        type="checkbox"-->
-<!--                        value=""-->
-<!--                        id="kt_settings_notification_email"-->
-<!--                        checked-->
-<!--                        data-kt-check="true"-->
-<!--                        data-kt-check-target="[data-kt-settings-notification=email]"-->
-<!--                    />-->
-<!--                    <label-->
-<!--                        class="form-check-label ps-2"-->
-<!--                        for="kt_settings_notification_email"-->
-<!--                    >-->
-<!--                      Email-->
-<!--                    </label>-->
-<!--                  </div>-->
-<!--                </td>-->
-<!--                <td class="w-125px">-->
-<!--                  <div class="form-check form-check-solid">-->
-<!--                    <input-->
-<!--                        class="form-check-input"-->
-<!--                        type="checkbox"-->
-<!--                        value=""-->
-<!--                        id="kt_settings_notification_phone"-->
-<!--                        checked-->
-<!--                        data-kt-check="true"-->
-<!--                        data-kt-check-target="[data-kt-settings-notification=phone]"-->
-<!--                    />-->
-<!--                    <label-->
-<!--                        class="form-check-label ps-2"-->
-<!--                        for="kt_settings_notification_phone"-->
-<!--                    >-->
-<!--                      Phone-->
-<!--                    </label>-->
-<!--                  </div>-->
-<!--                </td>-->
-<!--              </tr>-->
-<!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-
-<!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-<!--              <tr>-->
-<!--                <td>Billing Updates</td>-->
-<!--                <td>-->
-<!--                  <div class="form-check form-check-solid">-->
-<!--                    <input-->
-<!--                        class="form-check-input"-->
-<!--                        type="checkbox"-->
-<!--                        value="1"-->
-<!--                        id="billing1"-->
-<!--                        checked-->
-<!--                        data-kt-settings-notification="email"-->
-<!--                    />-->
-<!--                    <label-->
-<!--                        class="form-check-label ps-2"-->
-<!--                        for="billing1"-->
-<!--                    ></label>-->
-<!--                  </div>-->
-<!--                </td>-->
-<!--                <td>-->
-<!--                  <div class="form-check form-check-solid">-->
-<!--                    <input-->
-<!--                        class="form-check-input"-->
-<!--                        type="checkbox"-->
-<!--                        value=""-->
-<!--                        id="billing2"-->
-<!--                        checked-->
-<!--                        data-kt-settings-notification="phone"-->
-<!--                    />-->
-<!--                    <label-->
-<!--                        class="form-check-label ps-2"-->
-<!--                        for="billing2"-->
-<!--                    ></label>-->
-<!--                  </div>-->
-<!--                </td>-->
-<!--              </tr>-->
-<!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-
-<!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-<!--              <tr>-->
-<!--                <td>New Team Members</td>-->
-<!--                <td>-->
-<!--                  <div class="form-check form-check-solid">-->
-<!--                    <input-->
-<!--                        class="form-check-input"-->
-<!--                        type="checkbox"-->
-<!--                        value=""-->
-<!--                        id="team1"-->
-<!--                        checked-->
-<!--                        data-kt-settings-notification="email"-->
-<!--                    />-->
-<!--                    <label class="form-check-label ps-2" for="team1"></label>-->
-<!--                  </div>-->
-<!--                </td>-->
-<!--                <td>-->
-<!--                  <div class="form-check form-check-solid">-->
-<!--                    <input-->
-<!--                        class="form-check-input"-->
-<!--                        type="checkbox"-->
-<!--                        value=""-->
-<!--                        id="team2"-->
-<!--                        data-kt-settings-notification="phone"-->
-<!--                    />-->
-<!--                    <label class="form-check-label ps-2" for="team2"></label>-->
-<!--                  </div>-->
-<!--                </td>-->
-<!--              </tr>-->
-<!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-
-<!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-<!--              <tr>-->
-<!--                <td>Completed Projects</td>-->
-<!--                <td>-->
-<!--                  <div class="form-check form-check-solid">-->
-<!--                    <input-->
-<!--                        class="form-check-input"-->
-<!--                        type="checkbox"-->
-<!--                        value=""-->
-<!--                        id="project1"-->
-<!--                        data-kt-settings-notification="email"-->
-<!--                    />-->
-<!--                    <label-->
-<!--                        class="form-check-label ps-2"-->
-<!--                        for="project1"-->
-<!--                    ></label>-->
-<!--                  </div>-->
-<!--                </td>-->
-<!--                <td>-->
-<!--                  <div class="form-check form-check-solid">-->
-<!--                    <input-->
-<!--                        class="form-check-input"-->
-<!--                        type="checkbox"-->
-<!--                        value=""-->
-<!--                        id="project2"-->
-<!--                        checked-->
-<!--                        data-kt-settings-notification="phone"-->
-<!--                    />-->
-<!--                    <label-->
-<!--                        class="form-check-label ps-2"-->
-<!--                        for="project2"-->
-<!--                    ></label>-->
-<!--                  </div>-->
-<!--                </td>-->
-<!--              </tr>-->
-<!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-
-<!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-<!--              <tr>-->
-<!--                <td class="border-bottom-0">Newsletters</td>-->
-<!--                <td class="border-bottom-0">-->
-<!--                  <div class="form-check form-check-solid">-->
-<!--                    <input-->
-<!--                        class="form-check-input"-->
-<!--                        type="checkbox"-->
-<!--                        value=""-->
-<!--                        id="newsletter1"-->
-<!--                        data-kt-settings-notification="email"-->
-<!--                    />-->
-<!--                    <label-->
-<!--                        class="form-check-label ps-2"-->
-<!--                        for="newsletter1"-->
-<!--                    ></label>-->
-<!--                  </div>-->
-<!--                </td>-->
-<!--                <td class="border-bottom-0">-->
-<!--                  <div class="form-check form-check-solid">-->
-<!--                    <input-->
-<!--                        class="form-check-input"-->
-<!--                        type="checkbox"-->
-<!--                        value=""-->
-<!--                        id="newsletter2"-->
-<!--                        data-kt-settings-notification="phone"-->
-<!--                    />-->
-<!--                    <label-->
-<!--                        class="form-check-label ps-2"-->
-<!--                        for="newsletter2"-->
-<!--                    ></label>-->
-<!--                  </div>-->
-<!--                </td>-->
-<!--              </tr>-->
-<!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-<!--              </tbody>-->
-<!--            </table>-->
-<!--          </div>-->
-<!--          &lt;!&ndash;end::Table&ndash;&gt;-->
-<!--        </div>-->
-<!--        &lt;!&ndash;end::Card body&ndash;&gt;-->
-
-<!--        &lt;!&ndash;begin::Card footer&ndash;&gt;-->
-<!--        <div class="card-footer d-flex justify-content-end py-6 px-9">-->
-<!--          <button class="btn btn-light btn-active-light-primary me-2">-->
-<!--            Discard-->
-<!--          </button>-->
-<!--          <button-->
-<!--              ref="submitButton4"-->
-<!--              type="submit"-->
-<!--              class="btn btn-primary px-6"-->
-<!--          >-->
-<!--            <span class="indicator-label"> Save Changes </span>-->
-<!--            <span class="indicator-progress">-->
-<!--              Please wait...-->
-<!--              <span-->
-<!--                  class="spinner-border spinner-border-sm align-middle ms-2"-->
-<!--              ></span>-->
-<!--            </span>-->
-<!--          </button>-->
-<!--        </div>-->
-<!--        &lt;!&ndash;end::Card footer&ndash;&gt;-->
-<!--      </form>-->
-<!--      &lt;!&ndash;end::Form&ndash;&gt;-->
-<!--    </div>-->
+    <!--    <div id="kt_account_notifications" class="collapse show">-->
+    <!--      &lt;!&ndash;begin::Form&ndash;&gt;-->
+    <!--      <form class="form" @submit.prevent="saveChanges4()">-->
+    <!--        &lt;!&ndash;begin::Card body&ndash;&gt;-->
+    <!--        <div class="card-body border-top px-9 pt-3 pb-4">-->
+    <!--          &lt;!&ndash;begin::Table&ndash;&gt;-->
+    <!--          <div class="table-responsive">-->
+    <!--            <table-->
+    <!--                class="table table-row-dashed border-gray-300 align-middle gy-6"-->
+    <!--            >-->
+    <!--              <tbody class="fs-6 fw-semobold">-->
+    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
+    <!--              <tr>-->
+    <!--                <td class="min-w-250px fs-4 fw-bold">Notifications</td>-->
+    <!--                <td class="w-125px">-->
+    <!--                  <div class="form-check form-check-solid">-->
+    <!--                    <input-->
+    <!--                        class="form-check-input"-->
+    <!--                        type="checkbox"-->
+    <!--                        value=""-->
+    <!--                        id="kt_settings_notification_email"-->
+    <!--                        checked-->
+    <!--                        data-kt-check="true"-->
+    <!--                        data-kt-check-target="[data-kt-settings-notification=email]"-->
+    <!--                    />-->
+    <!--                    <label-->
+    <!--                        class="form-check-label ps-2"-->
+    <!--                        for="kt_settings_notification_email"-->
+    <!--                    >-->
+    <!--                      Email-->
+    <!--                    </label>-->
+    <!--                  </div>-->
+    <!--                </td>-->
+    <!--                <td class="w-125px">-->
+    <!--                  <div class="form-check form-check-solid">-->
+    <!--                    <input-->
+    <!--                        class="form-check-input"-->
+    <!--                        type="checkbox"-->
+    <!--                        value=""-->
+    <!--                        id="kt_settings_notification_phone"-->
+    <!--                        checked-->
+    <!--                        data-kt-check="true"-->
+    <!--                        data-kt-check-target="[data-kt-settings-notification=phone]"-->
+    <!--                    />-->
+    <!--                    <label-->
+    <!--                        class="form-check-label ps-2"-->
+    <!--                        for="kt_settings_notification_phone"-->
+    <!--                    >-->
+    <!--                      Phone-->
+    <!--                    </label>-->
+    <!--                  </div>-->
+    <!--                </td>-->
+    <!--              </tr>-->
+    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
+    
+    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
+    <!--              <tr>-->
+    <!--                <td>Billing Updates</td>-->
+    <!--                <td>-->
+    <!--                  <div class="form-check form-check-solid">-->
+    <!--                    <input-->
+    <!--                        class="form-check-input"-->
+    <!--                        type="checkbox"-->
+    <!--                        value="1"-->
+    <!--                        id="billing1"-->
+    <!--                        checked-->
+    <!--                        data-kt-settings-notification="email"-->
+    <!--                    />-->
+    <!--                    <label-->
+    <!--                        class="form-check-label ps-2"-->
+    <!--                        for="billing1"-->
+    <!--                    ></label>-->
+    <!--                  </div>-->
+    <!--                </td>-->
+    <!--                <td>-->
+    <!--                  <div class="form-check form-check-solid">-->
+    <!--                    <input-->
+    <!--                        class="form-check-input"-->
+    <!--                        type="checkbox"-->
+    <!--                        value=""-->
+    <!--                        id="billing2"-->
+    <!--                        checked-->
+    <!--                        data-kt-settings-notification="phone"-->
+    <!--                    />-->
+    <!--                    <label-->
+    <!--                        class="form-check-label ps-2"-->
+    <!--                        for="billing2"-->
+    <!--                    ></label>-->
+    <!--                  </div>-->
+    <!--                </td>-->
+    <!--              </tr>-->
+    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
+    
+    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
+    <!--              <tr>-->
+    <!--                <td>New Team Members</td>-->
+    <!--                <td>-->
+    <!--                  <div class="form-check form-check-solid">-->
+    <!--                    <input-->
+    <!--                        class="form-check-input"-->
+    <!--                        type="checkbox"-->
+    <!--                        value=""-->
+    <!--                        id="team1"-->
+    <!--                        checked-->
+    <!--                        data-kt-settings-notification="email"-->
+    <!--                    />-->
+    <!--                    <label class="form-check-label ps-2" for="team1"></label>-->
+    <!--                  </div>-->
+    <!--                </td>-->
+    <!--                <td>-->
+    <!--                  <div class="form-check form-check-solid">-->
+    <!--                    <input-->
+    <!--                        class="form-check-input"-->
+    <!--                        type="checkbox"-->
+    <!--                        value=""-->
+    <!--                        id="team2"-->
+    <!--                        data-kt-settings-notification="phone"-->
+    <!--                    />-->
+    <!--                    <label class="form-check-label ps-2" for="team2"></label>-->
+    <!--                  </div>-->
+    <!--                </td>-->
+    <!--              </tr>-->
+    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
+    
+    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
+    <!--              <tr>-->
+    <!--                <td>Completed Projects</td>-->
+    <!--                <td>-->
+    <!--                  <div class="form-check form-check-solid">-->
+    <!--                    <input-->
+    <!--                        class="form-check-input"-->
+    <!--                        type="checkbox"-->
+    <!--                        value=""-->
+    <!--                        id="project1"-->
+    <!--                        data-kt-settings-notification="email"-->
+    <!--                    />-->
+    <!--                    <label-->
+    <!--                        class="form-check-label ps-2"-->
+    <!--                        for="project1"-->
+    <!--                    ></label>-->
+    <!--                  </div>-->
+    <!--                </td>-->
+    <!--                <td>-->
+    <!--                  <div class="form-check form-check-solid">-->
+    <!--                    <input-->
+    <!--                        class="form-check-input"-->
+    <!--                        type="checkbox"-->
+    <!--                        value=""-->
+    <!--                        id="project2"-->
+    <!--                        checked-->
+    <!--                        data-kt-settings-notification="phone"-->
+    <!--                    />-->
+    <!--                    <label-->
+    <!--                        class="form-check-label ps-2"-->
+    <!--                        for="project2"-->
+    <!--                    ></label>-->
+    <!--                  </div>-->
+    <!--                </td>-->
+    <!--              </tr>-->
+    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
+    
+    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
+    <!--              <tr>-->
+    <!--                <td class="border-bottom-0">Newsletters</td>-->
+    <!--                <td class="border-bottom-0">-->
+    <!--                  <div class="form-check form-check-solid">-->
+    <!--                    <input-->
+    <!--                        class="form-check-input"-->
+    <!--                        type="checkbox"-->
+    <!--                        value=""-->
+    <!--                        id="newsletter1"-->
+    <!--                        data-kt-settings-notification="email"-->
+    <!--                    />-->
+    <!--                    <label-->
+    <!--                        class="form-check-label ps-2"-->
+    <!--                        for="newsletter1"-->
+    <!--                    ></label>-->
+    <!--                  </div>-->
+    <!--                </td>-->
+    <!--                <td class="border-bottom-0">-->
+    <!--                  <div class="form-check form-check-solid">-->
+    <!--                    <input-->
+    <!--                        class="form-check-input"-->
+    <!--                        type="checkbox"-->
+    <!--                        value=""-->
+    <!--                        id="newsletter2"-->
+    <!--                        data-kt-settings-notification="phone"-->
+    <!--                    />-->
+    <!--                    <label-->
+    <!--                        class="form-check-label ps-2"-->
+    <!--                        for="newsletter2"-->
+    <!--                    ></label>-->
+    <!--                  </div>-->
+    <!--                </td>-->
+    <!--              </tr>-->
+    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
+    <!--              </tbody>-->
+    <!--            </table>-->
+    <!--          </div>-->
+    <!--          &lt;!&ndash;end::Table&ndash;&gt;-->
+    <!--        </div>-->
+    <!--        &lt;!&ndash;end::Card body&ndash;&gt;-->
+    
+    <!--        &lt;!&ndash;begin::Card footer&ndash;&gt;-->
+    <!--        <div class="card-footer d-flex justify-content-end py-6 px-9">-->
+    <!--          <button class="btn btn-light btn-active-light-primary me-2">-->
+    <!--            Discard-->
+    <!--          </button>-->
+    <!--          <button-->
+    <!--              ref="submitButton4"-->
+    <!--              type="submit"-->
+    <!--              class="btn btn-primary px-6"-->
+    <!--          >-->
+    <!--            <span class="indicator-label"> Save Changes </span>-->
+    <!--            <span class="indicator-progress">-->
+    <!--              Please wait...-->
+    <!--              <span-->
+    <!--                  class="spinner-border spinner-border-sm align-middle ms-2"-->
+    <!--              ></span>-->
+    <!--            </span>-->
+    <!--          </button>-->
+    <!--        </div>-->
+    <!--        &lt;!&ndash;end::Card footer&ndash;&gt;-->
+    <!--      </form>-->
+    <!--      &lt;!&ndash;end::Form&ndash;&gt;-->
+    <!--    </div>-->
     <!--end::Content-->
   </div>
   <!--end::Notifications-->
@@ -827,10 +827,10 @@ export default defineComponent({
     const submitButton1 = ref<HTMLElement | null>(null);
     const updateEmailButton = ref<HTMLElement | null>(null);
     const updatePasswordButton = ref<HTMLElement | null>(null);
-
+    
     const emailFormDisplay = ref(false);
     const passwordFormDisplay = ref(false);
-
+    
     const profileDetailsValidator = Yup.object().shape({
       fname: Yup.string().required().label("First name"),
       lname: Yup.string().required().label("Last name"),
@@ -839,12 +839,12 @@ export default defineComponent({
       phoneNumber: Yup.string().required().label("Phone Number"),
       enabled: Yup.string().required().label("Enabled"),
     });
-
+    
     const changeEmail = Yup.object().shape({
       emailaddress: Yup.string().required().email().label("Email"),
       confirmemailpassword: Yup.string().required().label("Password"),
     });
-
+    
     const changePassword = Yup.object().shape({
       currentpassword: Yup.string().required().label("Current password"),
       newpassword: Yup.string().min(4).required().label("Password"),
@@ -854,41 +854,41 @@ export default defineComponent({
           .oneOf([Yup.ref("newpassword"), null], "Passwords must match")
           .label("Password Confirmation"),
     });
-
-
+    
+    
     const saveChanges1 = () => {
       if (submitButton1.value) {
         // Activate indicator
         submitButton1.value.setAttribute("data-kt-indicator", "on");
-
+        
         setTimeout(() => {
           submitButton1.value?.removeAttribute("data-kt-indicator");
         }, 2000);
       }
     };
-
-
+    
+    
     const updateEmail = () => {
       if (updateEmailButton.value) {
         // Activate indicator
         updateEmailButton.value.setAttribute("data-kt-indicator", "on");
-
+        
         setTimeout(() => {
           updateEmailButton.value?.removeAttribute("data-kt-indicator");
-
+          
           emailFormDisplay.value = false;
         }, 2000);
       }
     };
-
+    
     const updatePassword = () => {
       if (updatePasswordButton.value) {
         // Activate indicator
         updatePasswordButton.value.setAttribute("data-kt-indicator", "on");
-
+        
         setTimeout(() => {
           updatePasswordButton.value?.removeAttribute("data-kt-indicator");
-
+          
           Swal.fire({
             text: "Password is successfully changed!",
             icon: "success",
@@ -904,14 +904,14 @@ export default defineComponent({
         }, 2000);
       }
     };
-
+    
     const removeImage = () => {
       profileDetails.value.avatar = "/media/avatars/blank.png";
     };
-
+    
     const {State} = GlobalStore()
     const GetLocalProfile = localStorage.getItem('user')
-
+    
     const profileDetails = ref<ProfileDetails>({
       avatar: getAssetPath("media/avatars/300-1.jpg"),
       id: '',
@@ -937,7 +937,7 @@ export default defineComponent({
         },
       },
     });
-
+    
     const Profile = computed<ProfileDetails>(() => {
       if (Object.keys(State.Profile).length > 0) {
         return State.Profile;
@@ -946,17 +946,17 @@ export default defineComponent({
         profileDetails.value.name = localProfile.username;
         return localProfile;
       } else {
-        router.push('sign-in');
+        // router.push('sign-in');
         return null;
       }
     });
-
+    
     onMounted(() => {
       console.log('Profile', Profile.value);
       profileDetails.value = {...profileDetails.value, ...Profile.value};
     });
-
-
+    
+    
     return {
       submitButton1,
       saveChanges1,

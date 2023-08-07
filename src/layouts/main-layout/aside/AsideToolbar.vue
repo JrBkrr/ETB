@@ -95,7 +95,7 @@ export default defineComponent({
       } else if (GetLocalProfile) {
         return GetLocalProfile
       } else {
-        router.push('sign-in')
+        // // router.push('sign-in')
       }
     })
     

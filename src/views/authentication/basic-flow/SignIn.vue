@@ -129,6 +129,9 @@ export default defineComponent({
     const i18n = useI18n();
     
     onMounted(() => {
+      localStorage.removeItem('username')
+      localStorage.removeItem('id_token')
+      localStorage.removeItem('user')
       const lang = localStorage.getItem("lang");
       i18n.locale.value = lang || 'tr';
     })
@@ -173,15 +176,15 @@ export default defineComponent({
             }
             return response.text();
           })
-          .then(async result => {
+          .then(result => {
+            localStorage.setItem('username', username.value)
             JwtService.saveToken(values.api_token);
             store.setAuth({api_token: JSON.parse(result).access_token});
             State.Notifications.push({head: 'Giriş Başarılı', title: 'Anasayfaya yönlendiriliyorsunuz', variant: 'success', status: false})
             setTimeout(() => {
-              localStorage.setItem('username', username.value)
-              router.push({name: "dashboard"})
               submitButton.value?.removeAttribute("data-kt-indicator");
               submitButton.value!.disabled = false;
+              window.location.href = '/';
             }, 2000)
           })
           .catch(error => {

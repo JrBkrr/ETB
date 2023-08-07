@@ -6,7 +6,7 @@
         description="Do Payment açıklama"
         :image="getIllustrationsPath('20.png')"
         button-text="Payment"
-        modal-id="kt_modal_add_customer"
+        modal-id="kt_modal_do_payment"
     ></DoPayment>
     <OpenKC
         class="col ms-4"
@@ -18,12 +18,13 @@
     ></OpenKC>
   </div>
   
-  <AddCustomerModal></AddCustomerModal>
+  <DoPaymentCreate />
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue";
 import DoPayment from "@/components-ekds/payments/DoPayment.vue";
+import DoPaymentCreate from "@/components-ekds/payments/DoPaymentCreate.vue";
 import OpenKC from "@/components-ekds/payments/OpenKC.vue";
 import AddCustomerModal from "@/components/modals/forms/AddCustomerModal.vue";
 import {getIllustrationsPath} from "@/core/helpers/assets";
@@ -35,7 +36,8 @@ export default defineComponent({
     AddCustomerModal,
     defineComponent,
     DoPayment,
-    OpenKC
+    DoPaymentCreate,
+    OpenKC,
   },
 });
 </script>
