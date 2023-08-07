@@ -1,6 +1,6 @@
 <template>
   <div
-      id="kt_modal_do_payment"
+      id="kt_modal_open_kc"
       ref="addCustomerModalRef"
       aria-hidden="true"
       class="modal fade"
@@ -13,7 +13,7 @@
         <!--begin::Modal header-->
         <div id="kt_modal_add_customer_header" class="modal-header">
           <!--begin::Modal title-->
-          <h2 class="fw-bold">Payment</h2>
+          <h2 class="fw-bold">Open KC</h2>
           <!--end::Modal title-->
           
           <!--begin::Close-->
@@ -49,16 +49,30 @@
             >
               
               <!--begin::Input group-->
-              <div class="fv-row mb-15">
+              <div class="d-flex flex-stack mb-8">
                 <!--begin::Label-->
-                <label class="fs-6 fw-semobold mb-2">Price</label>
+                <div class="me-5">
+                  <label class="fs-6 fw-semobold"
+                  >Open Kec</label
+                  >
+                </div>
                 <!--end::Label-->
                 
-                <!--begin::Input-->
-                <el-form-item prop="amount">
-                  <el-input v-model="formData.amount" placeholder="Price" type="text" />
-                </el-form-item>
-                <!--end::Input-->
+                <!--begin::Switch-->
+                <label
+                    class="form-check form-switch form-check-custom form-check-solid"
+                >
+                  <input
+                      id="update-ussss"
+                      v-model="formData.openKec"
+                      class="form-check-input"
+                      type="checkbox"
+                  />
+                  <span class="form-check-label fw-semobold text-gray-400">
+                  {{ formData.openKec ? 'Allowed' : 'Dismiss' }}
+                </span>
+                </label>
+                <!--end::Switch-->
               </div>
               <!--end::Input group-->
               
@@ -151,12 +165,12 @@ export default defineComponent({
     const addCustomerModalRef = ref<null | HTMLElement>(null);
     const loading = ref<boolean>(false);
     const formData = ref({
-      amount: "",
+      openKec: true,
       deviceSerialNumber: ''
     });
     
     const rules = ref({
-      amount: [
+      openKec: [
         {
           required: true,
           message: "Customer name is required",
@@ -178,12 +192,12 @@ export default defineComponent({
       }
       
       formRef.value.validate(async (valid: boolean) => {
-        await Action_Start('post', '/paymentRequest/doPayment', '', formData.value).then(async Response => {
+        await Action_Start('post', '/paymentRequest/openKec', '', formData.value).then(async Response => {
           setTimeout(() => {
             loading.value = false;
             State.Notifications.push({
               head: 'İşlem Başarılı',
-              title: `Ödeme başarılı bir şekilde alındı`,
+              title: `e-Bio-Kec Pro uygulamsı cihazda açılmıştır`,
               variant: 'success',
               status: false
             })

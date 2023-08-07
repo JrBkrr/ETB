@@ -29,7 +29,7 @@
       <!--end::Heading-->
       
       <!--begin::Illustration-->
-      <div class="text-center px-5">
+      <div class="text-center px-5 d-none d-xl-block">
         <img :src="image" alt="" class="mw-100 mh-300px" />
       </div>
       <!--end::Illustration-->
