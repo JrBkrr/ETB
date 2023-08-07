@@ -178,6 +178,7 @@ export default defineComponent({
             store.setAuth({api_token: JSON.parse(result).access_token});
             State.Notifications.push({head: 'Giriş Başarılı', title: 'Anasayfaya yönlendiriliyorsunuz', variant: 'success', status: false})
             setTimeout(() => {
+              localStorage.setItem('username', username.value)
               router.push({name: "dashboard"})
               submitButton.value?.removeAttribute("data-kt-indicator");
               submitButton.value!.disabled = false;

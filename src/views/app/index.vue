@@ -2046,9 +2046,11 @@ export default defineComponent({
     const Show = ref('')
     const KTicon = ref([] as any)
     const status = ref(false)
+    
     onMounted(() => {
       Object.keys(icons).map(a => KTicon.value.push(a))
     })
+    
     const SearchText = ref<string>('');
     const List = computed(() => {
       return Icons.filter(item => item.includes(SearchText.value));
