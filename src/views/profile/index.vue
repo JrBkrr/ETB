@@ -1,156 +1,158 @@
 <template>
-  <!--begin::Navbar-->
-  <div class="card mb-5 mb-xl-10">
-    <div class="card-body pt-9 pb-0">
-      <!--begin::Details-->
-      <div class="d-flex flex-wrap flex-sm-nowrap mb-3">
-        <!--begin: Pic-->
-        <div class="me-7 mb-4">
-          <div
-              class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative"
-          >
-            <p class="bg-light rounded d-flex align-items-center justify-content-center display-1 h-200px w-200px">
-              {{ (Profile?.username ?? '-')[0].toUpperCase() }}</p>
+  <div class="overflow-auto px-10 h-100">
+    <!--begin::Navbar-->
+    <div class="card mb-5 mb-xl-10">
+      <div class="card-body pt-9 pb-0">
+        <!--begin::Details-->
+        <div class="d-flex flex-wrap flex-sm-nowrap mb-3">
+          <!--begin: Pic-->
+          <div class="me-7 mb-4">
             <div
-                class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-white h-20px w-20px"
-            ></div>
-          </div>
-        </div>
-        <!--end::Pic-->
-
-        <!--begin::Info-->
-        <div class="flex-grow-1">
-          <!--begin::Title-->
-          <div
-              class="d-flex justify-content-between align-items-start flex-wrap mb-2"
-          >
-            <!--begin::User-->
-            <div class="d-flex flex-column">
-              <!--begin::Name-->
-              <div class="d-flex align-items-center mb-2">
-                <a
-                    class="text-gray-800 text-hover-primary fs-2 fw-bold me-1"
-                >{{ `${(Profile?.name ?? "-")} ${(Profile?.surname ?? "-")}` }}</a
-                >
-                <a href="#">
-                  <KTIcon v-if="Profile.enabled" icon-name="verify" icon-class="fs-1 text-primary"/>
-                  <KTIcon v-if="!Profile.enabled" icon-name="information" icon-class="fs-1 text-warning"/>
-                </a>
-
-              </div>
-              <!--end::Name-->
-
-              <!--begin::Info-->
-              <div class="d-flex flex-wrap fw-semobold fs-6 mb-4 pe-2">
-                <a
-                    href="#"
-                    class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2"
-                >
-                  <KTIcon icon-name="profile-circle" icon-class="fs-4 me-1"/>
-                  {{ (Profile?.authorities[0].name || '-') }}
-                </a>
-                <a
-                    href="#"
-                    class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2"
-                >
-                  <KTIcon icon-name="geolocation" icon-class="fs-4 me-1"/>
-                  İstanbul, Turkey
-                </a>
-                <a
-                    href="#"
-                    class="d-flex align-items-center text-gray-400 text-hover-primary mb-2"
-                >
-                  <KTIcon icon-name="sms" icon-class="fs-4 me-1"/>
-                  {{ (Profile?.email || '-') }}
-                </a>
-              </div>
-              <!--end::Info-->
+                class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative"
+            >
+              <p class="bg-light rounded d-flex align-items-center justify-content-center display-1 h-200px w-200px">
+                {{ (Profile?.username ?? '-')[0].toUpperCase() }}</p>
+              <div
+                  class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-white h-20px w-20px"
+              ></div>
             </div>
-            <!--end::User-->
           </div>
-          <!--end::Title-->
-
-          <!--begin::Stats-->
-          <div class="d-flex flex-wrap flex-xxl-nowrap">
-            <!--begin::Wrapper-->
+          <!--end::Pic-->
+          
+          <!--begin::Info-->
+          <div class="flex-grow-1">
+            <!--begin::Title-->
+            <div
+                class="d-flex justify-content-between align-items-start flex-wrap mb-2"
+            >
+              <!--begin::User-->
+              <div class="d-flex flex-column">
+                <!--begin::Name-->
+                <div class="d-flex align-items-center mb-2">
+                  <a
+                      class="text-gray-800 text-hover-primary fs-2 fw-bold me-1"
+                  >{{ `${(Profile?.name ?? "-")} ${(Profile?.surname ?? "-")}` }}</a
+                  >
+                  <a href="#">
+                    <KTIcon v-if="Profile.enabled" icon-name="verify" icon-class="fs-1 text-primary" />
+                    <KTIcon v-if="!Profile.enabled" icon-name="information" icon-class="fs-1 text-warning" />
+                  </a>
+                
+                </div>
+                <!--end::Name-->
+                
+                <!--begin::Info-->
+                <div class="d-flex flex-wrap fw-semobold fs-6 mb-4 pe-2">
+                  <a
+                      href="#"
+                      class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2"
+                  >
+                    <KTIcon icon-name="profile-circle" icon-class="fs-4 me-1" />
+                    {{ (Profile?.authorities[0].name || '-') }}
+                  </a>
+                  <a
+                      href="#"
+                      class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2"
+                  >
+                    <KTIcon icon-name="geolocation" icon-class="fs-4 me-1" />
+                    İstanbul, Turkey
+                  </a>
+                  <a
+                      href="#"
+                      class="d-flex align-items-center text-gray-400 text-hover-primary mb-2"
+                  >
+                    <KTIcon icon-name="sms" icon-class="fs-4 me-1" />
+                    {{ (Profile?.email || '-') }}
+                  </a>
+                </div>
+                <!--end::Info-->
+              </div>
+              <!--end::User-->
+            </div>
+            <!--end::Title-->
+            
+            <!--begin::Stats-->
+            <div class="d-flex flex-wrap flex-xxl-nowrap">
+              <!--begin::Wrapper-->
               <!--begin::Stats-->
               <div class="d-flex">
                 <div class="col d-inline-flex flex-wrap">
                   <div v-for="auth in RoleList" :key="`${auth.name}`" class="col-4 col-md-3 d-flex align-items-center  pb-2">
                     <span class="d-flex align-items-center justify-content-center bg-light rounded p-2 me-2">
                        <KTIcon :icon-name="RoleIcon(auth.id).icon"
-                               :icon-class="`fs-1 ${Profile.authorities.some(a => a.id === auth.id) ? 'text-primary' : 'text-gray'}`"/>
+                               :icon-class="`fs-1 ${Profile.authorities.some(a => a.id === auth.id) ? 'text-primary' : 'text-gray'}`" />
                     </span>
                     <span>{{ RoleIcon(auth.id).name }}</span>
                   </div>
                 </div>
               </div>
               <!--end::Stats-->
-            <!--end::Wrapper-->
-
-            <!--begin::Progress-->
-            <div class="d-flex align-items-center w-200px w-sm-300px flex-column mt-3">
-              <div class="d-flex justify-content-between w-100 mt-auto mb-2">
+              <!--end::Wrapper-->
+              
+              <!--begin::Progress-->
+              <div class="d-flex align-items-center w-200px w-sm-300px flex-column mt-3">
+                <div class="d-flex justify-content-between w-100 mt-auto mb-2">
                 <span class="fw-semobold fs-6 text-gray-400"
                 >Profile Compleation</span
                 >
-                <span class="fw-bold fs-6">50%</span>
+                  <span class="fw-bold fs-6">50%</span>
+                </div>
+                
+                <div class="h-5px mx-3 w-100 bg-light mb-3">
+                  <div
+                      class="bg-success rounded h-5px"
+                      role="progressbar"
+                      style="width: 50%"
+                      aria-valuenow="50"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                  ></div>
+                </div>
               </div>
-
-              <div class="h-5px mx-3 w-100 bg-light mb-3">
-                <div
-                    class="bg-success rounded h-5px"
-                    role="progressbar"
-                    style="width: 50%"
-                    aria-valuenow="50"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                ></div>
-              </div>
+              <!--end::Progress-->
             </div>
-            <!--end::Progress-->
+            <!--end::Stats-->
           </div>
-          <!--end::Stats-->
+          <!--end::Info-->
         </div>
-        <!--end::Info-->
+        <!--end::Details-->
+        
+        <!--begin::Navs-->
+        <div class="d-flex overflow-auto h-55px">
+          <ul
+              class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold flex-nowrap"
+          >
+            <!--begin::Nav item-->
+            <li class="nav-item">
+              <a
+                  @click="Settings = false"
+                  class="nav-link text-active-primary me-6 cursor-pointer"
+                  :class="[!Settings && 'active']"
+              >
+                Overview
+              </a>
+            </li>
+            <!--end::Nav item-->
+            <!--begin::Nav item-->
+            <li class="nav-item">
+              <a
+                  @click="Settings = true"
+                  class="nav-link text-active-primary me-6 cursor-pointer"
+                  :class="[Settings && 'active']"
+              >
+                Settings
+              </a>
+            </li>
+            <!--end::Nav item-->
+          </ul>
+        </div>
+        <!--begin::Navs-->
       </div>
-      <!--end::Details-->
-
-      <!--begin::Navs-->
-      <div class="d-flex overflow-auto h-55px">
-        <ul
-            class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold flex-nowrap"
-        >
-          <!--begin::Nav item-->
-          <li class="nav-item">
-            <a
-                @click="Settings = false"
-                class="nav-link text-active-primary me-6 cursor-pointer"
-                :class="[!Settings && 'active']"
-            >
-              Overview
-            </a>
-          </li>
-          <!--end::Nav item-->
-          <!--begin::Nav item-->
-          <li class="nav-item">
-            <a
-                @click="Settings = true"
-                class="nav-link text-active-primary me-6 cursor-pointer"
-                :class="[Settings && 'active']"
-            >
-              Settings
-            </a>
-          </li>
-          <!--end::Nav item-->
-        </ul>
-      </div>
-      <!--begin::Navs-->
     </div>
+    <!--end::Navbar-->
+    <Settings v-if="Settings" />
+    <Overview v-else v-model:Settings="Settings" />
   </div>
-  <!--end::Navbar-->
-  <Settings v-if="Settings"/>
-  <Overview v-else v-model:Settings="Settings"/>
 </template>
 
 <script lang="ts">
@@ -173,7 +175,7 @@ export default defineComponent({
     const {State} = GlobalStore()
     const Settings = ref(false)
     const GetLocalProfile = localStorage.getItem('user')
-
+    
     const Profile = computed(() => {
       if (Object.keys(State.Profile).length > 0) {
         return State.Profile
@@ -183,7 +185,7 @@ export default defineComponent({
         router.push('sign-in')
       }
     })
-
+    
     const RoleList = [
       {
         "id": "ROLE_ADMIN",
@@ -269,7 +271,7 @@ export default defineComponent({
           return {name: 'default', icon: "DEFAULT_ICON"};
       }
     };
-
+    
     return {
       Settings,
       getAssetPath,

@@ -1,6 +1,6 @@
 <template>
   <!--begin::Logs-->
-  <div class="row g-5 g-xl-8 h-100">
+  <div class="row px-10 h-100">
     <LogsTable page="Devices" url="devices"></LogsTable>
   </div>
   <!--end::Logs-->

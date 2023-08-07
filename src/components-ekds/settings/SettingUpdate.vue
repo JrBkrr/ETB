@@ -13,10 +13,10 @@
               class="btn btn-sm btn-icon btn-active-color-primary"
               data-bs-dismiss="modal"
           >
-            <KTIcon icon-name="cross" icon-class="fs-1"/>
+            <KTIcon icon-name="cross" icon-class="fs-1" />
           </div>
         </div>
-
+        
         <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
           <el-form
               id="kt_modal_new_target_form"
@@ -29,13 +29,13 @@
             <div class="mb-13 text-center">
               <h1 class="mb-3">Create New Version</h1>
             </div>
-
-
+            
+            
             <div class="d-flex flex-column mb-8 fv-row">
               <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
                 <span class="required">province</span>
               </label>
-
+              
               <el-form-item prop="province">
                 <el-input
                     v-model="targetData.province"
@@ -44,12 +44,12 @@
                 ></el-input>
               </el-form-item>
             </div>
-
+            
             <div class="d-flex flex-column mb-8 fv-row">
               <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
                 <span class="required">district</span>
               </label>
-
+              
               <el-form-item prop="district">
                 <el-input
                     v-model="targetData.district"
@@ -58,12 +58,12 @@
                 ></el-input>
               </el-form-item>
             </div>
-
+            
             <div class="d-flex flex-column mb-8 fv-row">
               <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
                 <span class="required">branch</span>
               </label>
-
+              
               <el-form-item prop="branch">
                 <el-input
                     v-model="targetData.branch"
@@ -72,7 +72,7 @@
                 ></el-input>
               </el-form-item>
             </div>
-
+            
             <div class="text-center">
               <button
                   type="reset"
@@ -81,8 +81,8 @@
               >
                 Cancel
               </button>
-
-
+              
+              
               <button
                   :data-kt-indicator="loading ? 'on' : null"
                   class="btn btn-lg btn-primary"
@@ -90,7 +90,7 @@
               >
                 <span v-if="!loading" class="indicator-label">
                   Submit
-                  <KTIcon icon-name="arrow-right" icon-class="fs-3 ms-2 me-0"/>
+                  <KTIcon icon-name="arrow-right" icon-class="fs-3 ms-2 me-0" />
                 </span>
                 <span v-if="loading" class="indicator-progress">
                   Please wait...
@@ -99,7 +99,7 @@
                   ></span>
                 </span>
               </button>
-
+            
             </div>
           </el-form>
         </div>
@@ -123,7 +123,6 @@
 import {getAssetPath} from "@/core/helpers/assets";
 import {defineComponent, ref, watch} from "vue";
 import {hideModal} from "@/core/helpers/dom";
-import Swal from "sweetalert2";
 import {GlobalStore} from "@/stores/global";
 
 interface payload {
@@ -147,14 +146,14 @@ export default defineComponent({
     const formRef = ref<null | HTMLFormElement>(null);
     const newTargetModalRef = ref<null | HTMLElement>(null);
     const loading = ref<boolean>(false);
-
+    
     const targetData = ref<payload>({
       serialNumber: props.item.serialNumber,
       province: props.item.province,
       district: props.item.district,
       branch: props.item.branch,
     });
-
+    
     const rules = ref({
       province: [
         {
@@ -178,65 +177,30 @@ export default defineComponent({
         },
       ],
     });
-
+    
     const submit = () => {
       if (!formRef.value) {
         return;
       }
-
+      
       formRef.value.validate(async (valid: boolean) => {
-        if (valid) {
-          loading.value = true;
-
-          await Action_Start('put', 'devices/updateAddress', '', targetData.value)
-
-          if (!State.Errors) {
-            setTimeout(() => {
-              loading.value = false;
-
-              Swal.fire({
-                text: "Form has been successfully submitted!",
-                icon: "success",
-                buttonsStyling: false,
-                confirmButtonText: "Ok, got it!",
-                heightAuto: false,
-                customClass: {
-                  confirmButton: "btn btn-primary",
-                },
-              }).then(async () => {
-                await Action_Start('get', 'devices', 'Devices')
-                hideModal(newTargetModalRef.value);
-              });
-            }, 2000);
-          } else {
+        await Action_Start('put', 'devices/updateAddress', '', targetData.value).then(async Response => {
+          setTimeout(() => {
             loading.value = false;
-            Swal.fire({
-              text: "Sorry, the operation could not be performed due to a service error. Contact the developer.",
-              icon: "error",
-              buttonsStyling: false,
-              confirmButtonText: "Ok, got it!",
-              heightAuto: false,
-              customClass: {
-                confirmButton: "btn btn-primary",
-              },
-            });
-          }
-        } else {
-          Swal.fire({
-            text: "Sorry, looks like there are some errors detected, please try again.",
-            icon: "error",
-            buttonsStyling: false,
-            confirmButtonText: "Ok, got it!",
-            heightAuto: false,
-            customClass: {
-              confirmButton: "btn btn-primary",
-            },
-          });
-          return false;
-        }
+            State.Notifications.push({
+              head: 'İşlem Başarılı',
+              title: `Cihaz başarılı bir şekilde güncellendi`,
+              variant: 'success',
+              status: false
+            })
+            hideModal(newTargetModalRef.value);
+          }, 2000);
+          await Action_Start('get', 'devices', 'Devices')
+          
+        })
       });
     };
-
+    
     watch(
         () => props.item,
         (newItem) => {
@@ -248,7 +212,7 @@ export default defineComponent({
           }
         }
     );
-
+    
     return {
       targetData,
       submit,

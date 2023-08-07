@@ -1,6 +1,6 @@
 <template>
   <!--begin::Dashboard-->
-  <div class="row g-5 g-xl-8 h-100">
+  <div class="row px-10 h-100">
     <VersionsTable widget-classes=""></VersionsTable>
   </div>
   <VersionCreate></VersionCreate>

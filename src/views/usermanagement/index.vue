@@ -1,6 +1,6 @@
 <template>
   <!--begin::Dashboard-->
-  <div class="row g-5 g-xl-8 h-100">
+  <div class="row px-10 h-100">
     <UsersTable v-model:item="item"></UsersTable>
   </div>
   <UserCreate></UserCreate>
@@ -23,7 +23,7 @@ export default defineComponent({
     UsersTable,
     UserUpdate
   },
-  setup(){
+  setup() {
     const item = ref({})
     return {
       item

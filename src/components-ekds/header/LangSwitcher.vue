@@ -39,11 +39,11 @@ export default defineComponent({
   setup() {
     const i18n = useI18n();
     const {t, te} = useI18n();
-
+    
     i18n.locale.value = localStorage.getItem("lang")
         ? (localStorage.getItem("lang") as string)
         : "tr";
-
+    
     const countries = {
       tr: {
         flag: getAssetPath("media/flags/turkey.svg"),
@@ -76,19 +76,20 @@ export default defineComponent({
         key: 'fr'
       },
     };
+    
     const setLang = (lang: string) => {
       localStorage.setItem("lang", lang);
       i18n.locale.value = lang;
     };
-
+    
     const currentLanguage = computed(() => {
       return i18n.locale.value;
     });
-
+    
     const currentLangugeLocale = computed(() => {
       return countries[i18n.locale.value as keyof typeof countries];
     });
-
+    
     const translate = (text: string) => {
       if (te(text)) {
         return t(text);
@@ -96,7 +97,7 @@ export default defineComponent({
         return text;
       }
     };
-
+    
     return {
       setLang,
       currentLanguage,

@@ -5,39 +5,39 @@
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
         <span class="card-label fw-bold fs-3 mb-1">Devices</span>
-
-        <span class="d-none text-muted mt-1 fw-semobold fs-7"
-        >Over 500 new products</span
+        
+        <span class="text-muted mt-1 fw-semobold fs-7"
+        >{{ List.length }} products</span
         >
       </h3>
       <!--      <div class="card-toolbar">-->
-      <!--        <a href="#" class="btn btn-sm btn-light-primary">-->
+      <!--        <a  class="btn btn-sm btn-light-primary">-->
       <!--          <KTIcon icon-name="plus" icon-class="fs-2"/>-->
       <!--          New Member-->
       <!--        </a>-->
       <!--      </div>-->
       <div class="d-flex align-items-center justify-content-center">
         <div class="aside-search py-0 me-5">
-          <TableSearch v-model:payload="SearchText"/>
+          <TableSearch v-model:payload="SearchText" />
         </div>
         <div class="card-toolbar">
           <!--begin::Menu-->
           <button
-              class="btn btn-sm btn-icon btn-color-primary btn-active-primary border border-primary"
-              data-bs-toggle="modal" :data-bs-target="`#${'kt_modal_new_device'}`"
+              :data-bs-target="`#${'kt_modal_new_device'}`"
+              class="btn btn-sm btn-icon btn-color-primary btn-active-primary border border-primary" data-bs-toggle="modal"
           >
-            <KTIcon icon-name="plus" icon-class="fs-3"/>
+            <KTIcon icon-class="fs-3" icon-name="plus" />
           </button>
           <!--end::Menu-->
         </div>
       </div>
     </div>
     <!--end::Header-->
-
+    
     <!--begin::Body-->
     <div class="card-body py-3 h-100">
       <!--begin::Table container-->
-      <div class="table-responsive h-100">
+      <div class="table-responsive h-100 pb-15">
         <!--begin::Table-->
         <table class="table align-middle gs-0 gy-4">
           <!--begin::Table head-->
@@ -62,7 +62,7 @@
               <span class="text-dots text-muted fw-bold mt-1">Fingerprint Success Rate</span>
             </th>
             <th class="min-w-150px" style="max-width: 10%">
-              <span class="text-dots text-muted fw-bold mt-1">Created</span>
+              <span class="text-dots text-muted fw-bold mt-1">Last Online Time</span>
             </th>
             <th class="min-w-150px" style="max-width: 10%">
               <span class="text-dots text-muted fw-bold mt-1">Update</span>
@@ -70,134 +70,85 @@
             <th class="min-w-150px" style="max-width: 10%">
               <span class="text-dots text-muted fw-bold mt-1">Status</span>
             </th>
-            <th class="min-w-100 text-end rounded-end"></th>
+            <th class="min-w-150px text-end rounded-end"></th>
           </tr>
           </thead>
           <!--end::Table head-->
-
+          
           <!--begin::Table body-->
           <tbody>
           <template v-for="(item, index) in List" :key="index">
-            <tr @mouseenter="Target = item">
+            <tr class="hover-up-5 transition-3ms" @click="Target = item; setRightWindow(true);" @mouseenter="Target = item">
               <td>
                 <div class="d-flex align-items-center rounded-start-5">
                   <div class="symbol symbol-50px me-5">
-                    <a
-                        href="#"
-                        class="symbol-label me-1 fs-2 fw-bold"
-                        :class="`bg-light-dark btn-active-color-${Target.id === item.id && 'primary'} text-${Target.id === item.id ? 'primary': 'dark'}`"
-                    >
+                    <a :class="`bg-light-dark btn-active-color-${Target.id === item.id && 'primary'} text-${Target.id === item.id ? 'primary': 'dark'}`"
+                       class="symbol-label me-1 fs-2 fw-bold">
                       {{ index + 1 }}
                     </a>
                   </div>
                 </div>
               </td>
-
+              
               <td>
                 <div class="d-flex align-items-center">
                   <div class="d-flex justify-content-start flex-column">
-                    <a
-                        href="#"
-                        class="text-dark text-hover-primary fw-bold mb-1 fs-6"
-                    >{{ item.gemNumber }}</a
-                    >
+                    <a class="text-dark text-hover-primary fw-bold mb-1 fs-6">{{ item.gemNumber }}</a>
                   </div>
                 </div>
               </td>
-
+              
               <td>
-                <a
-                    href="#"
-                    class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
-                >{{ item.serialNumber || '-' }}</a
-                >
+                <a class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ item.serialNumber || '-' }}</a>
               </td>
-
+              
               <td>
-                <a
-                    href="#"
-                    class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
-                >{{ item.version?.versionNumberSemantic }}</a
-                >
+                <a class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ item.version?.versionNumberSemantic }}</a>
                 <span class="text-muted fw-semobold text-muted d-block fs-7"
                 >Rejected</span
                 >
               </td>
-
+              
               <td>
-                <a
-                    href="#"
-                    class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
-                >{{ item.operatingSystemVersion }}</a
-                >
+                <a class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ item.operatingSystemVersion }}</a>
+                <span class="text-muted fw-semobold text-muted d-block fs-7">{{ item.hardwareVersion?.name }}</span>
+              </td>
+              
+              <td>
+                <a class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ item.details.find(a => a.name === 'fingerprint_success_rate')?.value || '' }}</a>
+              </td>
+              
+              
+              <td>
+                <a class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ moment(item.lastOnlineTime).format('YYYY-MM-DD') }}</a>
                 <span
                     class="text-muted fw-semobold text-muted d-block fs-7"
-                >{{ item.hardwareVersion?.name }}</span
+                >{{ moment(item.lastOnlineTime).format('hh:mm:ss') }}</span
                 >
               </td>
-
               <td>
+                  <span :class="`badge badge-light-${!item.version.forceUpdate ? 'primary' : 'success'}fs-7fw-bold`">
+                    {{ item.version.forceUpdate ? 'Active' : 'Passive' }}
+                  </span>
+              </td>
+              
+              <td>
+                  <span :class="`badge badge-light-${!item.online ? 'primary' : 'success'}fs-7fw-bold`">
+                    {{ item.online ? 'Online' : 'Offline' }}
+                  </span>
+              </td>
+              
+              <td class="d-flex justify-content-center">
                 <a
-                    href="#"
-                    class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
-                >{{ item.details.find(a => a.name === 'fingerprint_success_rate')?.value || '' }}</a
+                    :data-bs-target="`#${'kt_modal_update_device'}`"
+                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-bs-toggle="modal"
+                    @click.stop="UpdateEvent(item)"
                 >
-              </td>
-
-
-              <td>
-                <a
-                    href="#"
-                    class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
-                >{{ moment(item.createdAt).format('YYYY-MM-DD') }}</a>
-                <span
-                    class="text-muted fw-semobold text-muted d-block fs-7"
-                >{{ moment(item.createdAt).format('hh:mm:ss') }}</span
-                >
-              </td>
-              <td>
-                  <span
-                      :class="`
-                      badge badge-light-${!item.version.forceUpdate ? 'primary' : 'success'}
-                      fs-7
-                      fw-bold
-                    `"
-                  >{{ item.version.forceUpdate ? 'Active' : 'Passive' }}</span
-                  >
-              </td>
-
-              <td>
-                  <span
-                      :class="`
-                      badge badge-light-${!item.online ? 'primary' : 'success'}
-                      fs-7
-                      fw-bold
-                    `"
-                  >{{ item.online ? 'Online' : 'Offline' }}</span
-                  >
-              </td>
-
-              <td class="d-flex justify-content-end">
-                <a
-                    @click="Target = item; setRightWindow(true);"
-                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                >
-                  <KTIcon icon-name="switch" icon-class="fs-3"/>
+                  <KTIcon icon-class="fs-3" icon-name="pencil" />
                 </a>
-
-                <a
-                    @click="UpdateEvent(item)"
-                    data-bs-toggle="modal" :data-bs-target="`#${'kt_modal_update_device'}`"
-                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                >
-                  <KTIcon icon-name="pencil" icon-class="fs-3"/>
-                </a>
-
-                <a
-                    @click="RemoveDevice(item.serialNumber)"
-                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
-                >
-                  <KTIcon icon-name="trash" icon-class="fs-3"/>
+                
+                <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" @click.stop="RemoveDevice(item.serialNumber)">
+                  <KTIcon icon-class="fs-3" icon-name="trash" />
                 </a>
               </td>
             </tr>
@@ -254,7 +205,7 @@ import {GlobalStore} from "@/stores/global";
 import TableSearch from "@/components-ekds/inputs/TableSearch.vue";
 import KTIcon from "@/core/helpers/kt-icon/KTIcon.vue";
 import moment from "moment";
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2'
 import RightWindow from "@/components-ekds/modals/RightWindow.vue";
 
 interface Target {
@@ -286,19 +237,19 @@ export default defineComponent({
   setup(props, {emit}) {
     const {State, Action_Start, setRightWindow} = GlobalStore();
     const Target = ref<Target>({} as Target);
-
+    
     // Get List
     onMounted(async () => {
       await Action_Start('get', 'devices', 'Devices')
       await Action_Start('get', 'hardwareVersions', 'HardwareVersions')
     });
-
+    
     // Filter List
     const SearchText = ref<string>('');
     const List = computed(() => {
       return State.Devices.filter(item => item.serialNumber.includes(SearchText.value));
     });
-
+    
     const RemoveDevice = (serialNumber) => {
       Swal.fire({
         text: `Are you sure you want to delete the device with serial number ${serialNumber}?`,
@@ -329,7 +280,7 @@ export default defineComponent({
     const UpdateEvent = (item) => {
       emit("update:item", item);
     }
-
+    
     return {
       getAssetPath,
       Target,
@@ -342,16 +293,3 @@ export default defineComponent({
   }
 });
 </script>
-<style>
-* {
-  transition: background-color .2s;
-}
-
-.text-dots {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 90% !important;
-  display: inline-block;
-}
-</style>

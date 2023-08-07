@@ -5,7 +5,7 @@
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
         <span class="card-label fw-bold fs-3 mb-1">Versions</span>
-
+        
         <span class="d-none text-muted mt-1 fw-semobold fs-7"
         >Over 500 new products</span
         >
@@ -18,7 +18,7 @@
       <!--      </div>-->
       <div class="d-flex align-items-center justify-content-center">
         <div class="aside-search py-0 me-5">
-          <TableSearch v-model:payload="SearchText"/>
+          <TableSearch v-model:payload="SearchText" />
         </div>
         <div class="card-toolbar">
           <!--begin::Menu-->
@@ -26,18 +26,18 @@
               class="btn btn-sm btn-icon btn-color-primary btn-active-primary border border-primary"
               data-bs-toggle="modal" :data-bs-target="`#${'kt_modal_new_version'}`"
           >
-            <KTIcon icon-name="plus" icon-class="fs-3"/>
+            <KTIcon icon-name="plus" icon-class="fs-3" />
           </button>
           <!--end::Menu-->
         </div>
       </div>
     </div>
     <!--end::Header-->
-
+    
     <!--begin::Body-->
     <div class="card-body py-3 h-100">
       <!--begin::Table container-->
-      <div class="table-responsive h-100">
+      <div class="table-responsive h-100 pb-15">
         <!--begin::Table-->
         <table class="table align-middle gs-0 gy-4">
           <!--begin::Table head-->
@@ -65,7 +65,7 @@
           </tr>
           </thead>
           <!--end::Table head-->
-
+          
           <!--begin::Table body-->
           <tbody>
           <template v-for="(item, index) in List" :key="index">
@@ -83,7 +83,7 @@
                   </div>
                 </div>
               </td>
-
+              
               <td>
                 <div class="d-flex align-items-center">
                   <div class="d-flex justify-content-start flex-column">
@@ -99,7 +99,7 @@
                   </div>
                 </div>
               </td>
-
+              
               <td>
                 <a
                     href="#"
@@ -110,7 +110,7 @@
                 >Paid</span
                 >
               </td>
-
+              
               <td>
                 <a
                     href="#"
@@ -121,7 +121,7 @@
                 >Rejected</span
                 >
               </td>
-
+              
               <td>
                 <a
                     href="#"
@@ -133,7 +133,7 @@
                 >{{ item.versionNumber }}</span
                 >
               </td>
-
+              
               <td>
                   <span
                       :class="`
@@ -149,7 +149,7 @@
                     @click="setRightWindow(true)"
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                 >
-                  <KTIcon icon-name="switch" icon-class="fs-3"/>
+                  <KTIcon icon-name="switch" icon-class="fs-3" />
                 </a>
               </td>
             </tr>
@@ -206,6 +206,7 @@ import RightWindow from "@/components-ekds/modals/RightWindow.vue";
 interface name {
   name: string
 }
+
 interface Target {
   id: string;
   versionNumberSemantic: string;
@@ -225,18 +226,18 @@ export default defineComponent({
   setup() {
     const {State, Action_Start, setRightWindow} = GlobalStore();
     const Target = ref<Target>({} as Target);
-
+    
     // Get List
     onMounted(async () => {
       await Action_Start('get', 'versions', 'Versions')
     });
-
+    
     // Filter List
     const SearchText = ref<string>('');
     const List = computed(() => {
       return State.Versions.filter(item => item.versionNumber.toString().includes(SearchText.value));
     });
-
+    
     return {
       setRightWindow,
       getAssetPath,
@@ -249,10 +250,10 @@ export default defineComponent({
 </script>
 <style>
 .text-dots {
-  white-space: nowrap;
-  overflow: hidden;
+  white-space:   nowrap;
+  overflow:      hidden;
   text-overflow: ellipsis;
-  width: 90% !important;
-  display: inline-block;
-}
+  width:         90% !important;
+  display:       inline-block;
+  }
 </style>

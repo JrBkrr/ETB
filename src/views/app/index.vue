@@ -1,26 +1,47 @@
 <template>
-  <TableSearch v-model:payload="SearchText"/>
-  <!--begin::Dashboard-->
-  <div class="row g-xl-8 mt-3">
-    <div v-for="icon in List" class="col-1">
-      <div @mouseenter="Show = icon" @mouseleave="Show = ''"
-           class="card d-flex flex-column align-items-center justify-content-center p-2 rounded ratio-1">
-        <span v-if="Show === icon" class="text-dark text-center fw-bold fs-4">{{ icon }}</span>
-        <i v-if="Show !== icon" :class="`bi-${icon}`"
-           class="bi fs-2hx text-dark"
-        ></i>
+  <div class="row flex-column px-10 h-100">
+    <div class="d-flex align-items-center">
+      <TableSearch v-model:payload="SearchText" />
+      <button :class="[status ? 'btn-primary' : 'btn-danger']" class="btn btn-sm min-w-200px mx-5" @click="status = !status">
+        <span class="indicator-label"> {{ status ? 'KTIcon' : 'Bootstrap' }} </span>
+      </button>
+    </div>
+    <!--begin::Dashboard-->
+    <div v-if="!status" class="row g-8 mt-10 overflow-auto flex-1">
+      <div v-for="icon in KTicon" class="col-1 mt-0 mb-8">
+        <div class="card d-flex flex-column align-items-center justify-content-center p-2 rounded ratio-1" @mouseenter="Show = icon"
+             @mouseleave="Show = ''">
+          <span v-if="Show === icon" class="text-dark text-center fw-bold fs-4">{{ icon }}</span>
+          <KTIcon v-else :icon-name="icon" icon-class="fs-4x text-dark" />
+        </div>
       </div>
     </div>
+    
+    <div v-else class="row g-8 mt-10 overflow-auto flex-1">
+      <div v-for="(icon,index) in List" class="col-1 mt-0 mb-8">
+        <div class="card d-flex flex-column align-items-center justify-content-center p-2 rounded ratio-1" @mouseenter="Show = index.toString()"
+             @mouseleave="Show = ''">
+          <span v-if="Show === index.toString()" class="text-dark text-center fw-bold fs-4">{{ icon }}</span>
+          <i v-if="Show !== index.toString()" :class="`bi-${icon}`"
+             class="bi fs-2hx text-dark"
+          ></i>
+        </div>
+      </div>
+    </div>
+    <!--end::Dashboard-->
   </div>
-  <!--end::Dashboard-->
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, ref} from "vue";
+import {computed, defineComponent, onMounted, ref} from "vue";
 import TableSearch from '@/components-ekds/inputs/TableSearch.vue'
+import icons from '@/core/helpers/kt-icon/icons.json'
+import KTIcon from "@/core/helpers/kt-icon/KTIcon.vue";
+
 export default defineComponent({
   name: "dashboard-main",
   components: {
+    KTIcon,
     TableSearch,
   },
   setup() {
@@ -2023,24 +2044,24 @@ export default defineComponent({
       "wikipedia"
     ]
     const Show = ref('')
-
+    const KTicon = ref([] as any)
+    const status = ref(false)
+    onMounted(() => {
+      Object.keys(icons).map(a => KTicon.value.push(a))
+    })
     const SearchText = ref<string>('');
     const List = computed(() => {
       return Icons.filter(item => item.includes(SearchText.value));
     });
-
+    
     return {
       SearchText,
       List,
       Icons,
-      Show
+      Show,
+      KTicon,
+      status
     }
   }
 });
 </script>
-
-<style>
-.ratio-1 {
-  aspect-ratio: 1/1;
-}
-</style>

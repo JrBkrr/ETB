@@ -1,11 +1,11 @@
 <template>
   <!--begin::Modal - New Address-->
   <div
-      class="modal fade"
-      ref="newAddressModalRef"
       id="kt_modal_update_user"
-      tabindex="-1"
+      ref="newAddressModalRef"
       aria-hidden="true"
+      class="modal fade"
+      tabindex="-1"
   >
     <!--begin::Modal dialog-->
     <div class="modal-dialog modal-dialog-centered mw-650px">
@@ -13,46 +13,46 @@
       <div class="modal-content">
         <!--begin::Form-->
         <VForm
-            class="form"
             id="kt_modal_new_device_form"
-            @submit="submit"
-            :validation-schema="validationSchema"
             v-slot="{ errors }"
+            :validation-schema="validationSchema"
+            class="form"
+            @submit="submit"
         >
           <!--begin::Modal header-->
-          <div class="modal-header" id="kt_modal_new_device_header">
+          <div id="kt_modal_new_device_header" class="modal-header">
             <!--begin::Modal title-->
             <h2>Add New Device</h2>
             <!--end::Modal title-->
-
+            
             <!--begin::Close-->
             <div
                 class="btn btn-sm btn-icon btn-active-color-primary"
                 data-bs-dismiss="modal"
             >
-              <KTIcon icon-name="cross" icon-class="fs-1"/>
+              <KTIcon icon-class="fs-1" icon-name="cross" />
             </div>
             <!--end::Close-->
           </div>
           <!--end::Modal header-->
-
+          
           <!--begin::Modal body-->
           <div class="modal-body py-10 px-lg-17">
             <!--begin::Scroll-->
             <div
-                class="scroll-y me-n7 pe-7"
                 id="kt_modal_new_device_scroll"
+                class="scroll-y me-n7 pe-7"
                 data-kt-scroll="true"
                 data-kt-scroll-activate="{default: false, lg: true}"
-                data-kt-scroll-max-height="auto"
                 data-kt-scroll-dependencies="#kt_modal_new_device_header"
-                data-kt-scroll-wrappers="#kt_modal_new_device_scroll"
+                data-kt-scroll-max-height="auto"
                 data-kt-scroll-offset="300px"
+                data-kt-scroll-wrappers="#kt_modal_new_device_scroll"
             >
               <!--begin::Notice-->
               <div v-if="false"
                    class="notice d-flex bg-light-warning rounded border-warning border border-dashed mb-9 p-6">
-                <KTIcon icon-name="information-5" icon-class="fs-2tx text-warning me-4"/>
+                <KTIcon icon-class="fs-2tx text-warning me-4" icon-name="information-5" />
                 <!--begin::Wrapper-->
                 <div class="d-flex flex-stack flex-grow-1">
                   <!--begin::Content-->
@@ -68,7 +68,7 @@
                 <!--end::Wrapper-->
               </div>
               <!--end::Notice-->
-
+              
               <!--begin::Input group-->
               <div class="row mb-5">
                 <!--begin::Col-->
@@ -78,75 +78,23 @@
                   >username</label
                   >
                   <!--end::Label-->
-
+                  
                   <!--begin::Input-->
                   <Field
-                      type="text"
-                      class="form-control"
-                      :class="errors.username ? 'is-invalid' : ''"
-                      placeholder=""
-                      name="username"
                       v-model="payload.username"
-                  />
-                  <ErrorMessage class="invalid-feedback" name="username"/>
-                  <!--end::Input-->
-                </div>
-                <!--end::Col-->
-              </div>
-              <!--end::Input group-->
-
-              <!--begin::Input group-->
-              <div class="row mb-5">
-                <!--begin::Col-->
-                <div class="col-md-12 fv-row">
-                  <!--begin::Label-->
-                  <label class="required fs-5 fw-semobold mb-2"
-                  >password</label
-                  >
-                  <!--end::Label-->
-
-                  <!--begin::Input-->
-                  <Field
-                      type="text"
+                      :class="errors.username ? 'is-invalid' : ''"
                       class="form-control"
-                      :class="errors.password ? 'is-invalid' : ''"
+                      name="username"
                       placeholder=""
-                      name="password"
-                      v-model="payload.password"
-                  />
-                  <ErrorMessage class="invalid-feedback" name="password"/>
-                  <!--end::Input-->
-                </div>
-                <!--end::Col-->
-              </div>
-              <!--end::Input group-->
-
-              <!--begin::Input group-->
-              <div class="row mb-5">
-                <!--begin::Col-->
-                <div class="col-md-12 fv-row">
-                  <!--begin::Label-->
-                  <label class="required fs-5 fw-semobold mb-2"
-                  >passwordRepeat</label
-                  >
-                  <!--end::Label-->
-
-                  <!--begin::Input-->
-                  <Field
                       type="text"
-                      class="form-control"
-                      :class="errors.passwordRepeat ? 'is-invalid' : ''"
-                      placeholder=""
-                      name="passwordRepeat"
-                      v-model="payload.passwordRepeat"
                   />
-                  <ErrorMessage class="invalid-feedback" name="passwordRepeat"/>
+                  <ErrorMessage class="invalid-feedback" name="username" />
                   <!--end::Input-->
                 </div>
                 <!--end::Col-->
               </div>
               <!--end::Input group-->
-
+              
               <!--begin::Input group-->
               <div class="row mb-5">
                 <!--begin::Col-->
@@ -156,23 +104,23 @@
                   >email</label
                   >
                   <!--end::Label-->
-
+                  
                   <!--begin::Input-->
                   <Field
-                      type="text"
-                      class="form-control"
-                      :class="errors.email ? 'is-invalid' : ''"
-                      placeholder=""
-                      name="email"
                       v-model="payload.email"
+                      :class="errors.email ? 'is-invalid' : ''"
+                      class="form-control"
+                      name="email"
+                      placeholder=""
+                      type="text"
                   />
-                  <ErrorMessage class="invalid-feedback" name="email"/>
+                  <ErrorMessage class="invalid-feedback" name="email" />
                   <!--end::Input-->
                 </div>
                 <!--end::Col-->
               </div>
               <!--end::Input group-->
-
+              
               <!--begin::Input group-->
               <div class="row mb-5">
                 <!--begin::Col-->
@@ -182,23 +130,23 @@
                   >phoneNumber</label
                   >
                   <!--end::Label-->
-
+                  
                   <!--begin::Input-->
                   <Field
-                      type="text"
-                      class="form-control"
-                      :class="errors.phoneNumber ? 'is-invalid' : ''"
-                      placeholder=""
-                      name="phoneNumber"
                       v-model="payload.phoneNumber"
+                      :class="errors.phoneNumber ? 'is-invalid' : ''"
+                      class="form-control"
+                      name="phoneNumber"
+                      placeholder=""
+                      type="text"
                   />
-                  <ErrorMessage class="invalid-feedback" name="phoneNumber"/>
+                  <ErrorMessage class="invalid-feedback" name="phoneNumber" />
                   <!--end::Input-->
                 </div>
                 <!--end::Col-->
               </div>
               <!--end::Input group-->
-
+              
               <!--begin::Input group-->
               <div class="row mb-5">
                 <!--begin::Col-->
@@ -208,23 +156,23 @@
                   >name</label
                   >
                   <!--end::Label-->
-
+                  
                   <!--begin::Input-->
                   <Field
-                      type="text"
-                      class="form-control"
-                      :class="errors.name ? 'is-invalid' : ''"
-                      placeholder=""
-                      name="name"
                       v-model="payload.name"
+                      :class="errors.name ? 'is-invalid' : ''"
+                      class="form-control"
+                      name="name"
+                      placeholder=""
+                      type="text"
                   />
-                  <ErrorMessage class="invalid-feedback" name="name"/>
+                  <ErrorMessage class="invalid-feedback" name="name" />
                   <!--end::Input-->
                 </div>
                 <!--end::Col-->
               </div>
               <!--end::Input group-->
-
+              
               <!--begin::Input group-->
               <div class="row mb-5">
                 <!--begin::Col-->
@@ -234,45 +182,97 @@
                   >surname</label
                   >
                   <!--end::Label-->
-
+                  
                   <!--begin::Input-->
                   <Field
-                      type="text"
-                      class="form-control"
-                      :class="errors.surname ? 'is-invalid' : ''"
-                      placeholder=""
-                      name="surname"
                       v-model="payload.surname"
+                      :class="errors.surname ? 'is-invalid' : ''"
+                      class="form-control"
+                      name="surname"
+                      placeholder=""
+                      type="text"
                   />
-                  <ErrorMessage class="invalid-feedback" name="surname"/>
+                  <ErrorMessage class="invalid-feedback" name="surname" />
                   <!--end::Input-->
                 </div>
                 <!--end::Col-->
               </div>
               <!--end::Input group-->
-
+              
+              <!--begin::Input group-->
+              <div class="row mb-5">
+                <!--begin::Col-->
+                <div class="col-md-12 fv-row">
+                  <!--begin::Label-->
+                  <label class="required fs-5 fw-semobold mb-2"
+                  >password</label
+                  >
+                  <!--end::Label-->
+                  
+                  <!--begin::Input-->
+                  <Field
+                      v-model="payload.password"
+                      :class="errors.password ? 'is-invalid' : ''"
+                      class="form-control"
+                      name="password"
+                      placeholder=""
+                      type="text"
+                  />
+                  <ErrorMessage class="invalid-feedback" name="password" />
+                  <!--end::Input-->
+                </div>
+                <!--end::Col-->
+              </div>
+              <!--end::Input group-->
+              
+              <!--begin::Input group-->
+              <div class="row mb-5">
+                <!--begin::Col-->
+                <div class="col-md-12 fv-row">
+                  <!--begin::Label-->
+                  <label class="required fs-5 fw-semobold mb-2"
+                  >passwordRepeat</label
+                  >
+                  <!--end::Label-->
+                  
+                  <!--begin::Input-->
+                  <Field
+                      v-model="payload.passwordRepeat"
+                      :class="errors.passwordRepeat ? 'is-invalid' : ''"
+                      class="form-control"
+                      name="passwordRepeat"
+                      placeholder=""
+                      type="text"
+                  />
+                  <ErrorMessage class="invalid-feedback" name="passwordRepeat" />
+                  <!--end::Input-->
+                </div>
+                <!--end::Col-->
+              </div>
+              <!--end::Input group-->
+              
               <div class="d-flex flex-stack mb-8">
                 <!--begin::Label-->
                 <div class="me-5">
                   <label class="fs-6 fw-semobold"
                   >Adding Users by Team Members</label
                   >
-
+                  
                   <div class="fs-7 fw-semobold text-gray-400">
                     If you need more info, please check budget planning
                   </div>
                 </div>
                 <!--end::Label-->
-
+                
                 <!--begin::Switch-->
                 <label
                     class="form-check form-switch form-check-custom form-check-solid"
                 >
                   <input
                       id="update-uss"
+                      v-model="payload.enabled"
                       class="form-check-input"
                       type="checkbox"
-                      v-model="payload.enabled"
                   />
                   <span class="form-check-label fw-semobold text-gray-400">
                   Allowed
@@ -280,14 +280,13 @@
                 </label>
                 <!--end::Switch-->
               </div>
-
-
+              
               <div class="col d-inline-flex flex-wrap">
-                <div @click="SetAuth(auth)" v-for="auth in RoleList" :key="`${auth.name}`"
-                     class="col-4 col-md-3 d-flex align-items-center cursor-pointer pb-3">
+                <div v-for="auth in RoleList" :key="`${auth.name}`" class="col-4 col-md-3 d-flex align-items-center cursor-pointer pb-3"
+                     @click="SetAuth(auth)">
                     <span class="d-flex align-items-center justify-content-center bg-light rounded p-3 me-3">
-                       <KTIcon :icon-name="RoleIcon(auth.id).icon"
-                               :icon-class="`fs-1 ${payload.authorities?.some(a => a.id === auth.id) ? 'text-primary' : 'text-gray'}`"/>
+                       <KTIcon :icon-class="`fs-1 ${payload.authorities?.some(a => a.id === auth.id) ? 'text-primary' : 'text-gray'}`"
+                               :icon-name="RoleIcon(auth.id).icon" />
                     </span>
                   <span>{{ RoleIcon(auth.id).name }}</span>
                 </div>
@@ -296,25 +295,25 @@
             <!--end::Scroll-->
           </div>
           <!--end::Modal body-->
-
+          
           <!--begin::Modal footer-->
           <div class="modal-footer flex-center">
             <!--begin::Button-->
             <button
-                type="reset"
                 id="kt_modal_new_device_cancel"
                 class="btn btn-light me-3"
+                type="reset"
             >
               Discard
             </button>
             <!--end::Button-->
-
+            
             <!--begin::Button-->
             <button
-                ref="submitButtonRef"
-                type="submit"
                 id="kt_modal_new_device_submit"
+                ref="submitButtonRef"
                 class="btn btn-primary"
+                type="submit"
             >
               <span class="indicator-label"> Submit </span>
               <span class="indicator-progress">
@@ -337,13 +336,14 @@
 
 <script lang="ts">
 import {getAssetPath} from "@/core/helpers/assets";
-import {defineComponent, ref, watch} from "vue";
+import {defineComponent, onMounted, ref, watch} from "vue";
 import {ErrorMessage, Field, Form as VForm} from "vee-validate";
 import {hideModal} from "@/core/helpers/dom";
 import Swal from "sweetalert2";
 import * as Yup from "yup";
 import {countries} from "@/core/data/countries";
 import {GlobalStore} from "@/stores/global";
+import {useI18n} from "vue-i18n";
 
 interface Auth {
   "id": string,
@@ -378,10 +378,19 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const {Action_Start, Errors} = GlobalStore()
+    const {t, te} = useI18n();
+    const translate = (text: string) => {
+      if (te(text)) {
+        return t(text);
+      } else {
+        return text;
+      }
+    };
+    const {Action_Start, Errors, State} = GlobalStore()
     const submitButtonRef = ref<null | HTMLButtonElement>(null);
     const newAddressModalRef = ref<null | HTMLElement>(null);
-
+    const userID = ref('')
+    
     const payload = ref<User>({
       "id": props.item.id,
       "username": props.item.username,
@@ -394,7 +403,7 @@ export default defineComponent({
       "enabled": props.item.enabled,
       "authorities": props.item.authorities,
     });
-
+    
     const validationSchema = Yup.object().shape({
       username: Yup.string().min(4).required().label("username"),
       password: Yup.string().min(4).nullable().label("password"),
@@ -404,7 +413,19 @@ export default defineComponent({
       name: Yup.string().required().min(4).label("name"),
       surname: Yup.string().min(4).required().label("surname"),
     });
-
+    
+    watch(payload, async (NV, OV) => {
+      userID.value = NV.id
+    }, {deep: true})
+    
+    watch(userID, async (NV, OV) => {
+      if (NV !== OV) {
+        await Action_Start('get', `users/${NV}`, '').then(Response => {
+          payload.value.authorities = Response.authorities
+        })
+      }
+    }, {deep: true})
+    
     const RoleList = [
       {
         "id": "ROLE_ADMIN",
@@ -490,7 +511,7 @@ export default defineComponent({
           return {name: 'default', icon: "DEFAULT_ICON"};
       }
     };
-
+    
     const SetAuth = (auth) => {
       const findAuth = payload.value.authorities.findIndex(a => a.id === auth.id)
       console.log(findAuth)
@@ -509,49 +530,23 @@ export default defineComponent({
       // Activate indicator
       submitButtonRef.value.setAttribute("data-kt-indicator", "on");
       await Action_Start('put', 'users/update', '', payload.value)
-
-      if (!Errors) {
-        setTimeout(() => {
-          if (submitButtonRef.value) {
-            submitButtonRef.value.disabled = false;
-            submitButtonRef.value?.removeAttribute("data-kt-indicator");
-          }
-          Swal.fire({
-            text: "Form has been successfully submitted!",
-            icon: "success",
-            buttonsStyling: false,
-            confirmButtonText: "Ok, got it!",
-            heightAuto: false,
-            customClass: {
-              confirmButton: "btn btn-primary",
-            },
-          }).then(async () => {
+          .then(async Response => {
+            setTimeout(() => {
+              
+              State.Notifications.push({head: 'İşlem Başarılı', title: `${translate('userName')}: ${payload.value.username}`, variant: 'success', status: false})
+              hideModal(newAddressModalRef.value);
+            }, 500);
             await Action_Start('get', 'users', 'Users')
-            hideModal(newAddressModalRef.value);
-          });
-        }, 500);
-      } else {
-        setTimeout(() => {
-          if (submitButtonRef.value) {
-            submitButtonRef.value.disabled = false;
-            submitButtonRef.value?.removeAttribute("data-kt-indicator");
-          }
-          Swal.fire({
-            text: "Something went wrong!",
-            icon: "error",
-            buttonsStyling: false,
-            confirmButtonText: "Ok!",
-            heightAuto: false,
-            customClass: {
-              confirmButton: "btn btn-danger",
-            },
-          }).then(() => {
-            hideModal(newAddressModalRef.value);
-          });
-        }, 500);
-      }
+          }).catch(Error => {
+            setTimeout(() => {
+              if (submitButtonRef.value) {
+                submitButtonRef.value.disabled = false;
+                submitButtonRef.value?.removeAttribute("data-kt-indicator");
+              }
+            }, 500);
+          })
     };
-
+    
     watch(
         () => props.item,
         (newItem) => {

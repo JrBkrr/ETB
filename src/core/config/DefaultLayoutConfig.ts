@@ -1,61 +1,61 @@
 import type LayoutConfigTypes from "@/core/config/LayoutConfigTypes";
 
 const config: LayoutConfigTypes = {
-  general: {
-    mode: "light",
-    iconsType: "solid",
-  },
-  main: {
-    type: "default",
-    primaryColor: "#009EF7",
-    logo: {
-      dark: "media/logos/default-dark.svg",
-      light: "media/logos/default.svg",
+    general: {
+        mode: "light",
+        iconsType: "solid",
     },
-  },
-  illustrations: {
-    set: "sketchy-1",
-  },
-  scrollTop: {
-    display: true,
-  },
-  header: {
-    display: true,
-    menuIcon: "keenthemes",
-    width: "fluid",
-    fixed: {
-      desktop: true,
-      tabletAndMobile: true,
+    main: {
+        type: "default",
+        primaryColor: "#009EF7",
+        logo: {
+            dark: "media/logos/default-dark.svg",
+            light: "media/logos/default.svg",
+        },
     },
-  },
-  toolbar: {
-    display: true,
-    width: "fluid",
-    fixed: {
-      desktop: true,
-      tabletAndMobile: true,
+    illustrations: {
+        set: "dozzy-1",
     },
-  },
-  pageTitle: {
-    display: true,
-    breadcrumb: true,
-    direction: "column",
-  },
-  aside: {
-    display: true,
-    theme: "dark",
-    fixed: true,
-    menuIcon: "keenthemes",
-    minimized: false,
-    minimize: true,
-    hoverable: true,
-  },
-  content: {
-    width: "fluid",
-  },
-  footer: {
-    width: "fixed",
-  },
+    scrollTop: {
+        display: true,
+    },
+    header: {
+        display: true,
+        menuIcon: "keenthemes",
+        width: "fluid",
+        fixed: {
+            desktop: true,
+            tabletAndMobile: true,
+        },
+    },
+    toolbar: {
+        display: true,
+        width: "fluid",
+        fixed: {
+            desktop: true,
+            tabletAndMobile: true,
+        },
+    },
+    pageTitle: {
+        display: true,
+        breadcrumb: true,
+        direction: "column",
+    },
+    aside: {
+        display: true,
+        theme: "dark",
+        fixed: true,
+        menuIcon: "keenthemes",
+        minimized: false,
+        minimize: true,
+        hoverable: true,
+    },
+    content: {
+        width: "fluid",
+    },
+    footer: {
+        width: "fluid",
+    },
 };
 
 export default config;

@@ -5,7 +5,7 @@
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
         <span class="card-label fw-bold fs-3 mb-1">Settings</span>
-
+        
         <span class="d-none text-muted mt-1 fw-semobold fs-7"
         >Over 500 new products</span
         >
@@ -18,7 +18,7 @@
       <!--      </div>-->
       <div class="d-flex align-items-center justify-content-center">
         <div class="aside-search py-0 me-5">
-          <TableSearch v-model:payload="SearchText"/>
+          <TableSearch v-model:payload="SearchText" />
         </div>
         <div class="card-toolbar">
           <!--begin::Menu-->
@@ -26,18 +26,18 @@
               class="btn btn-sm btn-icon btn-color-primary btn-active-primary border border-primary"
               data-bs-toggle="modal" :data-bs-target="`#${'kt_modal_new_setting'}`"
           >
-            <KTIcon icon-name="plus" icon-class="fs-3"/>
+            <KTIcon icon-name="plus" icon-class="fs-3" />
           </button>
           <!--end::Menu-->
         </div>
       </div>
     </div>
     <!--end::Header-->
-
+    
     <!--begin::Body-->
     <div class="card-body py-3 h-100">
       <!--begin::Table container-->
-      <div class="table-responsive h-100">
+      <div class="table-responsive h-100 pb-15">
         <!--begin::Table-->
         <table class="table align-middle gs-0 gy-4">
           <!--begin::Table head-->
@@ -53,7 +53,7 @@
           </tr>
           </thead>
           <!--end::Table head-->
-
+          
           <!--begin::Table body-->
           <tbody>
           <template v-for="(item, index) in List" :key="index">
@@ -71,7 +71,7 @@
                   </div>
                 </div>
               </td>
-
+              
               <td>
                 <div class="d-flex align-items-center">
                   <div class="d-flex justify-content-start flex-column">
@@ -89,14 +89,14 @@
                     data-bs-toggle="modal" :data-bs-target="`#${'kt_modal_update_device'}`"
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                 >
-                  <KTIcon icon-name="pencil" icon-class="fs-3"/>
+                  <KTIcon icon-name="pencil" icon-class="fs-3" />
                 </a>
-
+                
                 <a
                     @click="RemoveDevice(item.id)"
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
                 >
-                  <KTIcon icon-name="trash" icon-class="fs-3"/>
+                  <KTIcon icon-name="trash" icon-class="fs-3" />
                 </a>
               </td>
             </tr>
@@ -143,18 +143,18 @@ export default defineComponent({
   setup(props, {emit}) {
     const {State, Action_Start} = GlobalStore();
     const Target = ref<Target>({} as Target);
-
+    
     // Get List
     onMounted(async () => {
       await Action_Start('get', 'settings', 'Settings')
     });
-
+    
     // Filter List
     const SearchText = ref<string>('');
     const List = computed(() => {
       return State.Settings.filter(item => item.name.includes(SearchText.value));
     });
-
+    
     const RemoveDevice = (serialNumber) => {
       Swal.fire({
         text: `Are you sure you want to delete the device with serial number ${serialNumber}?`,
@@ -185,7 +185,7 @@ export default defineComponent({
     const UpdateEvent = (item) => {
       emit("update:item", item);
     }
-
+    
     return {
       getAssetPath,
       Target,
@@ -200,13 +200,13 @@ export default defineComponent({
 <style>
 * {
   transition: background-color .2s;
-}
+  }
 
 .text-dots {
-  white-space: nowrap;
-  overflow: hidden;
+  white-space:   nowrap;
+  overflow:      hidden;
   text-overflow: ellipsis;
-  width: 90% !important;
-  display: inline-block;
-}
+  width:         90% !important;
+  display:       inline-block;
+  }
 </style>

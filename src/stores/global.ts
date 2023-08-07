@@ -196,6 +196,14 @@ interface Setting {
     "name": string
 }
 
+interface Notification {
+    head: string,
+    title: string,
+    subtitle: string,
+    status: boolean,
+    variant: 'success' | 'danger' | 'warning' | 'primary'
+}
+
 export const GlobalStore = defineStore("main", () => {
 
     const State = reactive<any>({
@@ -214,7 +222,8 @@ export const GlobalStore = defineStore("main", () => {
         Profile: ref<Profile>({} as Profile),
         Variables: ref(['primary', 'success', 'info', 'danger', 'warning', 'primary', 'success', 'info', 'danger', 'warning']),
         HardwareVersions: ref<HardwareVersion[]>([]),
-        Settings: ref<Setting[]>([])
+        Settings: ref<Setting[]>([]),
+        Notifications: ref<Notification[]>([])
     })
 
     const Errors = ref(null);
@@ -232,12 +241,18 @@ export const GlobalStore = defineStore("main", () => {
                 State.Loading = false
             }, 1200)
             return data
-        } catch (error: any) {
-            setError(error.response.data);
+        } catch (Error: any) {
+            State.Notifications.push({
+                head: `${Error.response.data.code === 400 ? 'Uyarı' : Error.response.data.code === 500 ? 'Uyarı' : 'Bir sorun oluştu'}`,
+                title: `${Error.response.data.code === 400 ? `${Object.values(Error?.response?.data?.fieldErrors)[0]}` : Error.response.data.code === 500 ? `${Error?.response?.data?.message}` : 'Developer ile iletişime geçin'}`,
+                variant: `${Error.response.data.code === 400 ? 'warning' : Error.response.data.code === 500 ? 'warning' : 'danger'}`,
+                status: false
+            })
             setTimeout(() => {
                 State.Loading = false
             }, 1200)
-            if (error.message === 'Request failed with status code 401') await router.push('/sign-in')
+            if (Error.message === 'Request failed with status code 401') await router.push('/sign-in')
+            return Promise.reject(Error);
         }
 
     }
@@ -288,12 +303,19 @@ export const GlobalStore = defineStore("main", () => {
     }
 
     function setRightWindow(value) {
+
         State.RightWindow = {status: value};
         console.log(value)
+
+    }
+
+    function setNotifications(value: Notification) {
+        const noti = value
+        State.Notifications.push(value)
     }
 
     return {
-
+        setNotifications,
         setRightWindow,
         Action_Start,
         State,

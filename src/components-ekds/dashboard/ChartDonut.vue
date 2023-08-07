@@ -9,7 +9,7 @@
         >Complete your profile setup</span
         >
       </h3>
-
+      
       <!--      <div class="card-toolbar">-->
       <!--        &lt;!&ndash;begin::Menu&ndash;&gt;-->
       <!--        <button-->
@@ -26,7 +26,7 @@
       <!--      </div>-->
     </div>
     <!--end::Header-->
-
+    
     <!--begin::Body-->
     <div class="card-body d-flex flex-column">
       <div class="w-100 d-flex align-items-center justify-content-center">
@@ -41,7 +41,7 @@
         ></apexchart>
         <!--end::Chart-->
       </div>
-
+    
     </div>
     <!--end::Body-->
   </div>
@@ -82,9 +82,9 @@ export default defineComponent({
     const chartRef = ref<typeof VueApexCharts | null>(null);
     let chart: ApexOptions = {};
     const store = useThemeStore();
-
+    
     const series = ref([100, 50])
-
+    
     // onMounted(() => {
     //   const dashboardValue = State.Dashboard[props.series];
     //   if (dashboardValue) {
@@ -95,34 +95,34 @@ export default defineComponent({
     //     series.value = [100, 50];
     //   }
     // })
-
+    
     watch(State, () => {
       const dashboardValue = State.Dashboard[props.data];
-      series.value = [parseInt(dashboardValue > 0 ? dashboardValue : 1), parseInt(dashboardValue > 0 ? dashboardValue : 1)];
+      series.value = [parseInt(dashboardValue !== null ? dashboardValue : 1), parseInt(dashboardValue > 0 ? dashboardValue : 1)];
     });
-
+    
     const themeMode = computed(() => {
       return store.mode;
     });
-
+    
     onBeforeMount(() => {
       Object.assign(chart, chartOptions(props.chartColor, props.chartHeight, props.labels, props.labelsColor));
     });
-
+    
     const refreshChart = () => {
       if (!chartRef.value) {
         return;
       }
-
+      
       Object.assign(chart, chartOptions(props.chartColor, props.chartHeight, props.labels, props.labelsColor));
-
+      
       chartRef.value.refresh();
     };
-
+    
     watch(themeMode, () => {
       refreshChart();
     });
-
+    
     return {
       chart,
       series,
@@ -143,7 +143,7 @@ const chartOptions = (
   const lightColor = getCSSVariableValue(`--bs-${color}-light`);
   const labelColor = getCSSVariableValue("--bs-gray-700");
   const labelsColor = [getCSSVariableValue(`--bs-${colorLabels[0]}`), getCSSVariableValue(`--bs-${colorLabels[1]}`)];
-
+  
   return {
     chart: {
       width: 380,
@@ -177,20 +177,20 @@ const chartOptions = (
             show: true,
             name: {
               show: true,
-              fontSize: '30',
-              fontWeight: '',
-              color: baseColor,
+              fontSize: '15',
+              fontWeight: 'bold',
             },
             value: {
               show: true,
-              fontSize: '20',
+              fontSize: '13',
               color: baseColor,
+              fontWeight: 'bold',
             },
             total: {
-              show: true,
+              show: false,
               showAlways: false,
+              fontWeight: 'bold',
               fontSize: '15',
-              color: labelColor,
             }
           }
         }

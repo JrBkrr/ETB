@@ -1,21 +1,21 @@
 <template>
   <!--begin::Dashboard-->
-  <div class="row g-5 g-xl-8 h-100">
+  <div class="row px-10 h-100">
     <AllTable page="Devices" url="devices"></AllTable>
   </div>
-  <DeviceCreate></DeviceCreate>
+  <VerificationCreate></VerificationCreate>
   <!--end::Dashboard-->
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import AllTable from "@/components-ekds/verifications/AllTable.vue";
-import DeviceCreate from "@/components-ekds/devices/DeviceCreate.vue";
+import {defineComponent} from "vue";
+import AllTable from "@/components-ekds/verifications/allverifications/AllTable.vue";
+import VerificationCreate from "@/components-ekds/verifications/allverifications/VerificationCreate.vue";
 
 export default defineComponent({
   name: "dashboard-main",
   components: {
-    DeviceCreate,
+    VerificationCreate,
     AllTable
   },
 });

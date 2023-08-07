@@ -1,6 +1,6 @@
 <template>
   <!--begin::Dashboard-->
-  <div class="row g-5 g-xl-8 h-100">
+  <div class="row px-10 h-100">
     <DevicesTable v-model:item="item"></DevicesTable>
   </div>
   <DeviceCreate></DeviceCreate>
@@ -23,9 +23,8 @@ export default defineComponent({
     DeviceUpdate
   },
   setup() {
-    const {Action_Start} = GlobalStore()
     const item = ref({})
-
+    
     return {
       item
     }

@@ -1,6 +1,6 @@
 <template>
   <div
-      id="kt_modal_new_version"
+      id="kt_modal_mew_verification"
       ref="newTargetModalRef"
       aria-hidden="true"
       class="modal fade"
@@ -27,105 +27,115 @@
               @submit.prevent="submit()"
           >
             <div class="mb-13 text-center">
-              <h1 class="mb-3">Create New Version</h1>
+              <h1 class="mb-3">Create New Verification</h1>
             </div>
-            
             <div class="d-flex flex-column mb-8 fv-row">
               <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
-                <span class="required">Version Name</span>
+                <span class="required">Device</span>
               </label>
-              
-              <el-form-item prop="versionName">
-                <el-input
-                    v-model="targetData.name"
-                    name="versionName"
-                    placeholder="Version Name"
-                ></el-input>
-              </el-form-item>
-            </div>
-            
-            <div class="d-flex flex-column mb-8 fv-row">
-              <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
-                <span class="required">Version Number</span>
-              </label>
-              
-              <el-form-item prop="versionNumber">
-                <el-input
-                    v-model="targetData.versionNumberSemantic"
-                    name="versionNumberSemantic"
-                    placeholder="Version Number Semantic"
-                ></el-input>
-              </el-form-item>
-            </div>
-            
-            <div class="d-flex flex-column mb-8 fv-row">
-              <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
-                <span class="required">Device Serial Number</span>
-              </label>
-              
-              <el-form-item prop="deviceSerialNumber">
+              <el-form-item prop="hardwareVersion">
                 <el-select
-                    v-model="targetData.deviceSerialNumber"
+                    v-model="targetData.device.serialNumber"
                     as="select"
-                    name="deviceSerialNumber"
-                    placeholder="Device Serial Number"
-                >
-                  <el-option v-for="device in State.Devices" :key="`device-1-${device.id}`" :label="device.serialNumber" :value="device.serialNumber"></el-option>
-                </el-select>
-              </el-form-item>
-            </div>
-            
-            <div class="d-flex flex-column mb-8 fv-row">
-              <label class="required fs-6 fw-semobold mb-2">Device Type</label>
-              
-              <el-form-item prop="deviceType">
-                <el-select
-                    v-model="targetData.deviceType"
-                    as="select"
-                    name="deviceType"
-                    placeholder="Device Type"
+                    name="device"
+                    placeholder="device"
                 >
                   <el-option value="">Select type...</el-option>
-                  <el-option label="Type 1" value="1">Type 1</el-option>
-                  <el-option label="Type 2" value="2">Type 2</el-option>
-                </el-select>
-              </el-form-item>
-            </div>
-            
-            <div class="d-flex flex-column mb-8 fv-row">
-              
-              <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
-                <span class="required">Build Versions</span>
-              </label>
-              
-              <el-form-item prop="hardwareVersions">
-                <el-select
-                    v-model="targetData.hardwareVersions"
-                    :value-key="'name'"
-                    allow-create
-                    default-first-option
-                    filterable
-                    multiple
-                    placeholder="Choose tags for your target"
-                >
-                  <el-option v-for="hardware in State.HardwareVersions" :label="hardware.name" :value="{name: hardware.name}">
-                    {{ hardware.name }}
+                  <el-option v-for="device in State.Devices" :key="`device-${device.id}`" :label="device.serialNumber" :value="device.serialNumber">
+                    {{ device.serialNumber }}
                   </el-option>
                 </el-select>
               </el-form-item>
             </div>
             
-            
             <div class="d-flex flex-column mb-8 fv-row">
               <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
-                <span class="required">Update Package</span>
+                <span class="required">Device</span>
               </label>
-              
-              <el-form-item prop="file">
-                <input class="form-control" type="file" @change="handleFileChange">
+              <el-form-item prop="hardwareVersion">
+                <el-select
+                    v-model="targetData.appLabel"
+                    as="select"
+                    name="hardwareVersion"
+                    placeholder="hardwareVersionName"
+                >
+                  <el-option value="">Select type...</el-option>
+                  <el-option label="Sertifika ile doğrulama" value="3">
+                    Sertifika ile doğrulama
+                  </el-option>
+                  <el-option label="Fotoğ ile doğrulama" value="4">
+                    Fotoğ ile doğrulama
+                  </el-option>
+                  <el-option label="Biometri ile doğrulama" value="5">
+                    Biometri ile doğrulama
+                  </el-option>
+                  <el-option label="Biometri ve Fotoğraf ile doğrulama" value="6">
+                    Biometri ve Fotoğraf ile doğrulama
+                  </el-option>
+                  <el-option label="PIN ile doğrulama" value="8">
+                    PIN ile doğrulama
+                  </el-option>
+                  <el-option label="PIN+Foto" value="9">
+                    PIN+Foto
+                  </el-option>
+                  <el-option label="PIN ve Biometri ile doğrulama" value="10">
+                    PIN ve Biometri ile doğrulama
+                  </el-option>
+                  <el-option label="PIN+Bio+Foto" value="11">
+                    PIN+Bio+Foto
+                  </el-option>
+                </el-select>
               </el-form-item>
             </div>
             
+            <div class="d-flex flex-column mb-8 fv-row">
+              <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
+                <span class="required">Device</span>
+              </label>
+              <el-form-item prop="cardSlot">
+                <el-select
+                    v-model="targetData.cardSlot"
+                    as="select"
+                    name="cardSlot"
+                    placeholder="cardSlot"
+                >
+                  <el-option value="">Select type...</el-option>
+                  <el-option label="Hizmet İsteyen" value="0">
+                    Hizmet İsteyen
+                  </el-option>
+                  <el-option label="Hizmete Katılan" value="1">
+                    Hizmete Katılan
+                  </el-option>
+                </el-select>
+              </el-form-item>
+            </div>
+            
+            <div class="d-flex flex-column mb-8 fv-row">
+              <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
+                <span class="required">nonce</span>
+              </label>
+              
+              <el-form-item prop="nonce">
+                <el-input
+                    v-model="targetData.nonce"
+                    name="nonce"
+                    placeholder="nonce"
+                ></el-input>
+              </el-form-item>
+            </div>
+            
+            <div class="d-flex flex-column mb-8 fv-row">
+              <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
+                <span class="required">message</span>
+              </label>
+              <el-form-item prop="message">
+                <el-input
+                    v-model="targetData.message"
+                    name="message"
+                    placeholder="message"
+                ></el-input>
+              </el-form-item>
+            </div>
             <div class="text-center">
               <button
                   id="kt_modal_new_target_cancel"
@@ -178,89 +188,75 @@ import {defineComponent, ref} from "vue";
 import {hideModal} from "@/core/helpers/dom";
 import Swal from "sweetalert2";
 import {GlobalStore} from "@/stores/global";
+import {useI18n} from "vue-i18n";
 
 interface payload {
-  "versionNumberSemantic": string,
-  "name": string,
-  "file": any,
-  "hardwareVersions": { "name": string }[],
-  "deviceSerialNumber": string,
-  "deviceType": string,
-  "versionScheduleTime": string,
-  "forceUpdate": boolean
+  "device": {
+    "serialNumber": string
+  },
+  "appLabel": string,
+  "cardSlot": string,
+  "message": string,
+  "nonce": string
 }
 
 export default defineComponent({
   name: "new-target-modal",
   components: {},
   setup() {
+    const {t, te} = useI18n();
+    const translate = (text: string) => {
+      if (te(text)) {
+        return t(text);
+      } else {
+        return text;
+      }
+    };
     const {Action_Start, State} = GlobalStore()
     const formRef = ref<null | HTMLFormElement>(null);
     const newTargetModalRef = ref<null | HTMLElement>(null);
     const loading = ref<boolean>(false);
     
     const targetData = ref<payload>({
-      "versionNumberSemantic": "",
-      "name": "",
-      "file": [],
-      "hardwareVersions": [],
-      "deviceSerialNumber": "",
-      "deviceType": "",
-      "versionScheduleTime": "2023-09-11T16:40:02.58+03",
-      "forceUpdate": false
+      appLabel: "10",
+      cardSlot: "0",
+      message: "sdasda",
+      nonce: "asnjbhanjsdka",
+      device: {
+        serialNumber: "0005",
+      },
     });
     
     const rules = ref({
-      versionNumberSemantic: [
+      appLabel: [
         {
           required: true,
           message: "Please input Activity name",
           trigger: "blur",
         },
       ],
-      name: [
+      cardSlot: [
         {
           required: true,
           message: "Please select Activity zone",
           trigger: "change",
         },
       ],
-      file: [
+      message: [
         {
           required: true,
           message: "Please select Activity zone",
           trigger: "change",
         },
       ],
-      hardwareVersions: [
+      nonce: [
         {
           required: true,
           message: "Please select Activity zone",
           trigger: "change",
         },
       ],
-      deviceSerialNumber: [
-        {
-          required: true,
-          message: "Please select Activity zone",
-          trigger: "change",
-        },
-      ],
-      deviceType: [
-        {
-          required: true,
-          message: "Please select Activity zone",
-          trigger: "change",
-        },
-      ],
-      versionScheduleTime: [
-        {
-          required: true,
-          message: "Please select Activity zone",
-          trigger: "change",
-        },
-      ],
-      forceUpdate: [
+      device: [
         {
           required: true,
           message: "Please select Activity zone",
@@ -268,21 +264,6 @@ export default defineComponent({
         },
       ],
     });
-    
-    const handleFileChange = (event: Event) => {
-      const target = event.target as HTMLInputElement;
-      const file = target.files?.[0];
-      
-      if (file) {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          const arrayBuffer = reader.result as ArrayBuffer;
-          const bytes = new Uint8Array(arrayBuffer);
-          targetData.value.file = Array.from(bytes, (byte) => byte.toString(16)).join(' ');
-        };
-        reader.readAsArrayBuffer(file);
-      }
-    };
     
     const submit = () => {
       if (!formRef.value) {
@@ -290,25 +271,31 @@ export default defineComponent({
       }
       
       formRef.value.validate(async (valid: boolean) => {
-        loading.value = true;
-        
-        await Action_Start('post', 'versions', '', [targetData.value]).then(async Response => {
-          setTimeout(() => {
+        if (valid) {
+          loading.value = true;
+          await Action_Start('post', 'verifications', '', targetData.value).then(async Response => {
+            setTimeout(() => {
+              State.Notifications.push({
+                head: 'İşlem Başarılı',
+                title: `${translate('serialNumber')}: ${targetData.value.device.serialNumber}`,
+                variant: 'success',
+                status: false
+              })
+              loading.value = false;
+              hideModal(newTargetModalRef.value);
+            }, 2000);
+            await Action_Start('get', 'verifications', 'Verifications')
+          }).catch(async Error => {
+            console.log(Error)
             loading.value = false;
-            State.Notifications.push({
-              head: 'İşlem Başarılı',
-              title: `Version başarılı bir şekilde eklendi`,
-              variant: 'success',
-              status: false
-            })
-            hideModal(newTargetModalRef.value);
-          }, 2000);
-          await Action_Start('get', 'versions', 'Versions')
-        })
+            await Action_Start('get', 'verifications', 'Verifications')
+          })
+        } else {
+          return false;
+        }
         
       });
     };
-    
     
     return {
       targetData,
@@ -318,7 +305,6 @@ export default defineComponent({
       rules,
       newTargetModalRef,
       getAssetPath,
-      handleFileChange,
       State
     };
   },

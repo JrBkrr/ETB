@@ -6,13 +6,13 @@
     <!--begin::Symbol-->
     <div class="symbol symbol-50px fs-1 fw-bold bg-light-dark">
       <!--      <img :src="getAssetPath('media/avatars/300-31.jpg?>')" alt=""/>-->
-      <router-link to="/my-profile"
-                   class="d-inline-block w-100 h-100 text-dark px-5 py-3 text-hover-primary cursor-pointer">
+      <router-link class="d-inline-block w-100 h-100 text-dark px-5 py-3 text-hover-primary cursor-pointer"
+                   to="/my-profile">
         {{ (Profile?.username ?? "-")[0].toUpperCase() }}
       </router-link>
     </div>
     <!--end::Symbol-->
-
+    
     <!--begin::Wrapper-->
     <div class="aside-user-info flex-row-fluid flex-wrap ms-5">
       <!--begin::Section-->
@@ -20,18 +20,16 @@
         <!--begin::Info-->
         <div class="flex-grow-1 me-2">
           <!--begin::Username-->
-          <a href="#" class="text-white text-hover-primary fs-6 fw-semobold"
-          >{{ `${(Profile?.name ?? "-")} ${Profile?.surname ?? '-'} ` }}</a
+          <router-link class="text-white text-hover-primary fs-6 fw-semobold" to="/my-profile"
+          >{{ (Profile?.username ?? "-") }}
+          </router-link
           >
           <!--end::Username-->
-
+          
           <!--begin::Description-->
-          <span
-              class="text-gray-600 fw-semobold d-block fs-8 mb-1">{{
-              (Profile?.username ?? "-")
-            }}</span>
+          <span class="text-gray-600 fw-semobold d-block fs-8 mb-1">{{ `${(Profile?.name ?? "-")} ${Profile?.surname ?? '-'} ` }}</span>
           <!--end::Description-->
-
+          
           <!--begin::Label-->
           <div class="d-flex align-items-center text-success fs-9">
             <span class="bullet bullet-dot bg-success me-1"></span>online
@@ -39,21 +37,21 @@
           <!--end::Label-->
         </div>
         <!--end::Info-->
-
+        
         <!--begin::User menu-->
         <div class="me-n2">
           <!--begin::Action-->
           <a
-              href="#"
               class="btn btn-icon btn-sm btn-active-color-primary mt-n2"
-              data-kt-menu-trigger="click"
-              data-kt-menu-placement="bottom-start"
               data-kt-menu-overflow="true"
+              data-kt-menu-placement="bottom-start"
+              data-kt-menu-trigger="click"
+              href="#"
           >
-            <KTIcon icon-name="setting-2" icon-class="text-muted fs-1"/>
+            <KTIcon icon-class="text-muted fs-1" icon-name="setting-2" />
           </a>
-
-          <UserMenu :Profile="Profile"/>
+          
+          <UserMenu :Profile="Profile" />
           <!--end::Action-->
         </div>
         <!--end::User menu-->
@@ -63,7 +61,7 @@
     <!--end::Wrapper-->
   </div>
   <!--end::User-->
-
+  
   <!--begin::Aside search-->
   <div class="aside-search py-0">
     <!--    <AsideSearch />-->
@@ -90,7 +88,7 @@ export default defineComponent({
     const {State} = GlobalStore()
     const GetLocalProfile = localStorage.getItem('user')
     const router = useRouter()
-
+    
     const Profile = computed(() => {
       if (Object.keys(State.Profile).length > 0) {
         return State.Profile
@@ -100,7 +98,7 @@ export default defineComponent({
         router.push('sign-in')
       }
     })
-
+    
     return {
       getAssetPath,
       State,

@@ -3,13 +3,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, nextTick, onBeforeMount, onMounted } from "vue";
-import { RouterView } from "vue-router";
-import { useConfigStore } from "@/stores/config";
-import { useThemeStore } from "@/stores/theme";
-import { useBodyStore } from "@/stores/body";
-import { themeConfigValue } from "@/core/helpers/config";
-import { initializeComponents } from "@/core/plugins/keenthemes";
+import {defineComponent, nextTick, onBeforeMount, onMounted} from "vue";
+import {RouterView} from "vue-router";
+import {useConfigStore} from "@/stores/config";
+import {useThemeStore} from "@/stores/theme";
+import {useBodyStore} from "@/stores/body";
+import {themeConfigValue} from "@/core/helpers/config";
+import {initializeComponents} from "@/core/plugins/keenthemes";
 
 export default defineComponent({
   name: "app",
@@ -20,24 +20,24 @@ export default defineComponent({
     const configStore = useConfigStore();
     const themeStore = useThemeStore();
     const bodyStore = useBodyStore();
-
+    
     onBeforeMount(() => {
       /**
        * Overrides the layout config using saved data from localStorage
        * remove this to use static config (@/core/config/DefaultLayoutConfig.ts)
        */
       configStore.overrideLayoutConfig();
-
+      
       /**
        *  Sets a mode from configuration
        */
       themeStore.setThemeMode(themeConfigValue.value);
     });
-
+    
     onMounted(() => {
       nextTick(() => {
         initializeComponents();
-
+        
         bodyStore.removeBodyClassName("page-loading");
       });
     });
