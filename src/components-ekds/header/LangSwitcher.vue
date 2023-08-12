@@ -9,7 +9,7 @@
     <div v-for="lang in countries" class="menu-item px-3 my-0">
       <a
           @click="setLang(lang.key)"
-          href="#"
+          
           class="menu-link d-flex px-5"
           :class="{ active: currentLanguage === lang.key }"
       >

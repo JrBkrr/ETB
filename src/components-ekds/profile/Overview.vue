@@ -122,7 +122,7 @@
       
       <!--        &lt;!&ndash;begin::Col&ndash;&gt;-->
       <!--        <div class="col-lg-8">-->
-      <!--          <a href="#" class="fw-semobold fs-6 text-dark text-hover-primary"-->
+      <!--          <a  class="fw-semobold fs-6 text-dark text-hover-primary"-->
       <!--          >keenthemes.com</a-->
       <!--          >-->
       <!--        </div>-->
@@ -257,7 +257,7 @@
             
             <div class="fs-6 text-gray-600">
               Your payment was declined. To start using tools, please
-              <a class="fw-bold" href="#">Add Payment Method</a>.
+              <a class="fw-bold">Add Payment Method</a>.
             </div>
           </div>
           <!--end::Content-->
@@ -293,16 +293,9 @@ export default defineComponent({
   },
   setup() {
     const {State} = GlobalStore()
-    const GetLocalProfile = localStorage.getItem('user')
     
     const Profile = computed(() => {
-      if (Object.keys(State.Profile).length > 0) {
-        return State.Profile
-      } else if (GetLocalProfile) {
-        return JSON.parse(GetLocalProfile)
-      } else {
-        // router.push('sign-in')
-      }
+      return State.Profile
     })
     
     return {

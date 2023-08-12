@@ -5,17 +5,17 @@
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
         <span class="card-label fw-bold fs-3 mb-1">Recent Orders</span>
-
+        
         <span class="text-muted mt-1 fw-semobold fs-7">Over 500 orders</span>
       </h3>
       <div class="card-toolbar">
         <!--begin::Menu-->
         <button
-          type="button"
-          class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary"
-          data-kt-menu-trigger="click"
-          data-kt-menu-placement="bottom-end"
-          data-kt-menu-flip="top-end"
+            type="button"
+            class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary"
+            data-kt-menu-trigger="click"
+            data-kt-menu-placement="bottom-end"
+            data-kt-menu-flip="top-end"
         >
           <KTIcon icon-name="category" icon-class="fs-2" />
         </button>
@@ -24,23 +24,23 @@
       </div>
     </div>
     <!--end::Header-->
-
+    
     <!--begin::Body-->
     <div class="card-body py-3">
       <!--begin::Table container-->
       <div class="table-responsive">
         <!--begin::Table-->
         <table
-          class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3"
+            class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3"
         >
           <!--begin::Table head-->
           <thead>
-            <tr class="fw-bold text-muted">
-              <th class="w-25px">
-                <div
+          <tr class="fw-bold text-muted">
+            <th class="w-25px">
+              <div
                   class="form-check form-check-sm form-check-custom form-check-solid"
-                >
-                  <input
+              >
+                <input
                     class="form-check-input"
                     type="checkbox"
                     @change="
@@ -48,115 +48,115 @@
                         ? (checkedRows.length = 0)
                         : (checkedRows = [0, 1, 2, 3, 4, 5])
                     "
-                  />
-                </div>
-              </th>
-              <th class="min-w-150px">Order Id</th>
-              <th class="min-w-140px">Country</th>
-              <th class="min-w-120px">Date</th>
-              <th class="min-w-120px">Company</th>
-              <th class="min-w-120px">Total</th>
-              <th class="min-w-120px">Status</th>
-              <th class="min-w-100px text-end">Actions</th>
-            </tr>
+                />
+              </div>
+            </th>
+            <th class="min-w-150px">Order Id</th>
+            <th class="min-w-140px">Country</th>
+            <th class="min-w-120px">Date</th>
+            <th class="min-w-120px">Company</th>
+            <th class="min-w-120px">Total</th>
+            <th class="min-w-120px">Status</th>
+            <th class="min-w-100px text-end">Actions</th>
+          </tr>
           </thead>
           <!--end::Table head-->
-
+          
           <!--begin::Table body-->
           <tbody>
-            <template v-for="(item, index) in list" :key="index">
-              <tr>
-                <td>
-                  <div
+          <template v-for="(item, index) in list" :key="index">
+            <tr>
+              <td>
+                <div
                     class="form-check form-check-sm form-check-custom form-check-solid"
-                  >
-                    <input
+                >
+                  <input
                       class="form-check-input widget-13-check"
                       type="checkbox"
                       :value="index"
                       v-model="checkedRows"
-                    />
-                  </div>
-                </td>
-
-                <td>
-                  <a
-                    href="#"
+                  />
+                </div>
+              </td>
+              
+              <td>
+                <a
+                    
                     class="text-dark fw-bold text-hover-primary fs-6"
-                    >{{ item.orderid }}</a
-                  >
-                </td>
-
-                <td>
-                  <a
-                    href="#"
+                >{{ item.orderid }}</a
+                >
+              </td>
+              
+              <td>
+                <a
+                    
                     class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
-                    >{{ item.company.name }}</a
-                  >
-                  <span class="text-muted fw-semobold text-muted d-block fs-7"
-                    >Code: {{ item.country.code }}</span
-                  >
-                </td>
-
-                <td>
-                  <a
-                    href="#"
+                >{{ item.company.name }}</a
+                >
+                <span class="text-muted fw-semobold text-muted d-block fs-7"
+                >Code: {{ item.country.code }}</span
+                >
+              </td>
+              
+              <td>
+                <a
+                    
                     class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
-                    >{{ item.date.value }}</a
-                  >
-                  <span class="text-muted fw-semobold text-muted d-block fs-7"
-                    >Code: {{ item.date.remarks }}</span
-                  >
-                </td>
-
-                <td>
-                  <a
-                    href="#"
+                >{{ item.date.value }}</a
+                >
+                <span class="text-muted fw-semobold text-muted d-block fs-7"
+                >Code: {{ item.date.remarks }}</span
+                >
+              </td>
+              
+              <td>
+                <a
+                    
                     class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
-                    >{{ item.company.name }}</a
-                  >
-                  <span
+                >{{ item.company.name }}</a
+                >
+                <span
                     class="text-muted fw-semobold text-muted d-block fs-7"
-                    >{{ item.company.fields }}</span
-                  >
-                </td>
-
-                <td class="text-dark fw-bold text-hover-primary fs-6">
-                  {{ item.total }}
-                </td>
-
-                <td>
+                >{{ item.company.fields }}</span
+                >
+              </td>
+              
+              <td class="text-dark fw-bold text-hover-primary fs-6">
+                {{ item.total }}
+              </td>
+              
+              <td>
                   <span
-                    :class="`badge-light-${item.status.color}`"
-                    class="badge"
-                    >{{ item.status.label }}</span
+                      :class="`badge-light-${item.status.color}`"
+                      class="badge"
+                  >{{ item.status.label }}</span
                   >
-                </td>
-
-                <td class="text-end">
-                  <a
-                    href="#"
+              </td>
+              
+              <td class="text-end">
+                <a
+                    
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                  >
-                    <KTIcon icon-name="switch" icon-class="fs-3" />
-                  </a>
-
-                  <a
-                    href="#"
+                >
+                  <KTIcon icon-name="switch" icon-class="fs-3" />
+                </a>
+                
+                <a
+                    
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                  >
-                    <KTIcon icon-name="pencil" icon-class="fs-3" />
-                  </a>
-
-                  <a
-                    href="#"
+                >
+                  <KTIcon icon-name="pencil" icon-class="fs-3" />
+                </a>
+                
+                <a
+                    
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
-                  >
-                    <KTIcon icon-name="trash" icon-class="fs-3" />
-                  </a>
-                </td>
-              </tr>
-            </template>
+                >
+                  <KTIcon icon-name="trash" icon-class="fs-3" />
+                </a>
+              </td>
+            </tr>
+          </template>
           </tbody>
           <!--end::Table body-->
         </table>
@@ -170,8 +170,8 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { defineComponent, ref } from "vue";
+import {getAssetPath} from "@/core/helpers/assets";
+import {defineComponent, ref} from "vue";
 import Dropdown2 from "@/components/dropdown/Dropdown2.vue";
 
 export default defineComponent({
@@ -306,7 +306,7 @@ export default defineComponent({
         total: "$8476",
       },
     ];
-
+    
     return {
       list,
       checkedRows,

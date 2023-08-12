@@ -46,7 +46,7 @@
               data-kt-menu-overflow="true"
               data-kt-menu-placement="bottom-start"
               data-kt-menu-trigger="click"
-              href="#"
+          
           >
             <KTIcon icon-class="text-muted fs-1" icon-name="setting-2" />
           </a>

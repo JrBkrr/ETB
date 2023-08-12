@@ -1,26 +1,34 @@
 interface IStep1 {
-  appName: string;
-  category: string;
+    gsm: string;
+    email: string;
+    day: string;
+    month: string;
+    year: string;
+    serviceType: string;
+    verificationMethod: string;
+    verificationMessage: string;
+    fields: string;
 }
 
 interface IStep2 {
-  framework: string;
+    framework: string;
 }
 
 interface IStep3 {
-  dbName: string;
-  dbType: string;
+    dbName: string;
+    dbType: string;
 }
 
 interface IStep4 {
-  nameOnCard: string;
-  cardNumber: string;
-  cardExpiryMonth: string;
-  cardExpiryYear: string;
-  cardCvv: string;
-  saveCard: string;
+    nameOnCard: string;
+    cardNumber: string;
+    cardExpiryMonth: string;
+    cardExpiryYear: string;
+    cardCvv: string;
+    saveCard: string;
 }
 
-interface ICreateApp extends IStep1, IStep2, IStep3, IStep4 {}
+interface ICreateApp extends IStep1, IStep2, IStep3, IStep4 {
+}
 
-export type { IStep1, IStep2, IStep3, IStep4, ICreateApp };
+export type {IStep1, IStep2, IStep3, IStep4, ICreateApp};

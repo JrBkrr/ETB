@@ -20,8 +20,8 @@
         <!--end::Symbol-->
         <!--begin::Title-->
         <div class="d-flex flex-column">
-          <a href="#" class="fs-6 text-gray-800 text-hover-primary fw-semobold"
-            >BoomApp by Keenthemes</a
+          <a class="fs-6 text-gray-800 text-hover-primary fw-semobold"
+          >BoomApp by Keenthemes</a
           >
           <span class="fs-7 text-muted fw-semobold">#45789</span>
         </div>
@@ -39,8 +39,8 @@
         <!--end::Symbol-->
         <!--begin::Title-->
         <div class="d-flex flex-column">
-          <a href="#" class="fs-6 text-gray-800 text-hover-primary fw-semobold"
-            >"Kept API Project Meeting</a
+          <a class="fs-6 text-gray-800 text-hover-primary fw-semobold"
+          >"Kept API Project Meeting</a
           >
           <span class="fs-7 text-muted fw-semobold">#84050</span>
         </div>
@@ -58,8 +58,8 @@
         <!--end::Symbol-->
         <!--begin::Title-->
         <div class="d-flex flex-column">
-          <a href="#" class="fs-6 text-gray-800 text-hover-primary fw-semobold"
-            >"KPI Monitoring App Launch</a
+          <a class="fs-6 text-gray-800 text-hover-primary fw-semobold"
+          >"KPI Monitoring App Launch</a
           >
           <span class="fs-7 text-muted fw-semobold">#84250</span>
         </div>
@@ -77,8 +77,8 @@
         <!--end::Symbol-->
         <!--begin::Title-->
         <div class="d-flex flex-column">
-          <a href="#" class="fs-6 text-gray-800 text-hover-primary fw-semobold"
-            >Project Reference FAQ</a
+          <a class="fs-6 text-gray-800 text-hover-primary fw-semobold"
+          >Project Reference FAQ</a
           >
           <span class="fs-7 text-muted fw-semobold">#67945</span>
         </div>
@@ -96,8 +96,8 @@
         <!--end::Symbol-->
         <!--begin::Title-->
         <div class="d-flex flex-column">
-          <a href="#" class="fs-6 text-gray-800 text-hover-primary fw-semobold"
-            >"FitPro App Development</a
+          <a class="fs-6 text-gray-800 text-hover-primary fw-semobold"
+          >"FitPro App Development</a
           >
           <span class="fs-7 text-muted fw-semobold">#84250</span>
         </div>
@@ -115,8 +115,8 @@
         <!--end::Symbol-->
         <!--begin::Title-->
         <div class="d-flex flex-column">
-          <a href="#" class="fs-6 text-gray-800 text-hover-primary fw-semobold"
-            >Shopix Mobile App</a
+          <a class="fs-6 text-gray-800 text-hover-primary fw-semobold"
+          >Shopix Mobile App</a
           >
           <span class="fs-7 text-muted fw-semobold">#45690</span>
         </div>
@@ -134,8 +134,8 @@
         <!--end::Symbol-->
         <!--begin::Title-->
         <div class="d-flex flex-column">
-          <a href="#" class="fs-6 text-gray-800 text-hover-primary fw-semobold"
-            >"Landing UI Design" Launch</a
+          <a class="fs-6 text-gray-800 text-hover-primary fw-semobold"
+          >"Landing UI Design" Launch</a
           >
           <span class="fs-7 text-muted fw-semobold">#24005</span>
         </div>
@@ -148,8 +148,8 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { defineComponent } from "vue";
+import {getAssetPath} from "@/core/helpers/assets";
+import {defineComponent} from "vue";
 
 export default defineComponent({
   name: "kt-main",

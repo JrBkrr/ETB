@@ -192,15 +192,9 @@ export default defineComponent({
   name: "kt-menu",
   components: {},
   setup() {
-    const {t, te} = useI18n();
     const route = useRoute();
     const scrollElRef = ref<null | HTMLElement>(null);
-    
-    onMounted(() => {
-      if (scrollElRef.value) {
-        scrollElRef.value.scrollTop = 0;
-      }
-    });
+    const {t, te} = useI18n();
     
     const translate = (text: string) => {
       if (te(text)) {
@@ -209,6 +203,12 @@ export default defineComponent({
         return text;
       }
     };
+    onMounted(() => {
+      if (scrollElRef.value) {
+        scrollElRef.value.scrollTop = 0;
+      }
+    });
+    
     
     const hasActiveChildren = (match: string) => {
       return route.path.indexOf(match) !== -1;

@@ -7,28 +7,28 @@
       <div class="flex-grow-1 card-p pb-0">
         <div class="d-flex flex-stack flex-wrap">
           <div class="me-2">
-            <a href="#" class="text-dark text-hover-primary fw-bold fs-3"
-              >Generate Reports</a
+            <a class="text-dark text-hover-primary fw-bold fs-3"
+            >Generate Reports</a
             >
-
+            
             <div class="text-muted fs-7 fw-semobold">
               Finance and accounting reports
             </div>
           </div>
-
+          
           <div :class="`text-${chartColor}`" class="fw-bold fs-3">$24,500</div>
         </div>
       </div>
       <!--end::Stats-->
-
+      
       <!--begin::Chart-->
       <apexchart
-        ref="chartRef"
-        class="mixed-widget-7-chart card-rounded-bottom"
-        :options="chart"
-        :series="series"
-        type="area"
-        :height="chartHeight"
+          ref="chartRef"
+          class="mixed-widget-7-chart card-rounded-bottom"
+          :options="chart"
+          :series="series"
+          type="area"
+          :height="chartHeight"
       ></apexchart>
       <!--end::Chart-->
     </div>
@@ -38,12 +38,12 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { computed, defineComponent, onBeforeMount, ref, watch } from "vue";
-import { getCSSVariableValue } from "@/assets/ts/_utils";
+import {getAssetPath} from "@/core/helpers/assets";
+import {computed, defineComponent, onBeforeMount, ref, watch} from "vue";
+import {getCSSVariableValue} from "@/assets/ts/_utils";
 import type VueApexCharts from "vue3-apexcharts";
-import type { ApexOptions } from "apexcharts";
-import { useThemeStore } from "@/stores/theme";
+import type {ApexOptions} from "apexcharts";
+import {useThemeStore} from "@/stores/theme";
 
 export default defineComponent({
   name: "widget-7",
@@ -57,36 +57,36 @@ export default defineComponent({
     const color = ref(props.chartColor);
     let chart: ApexOptions = {};
     const store = useThemeStore();
-
+    
     const series = ref([
       {
         name: "Net Profit",
         data: [15, 25, 15, 40, 20, 50],
       },
     ]);
-
+    
     const themeMode = computed(() => {
       return store.mode;
     });
-
+    
     onBeforeMount(() => {
       Object.assign(chart, chartOptions(color.value, props.chartHeight));
     });
-
+    
     const refreshChart = () => {
       if (!chartRef.value) {
         return;
       }
-
+      
       Object.assign(chart, chartOptions(color.value, props.chartHeight));
-
+      
       chartRef.value.refresh();
     };
-
+    
     watch(themeMode, () => {
       refreshChart();
     });
-
+    
     return {
       chart,
       series,
@@ -98,14 +98,14 @@ export default defineComponent({
 });
 
 const chartOptions = (
-  color: string = "primary",
-  chartHeight: string = "auto"
+    color: string = "primary",
+    chartHeight: string = "auto"
 ): ApexOptions => {
   const labelColor = getCSSVariableValue("--bs-gray-800");
   const strokeColor = getCSSVariableValue("--bs-gray-300");
   const baseColor = getCSSVariableValue(`--bs-${color}`);
   const lightColor = getCSSVariableValue(`--bs-${color}-light`);
-
+  
   return {
     chart: {
       fontFamily: "inherit",

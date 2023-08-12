@@ -6,18 +6,20 @@
       <!--begin::Title-->
       <h2 class="fw-bold text-dark">Your Are Done!</h2>
       <!--end::Title-->
-
+      
       <!--begin::Notice-->
       <div class="text-gray-400 fw-semobold fs-6">
         If you need more info, please
         <router-link to="/sign-in" class="link-primary fw-bold"
-          >Sign In</router-link
-        >.
+        >Sign In
+        </router-link
+        >
+        .
       </div>
       <!--end::Notice-->
     </div>
     <!--end::Heading-->
-
+    
     <!--begin::Body-->
     <div class="mb-0">
       <!--begin::Text-->
@@ -27,14 +29,14 @@
         works for your great & amazing audience.
       </div>
       <!--end::Text-->
-
+      
       <!--begin::Alert-->
       <div
-        class="notice d-flex bg-light-warning rounded border-warning border border-dashed p-6"
+          class="notice d-flex bg-light-warning rounded border-warning border border-dashed p-6"
       >
         <KTIcon
-          icon-name="information-5"
-          icon-class="fs-2tx text-warning me-4"
+            icon-name="information-5"
+            icon-class="fs-2tx text-warning me-4"
         />
         <!--begin::Wrapper-->
         <div class="d-flex flex-stack flex-grow-1">
@@ -43,7 +45,7 @@
             <h4 class="text-gray-800 fw-bold">We need your attention!</h4>
             <div class="fs-6 text-gray-600">
               To start using great tools, please, please
-              <a href="#" class="fw-bold">Create Team Platform</a>
+              <a class="fw-bold">Create Team Platform</a>
             </div>
           </div>
           <!--end::Content-->
@@ -58,8 +60,8 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { defineComponent } from "vue";
+import {getAssetPath} from "@/core/helpers/assets";
+import {defineComponent} from "vue";
 
 export default defineComponent({
   name: "step-5",

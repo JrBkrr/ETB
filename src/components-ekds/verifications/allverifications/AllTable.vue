@@ -6,12 +6,12 @@
       <h3 class="card-title align-items-start flex-column">
         <span class="card-label fw-bold fs-3 mb-1">All Verifications</span>
         
-        <span class="d-none text-muted mt-1 fw-semobold fs-7"
-        >Over 500 new products</span
+        <span class="text-muted mt-1 fw-semobold fs-7"
+        >{{ List.length }} products</span
         >
       </h3>
       <!--      <div class="card-toolbar">-->
-      <!--        <a href="#" class="btn btn-sm btn-light-primary">-->
+      <!--        <a  class="btn btn-sm btn-light-primary">-->
       <!--          <KTIcon icon-name="plus" icon-class="fs-2"/>-->
       <!--          New Member-->
       <!--        </a>-->
@@ -63,12 +63,11 @@
           <!--begin::Table body-->
           <tbody>
           <template v-for="(item, index) in List" :key="index">
-            <tr @mouseenter="Target.id = item.id" @mouseleave="Target.id = ''">
+            <tr class="hover-right-5 transition-3ms" @click="Target = item; setRightWindow(true);" @mouseenter="Target = item">
               <td>
                 <div class="d-flex align-items-center">
                   <div class="symbol symbol-50px me-5">
                     <a
-                        href="#"
                         class="symbol-label me-1 fs-2 fw-bold"
                         :class="`bg-light-dark btn-active-color-${Target.id === item.id && 'primary'} text-${Target.id === item.id ? 'primary': 'dark'}`"
                     >
@@ -82,7 +81,6 @@
                 <div class="d-flex align-items-center">
                   <div class="d-flex justify-content-start flex-column">
                     <a
-                        href="#"
                         class="text-dark text-hover-primary fw-bold mb-1 fs-6"
                     >{{ item.device?.serialNumber }}</a
                     >
@@ -96,7 +94,7 @@
               
               <td>
                 <a
-                    href="#"
+                    
                     class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
                 >{{ item.message }}</a
                 >
@@ -104,7 +102,7 @@
               
               <td>
                 <a
-                    href="#"
+                    
                     class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
                 >{{ moment(item.createdAt).format('YYYY-MM-DD') }}</a>
                 <span
@@ -130,7 +128,46 @@
       <!--end::Table container-->
     </div>
     <!--begin::Body-->
-  
+    <RightWindow>
+      <div v-if="Object.keys(Target).length > 0" class="p-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
+          <span class="fw-semibold fs-5 me-2">device :</span>
+          <span class="fw-bold fs-3">{{ Target?.device?.serialNumber }}</span>
+        </div>
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
+          <span class="fw-semibold fs-5 me-2">appLabel :</span>
+          <span class="fw-bold fs-3">{{ Target?.appLabel }}</span>
+        </div>
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
+          <span class="fw-semibold fs-5 me-2">cardSlot :</span>
+          <span class="fw-bold fs-3">{{ Target?.cardSlot }}</span>
+        </div>
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
+          <span class="fw-semibold fs-5 me-2">nonce :</span>
+          <span class="fw-bold fs-3">{{ Target?.nonce }}</span>
+        </div>
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
+          <span class="fw-semibold fs-5 me-2">message :</span>
+          <span class="fw-bold fs-3">{{ Target?.message }}</span>
+        </div>
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
+          <span class="fw-semibold fs-5 me-2">status :</span>
+          <span class="fw-bold fs-3">{{ Target?.status }}</span>
+        </div>
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
+          <span class="fw-semibold fs-5 me-2">createdAt :</span>
+          <span class="fw-bold fs-3">{{ Target?.createdAt }}</span>
+        </div>
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
+          <span class="fw-semibold fs-5 me-2">updatedAt :</span>
+          <span class="fw-bold fs-3">{{ Target?.updatedAt }}</span>
+        </div>
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
+          <span class="fw-semibold fs-5 me-2">callGetDeviceInfoFirst :</span>
+          <span class="fw-bold fs-3">{{ Target?.callGetDeviceInfoFirst }}</span>
+        </div>
+      </div>
+    </RightWindow>
   </div>
   <!--end::Tables Widget 11-->
 </template>
@@ -143,10 +180,25 @@ import TableSearch from "@/components-ekds/inputs/TableSearch.vue";
 import KTIcon from "@/core/helpers/kt-icon/KTIcon.vue";
 
 interface Target {
-  id: string
+  "id": string,
+  "device": {
+    "id": string,
+    "serialNumber": string,
+    "latestVersion": false,
+    "online": false
+  },
+  "appLabel": string | null,
+  "cardSlot": string | null,
+  "nonce": string | null,
+  "message": string | null,
+  "status": string | null,
+  "createdAt": number,
+  "updatedAt": number,
+  "callGetDeviceInfoFirst": boolean
 }
 
 import moment from "moment";
+import RightWindow from "@/components-ekds/modals/RightWindow.vue";
 
 export default defineComponent({
   name: "AllTable",
@@ -155,12 +207,12 @@ export default defineComponent({
       return moment
     }
   },
-  components: {TableSearch, KTIcon},
+  components: {RightWindow, TableSearch, KTIcon},
   props: {
     widgetClasses: String,
   },
   setup() {
-    const {State, Action_Start} = GlobalStore();
+    const {State, Action_Start, setRightWindow} = GlobalStore();
     const Target = ref<Target>({} as Target);
     
     // Get List
@@ -179,6 +231,7 @@ export default defineComponent({
       Target,
       SearchText,
       List,
+      setRightWindow
     };
   }
 });

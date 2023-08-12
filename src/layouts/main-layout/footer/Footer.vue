@@ -5,8 +5,8 @@
     <div
         class="d-flex flex-column flex-md-row align-items-center justify-content-between"
         :class="{
-        'container-fluid': !footerWidthFluid,
-        'container-xxl': footerWidthFluid,
+        'container-fluid': footerWidthFluid,
+        'container-xxl': !footerWidthFluid,
       }"
     >
       <!--begin::Copyright-->
@@ -28,7 +28,7 @@
         </li>
         
         <li class="menu-item">
-          <a href="https://www.etb.com.tr/iletisim" target="_blank" class="menu-link px-2">{{ translate('support') }}</a>
+          <a href="https://www.etb.com.tr/iletişim" target="_blank" class="menu-link px-2">{{ translate('support') }}</a>
         </li>
         
         <li class="menu-item">

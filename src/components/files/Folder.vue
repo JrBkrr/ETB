@@ -4,25 +4,25 @@
     <div class="card h-100">
       <!--begin::Card body-->
       <div
-        class="card-body d-flex justify-content-center text-center flex-column p-8"
+          class="card-body d-flex justify-content-center text-center flex-column p-8"
       >
         <!--begin::Name-->
-        <a href="#" class="text-gray-800 text-hover-primary d-flex flex-column">
+        <a class="text-gray-800 text-hover-primary d-flex flex-column">
           <!--begin::Image-->
           <div class="symbol symbol-75px mb-6">
             <img
-              :src="getAssetPath('media/svg/files/folder-document.svg')"
-              alt=""
+                :src="getAssetPath('media/svg/files/folder-document.svg')"
+                alt=""
             />
           </div>
           <!--end::Image-->
-
+          
           <!--begin::Title-->
           <div class="fs-5 fw-bold mb-2">Finance</div>
           <!--end::Title-->
         </a>
         <!--end::Name-->
-
+        
         <!--begin::Description-->
         <div class="fs-7 fw-semobold text-gray-400 mt-auto">7 files</div>
         <!--end::Description-->
@@ -34,14 +34,14 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { defineComponent } from "vue";
+import {getAssetPath} from "@/core/helpers/assets";
+import {defineComponent} from "vue";
 
 export default defineComponent({
   name: "files-component",
   props: {
     folderName: String,
-
+    
     files: String,
   },
   components: {},

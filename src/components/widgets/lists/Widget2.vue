@@ -4,15 +4,15 @@
     <!--begin::Header-->
     <div class="card-header border-0">
       <h3 class="card-title fw-bold text-dark">Authors</h3>
-
+      
       <div class="card-toolbar">
         <!--begin::Menu-->
         <button
-          type="button"
-          class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary"
-          data-kt-menu-trigger="click"
-          data-kt-menu-placement="bottom-end"
-          data-kt-menu-flip="top-end"
+            type="button"
+            class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary"
+            data-kt-menu-trigger="click"
+            data-kt-menu-placement="bottom-end"
+            data-kt-menu-flip="top-end"
         >
           <KTIcon icon-name="category" icon-class="fs-2" />
         </button>
@@ -21,27 +21,27 @@
       </div>
     </div>
     <!--end::Header-->
-
+    
     <!--begin::Body-->
     <div class="card-body pt-2">
       <template v-for="(item, index) in list" :key="index">
         <!--begin::Item-->
         <div
-          :class="{ 'mb-7': list.length - 1 !== index }"
-          class="d-flex align-items-center"
+            :class="{ 'mb-7': list.length - 1 !== index }"
+            class="d-flex align-items-center"
         >
           <!--begin::Avatar-->
           <div class="symbol symbol-50px me-5">
             <img :src="item.avatar" class="" alt="" />
           </div>
           <!--end::Avatar-->
-
+          
           <!--begin::Text-->
           <div class="flex-grow-1">
-            <a href="#" class="text-dark fw-bold text-hover-primary fs-6">{{
-              item.name
-            }}</a>
-
+            <a class="text-dark fw-bold text-hover-primary fs-6">{{
+                                                                 item.name
+                                                                 }}</a>
+            
             <span class="text-muted d-block fw-semobold">{{
               item.description
             }}</span>
@@ -57,8 +57,8 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { defineComponent, ref } from "vue";
+import {getAssetPath} from "@/core/helpers/assets";
+import {defineComponent, ref} from "vue";
 import Dropdown2 from "@/components/dropdown/Dropdown2.vue";
 
 export default defineComponent({
@@ -102,7 +102,7 @@ export default defineComponent({
         description: "PHP, SQLite, Artisan CLI",
       },
     ]);
-
+    
     return {
       list,
       getAssetPath,

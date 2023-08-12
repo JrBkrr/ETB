@@ -37,11 +37,15 @@
               </label>
               
               <el-form-item prop="province">
-                <el-input
+                <el-select
                     v-model="targetData.province"
-                    placeholder="province"
+                    as="select"
                     name="province"
-                ></el-input>
+                    placeholder="province"
+                >
+                  <el-option value="">Select type...</el-option>
+                  <el-option v-for="city in State.Cities" :label="city.name" :value="city.name"></el-option>
+                </el-select>
               </el-form-item>
             </div>
             
@@ -220,6 +224,7 @@ export default defineComponent({
       rules,
       newTargetModalRef,
       getAssetPath,
+      State
     };
   },
 });

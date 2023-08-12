@@ -7,8 +7,8 @@
       <!--end::Category title-->
       <!--begin::Item-->
       <a
-        href="#"
-        class="d-flex text-dark text-hover-primary align-items-center mb-5"
+          
+          class="d-flex text-dark text-hover-primary align-items-center mb-5"
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
@@ -25,8 +25,8 @@
       <!--end::Item-->
       <!--begin::Item-->
       <a
-        href="#"
-        class="d-flex text-dark text-hover-primary align-items-center mb-5"
+          
+          class="d-flex text-dark text-hover-primary align-items-center mb-5"
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
@@ -43,8 +43,8 @@
       <!--end::Item-->
       <!--begin::Item-->
       <a
-        href="#"
-        class="d-flex text-dark text-hover-primary align-items-center mb-5"
+          
+          class="d-flex text-dark text-hover-primary align-items-center mb-5"
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
@@ -61,8 +61,8 @@
       <!--end::Item-->
       <!--begin::Item-->
       <a
-        href="#"
-        class="d-flex text-dark text-hover-primary align-items-center mb-5"
+          
+          class="d-flex text-dark text-hover-primary align-items-center mb-5"
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
@@ -79,8 +79,8 @@
       <!--end::Item-->
       <!--begin::Item-->
       <a
-        href="#"
-        class="d-flex text-dark text-hover-primary align-items-center mb-5"
+          
+          class="d-flex text-dark text-hover-primary align-items-center mb-5"
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
@@ -100,16 +100,16 @@
       <!--end::Category title-->
       <!--begin::Item-->
       <a
-        href="#"
-        class="d-flex text-dark text-hover-primary align-items-center mb-5"
+          
+          class="d-flex text-dark text-hover-primary align-items-center mb-5"
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
           <span class="symbol-label bg-light">
             <img
-              class="w-20px h-20px"
-              :src="getAssetPath('media/svg/brand-logos/volicity-9.svg')"
-              alt=""
+                class="w-20px h-20px"
+                :src="getAssetPath('media/svg/brand-logos/volicity-9.svg')"
+                alt=""
             />
           </span>
         </div>
@@ -124,16 +124,16 @@
       <!--end::Item-->
       <!--begin::Item-->
       <a
-        href="#"
-        class="d-flex text-dark text-hover-primary align-items-center mb-5"
+          
+          class="d-flex text-dark text-hover-primary align-items-center mb-5"
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
           <span class="symbol-label bg-light">
             <img
-              class="w-20px h-20px"
-              :src="getAssetPath('media/svg/brand-logos/tvit.svg')"
-              alt=""
+                class="w-20px h-20px"
+                :src="getAssetPath('media/svg/brand-logos/tvit.svg')"
+                alt=""
             />
           </span>
         </div>
@@ -148,16 +148,16 @@
       <!--end::Item-->
       <!--begin::Item-->
       <a
-        href="#"
-        class="d-flex text-dark text-hover-primary align-items-center mb-5"
+          
+          class="d-flex text-dark text-hover-primary align-items-center mb-5"
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
           <span class="symbol-label bg-light">
             <img
-              class="w-20px h-20px"
-              :src="getAssetPath('media/svg/misc/infography.svg')"
-              alt=""
+                class="w-20px h-20px"
+                :src="getAssetPath('media/svg/misc/infography.svg')"
+                alt=""
             />
           </span>
         </div>
@@ -172,16 +172,16 @@
       <!--end::Item-->
       <!--begin::Item-->
       <a
-        href="#"
-        class="d-flex text-dark text-hover-primary align-items-center mb-5"
+          
+          class="d-flex text-dark text-hover-primary align-items-center mb-5"
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
           <span class="symbol-label bg-light">
             <img
-              class="w-20px h-20px"
-              :src="getAssetPath('media/svg/brand-logos/leaf.svg')"
-              alt=""
+                class="w-20px h-20px"
+                :src="getAssetPath('media/svg/brand-logos/leaf.svg')"
+                alt=""
             />
           </span>
         </div>
@@ -196,16 +196,16 @@
       <!--end::Item-->
       <!--begin::Item-->
       <a
-        href="#"
-        class="d-flex text-dark text-hover-primary align-items-center mb-5"
+          
+          class="d-flex text-dark text-hover-primary align-items-center mb-5"
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
           <span class="symbol-label bg-light">
             <img
-              class="w-20px h-20px"
-              :src="getAssetPath('media/svg/brand-logos/tower.svg')"
-              alt=""
+                class="w-20px h-20px"
+                :src="getAssetPath('media/svg/brand-logos/tower.svg')"
+                alt=""
             />
           </span>
         </div>
@@ -223,8 +223,8 @@
       <!--end::Category title-->
       <!--begin::Item-->
       <a
-        href="#"
-        class="d-flex text-dark text-hover-primary align-items-center mb-5"
+          
+          class="d-flex text-dark text-hover-primary align-items-center mb-5"
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
@@ -243,8 +243,8 @@
       <!--end::Item-->
       <!--begin::Item-->
       <a
-        href="#"
-        class="d-flex text-dark text-hover-primary align-items-center mb-5"
+          
+          class="d-flex text-dark text-hover-primary align-items-center mb-5"
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
@@ -263,8 +263,8 @@
       <!--end::Item-->
       <!--begin::Item-->
       <a
-        href="#"
-        class="d-flex text-dark text-hover-primary align-items-center mb-5"
+          
+          class="d-flex text-dark text-hover-primary align-items-center mb-5"
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
@@ -276,7 +276,7 @@
         <!--begin::Title-->
         <div class="d-flex flex-column">
           <span class="fs-6 fw-semobold"
-            >Finance Monitoring SAAS Discussion</span
+          >Finance Monitoring SAAS Discussion</span
           >
           <span class="fs-7 fw-semobold text-muted">#21090</span>
         </div>
@@ -285,8 +285,8 @@
       <!--end::Item-->
       <!--begin::Item-->
       <a
-        href="#"
-        class="d-flex text-dark text-hover-primary align-items-center mb-5"
+          
+          class="d-flex text-dark text-hover-primary align-items-center mb-5"
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
@@ -309,8 +309,8 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { defineComponent } from "vue";
+import {getAssetPath} from "@/core/helpers/assets";
+import {defineComponent} from "vue";
 
 export default defineComponent({
   name: "kt-results",

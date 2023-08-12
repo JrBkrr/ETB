@@ -32,7 +32,7 @@ import AddCustomerModal from "@/components/modals/forms/AddCustomerModal.vue";
 import {getIllustrationsPath} from "@/core/helpers/assets";
 
 export default defineComponent({
-  name: "dashboard-main",
+  name: "doPayments",
   methods: {getIllustrationsPath},
   components: {
     AddCustomerModal,

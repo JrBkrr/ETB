@@ -9,14 +9,13 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, onMounted, ref} from "vue";
+import {defineComponent, ref} from "vue";
 import DevicesTable from "@/components-ekds/devices/DevicesTable.vue";
 import DeviceCreate from "@/components-ekds/devices/DeviceCreate.vue";
 import DeviceUpdate from "@/components-ekds/devices/DeviceUpdate.vue";
-import {GlobalStore} from "@/stores/global";
 
 export default defineComponent({
-  name: "dashboard-main",
+  name: "devices",
   components: {
     DeviceCreate,
     DevicesTable,

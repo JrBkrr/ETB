@@ -1,11 +1,11 @@
 <template>
   <!--begin::Modal - New Target-->
   <div
-    class="modal fade"
-    id="kt_modal_new_target"
-    ref="newTargetModalRef"
-    tabindex="-1"
-    aria-hidden="true"
+      class="modal fade"
+      id="kt_modal_new_target"
+      ref="newTargetModalRef"
+      tabindex="-1"
+      aria-hidden="true"
   >
     <!--begin::Modal dialog-->
     <div class="modal-dialog modal-dialog-centered mw-650px">
@@ -15,109 +15,112 @@
         <div class="modal-header pb-0 border-0 justify-content-end">
           <!--begin::Close-->
           <div
-            class="btn btn-sm btn-icon btn-active-color-primary"
-            data-bs-dismiss="modal"
+              class="btn btn-sm btn-icon btn-active-color-primary"
+              data-bs-dismiss="modal"
           >
             <KTIcon icon-name="cross" icon-class="fs-1" />
           </div>
           <!--end::Close-->
         </div>
         <!--begin::Modal header-->
-
+        
         <!--begin::Modal body-->
         <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
           <!--begin:Form-->
           <el-form
-            id="kt_modal_new_target_form"
-            @submit.prevent="submit()"
-            :model="targetData"
-            :rules="rules"
-            ref="formRef"
-            class="form"
+              id="kt_modal_new_target_form"
+              @submit.prevent="submit()"
+              :model="targetData"
+              :rules="rules"
+              ref="formRef"
+              class="form"
           >
             <!--begin::Heading-->
             <div class="mb-13 text-center">
               <!--begin::Title-->
               <h1 class="mb-3">Set First Target</h1>
               <!--end::Title-->
-
+              
               <!--begin::Description-->
               <div class="text-gray-400 fw-semobold fs-5">
                 If you need more info, please check
-                <a href="#" class="fw-bold link-primary">Project Guidelines</a>.
+                <a class="fw-bold link-primary">Project Guidelines</a>.
               </div>
               <!--end::Description-->
             </div>
             <!--end::Heading-->
-
+            
             <!--begin::Input group-->
             <div class="d-flex flex-column mb-8 fv-row">
               <!--begin::Label-->
               <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
                 <span class="required">Target Title</span>
                 <i
-                  class="fas fa-exclamation-circle ms-2 fs-7"
-                  data-bs-toggle="tooltip"
-                  title="Specify a target name for future usage and reference"
+                    class="fas fa-exclamation-circle ms-2 fs-7"
+                    data-bs-toggle="tooltip"
+                    title="Specify a target name for future usage and reference"
                 ></i>
               </label>
               <!--end::Label-->
-
+              
               <el-form-item prop="targetTitle">
                 <el-input
-                  v-model="targetData.targetTitle"
-                  placeholder="Enter Target Title"
-                  name="targetTitle"
+                    v-model="targetData.targetTitle"
+                    placeholder="Enter Target Title"
+                    name="targetTitle"
                 ></el-input>
               </el-form-item>
             </div>
             <!--end::Input group-->
-
+            
             <!--begin::Input group-->
             <div class="row g-9 mb-8">
               <!--begin::Col-->
               <div class="col-md-6 fv-row">
                 <label class="required fs-6 fw-semobold mb-2">Assign</label>
-
+                
                 <el-form-item prop="assign">
                   <el-select
-                    v-model="targetData.assign"
-                    placeholder="Select a Team Member"
-                    name="assign"
-                    as="select"
+                      v-model="targetData.assign"
+                      placeholder="Select a Team Member"
+                      name="assign"
+                      as="select"
                   >
                     <el-option value="">Select user...</el-option>
                     <el-option label="Karina Clark" value="1"
-                      >Karina Clark</el-option
+                    >Karina Clark
+                    </el-option
                     >
                     <el-option label="Robert Doe" value="2"
-                      >Robert Doe</el-option
+                    >Robert Doe
+                    </el-option
                     >
                     <el-option label="Niel Owen" value="3">Niel Owen</el-option>
                     <el-option label="Olivia Wild" value="4"
-                      >Olivia Wild</el-option
+                    >Olivia Wild
+                    </el-option
                     >
                     <el-option label="Sean Bean" value="5">Sean Bean</el-option>
                   </el-select>
                 </el-form-item>
               </div>
               <!--end::Col-->
-
+              
               <!--begin::Col-->
               <div class="col-md-6 fv-row">
                 <label class="required fs-6 fw-semobold mb-2">Due Date</label>
-
+                
                 <!--begin::Input-->
                 <div class="position-relative align-items-center">
                   <!--begin::Datepicker-->
                   <el-form-item prop="dueDate">
                     <el-date-picker
-                      v-model="targetData.dueDate"
-                      type="date"
-                      placeholder="Select a date"
-                      :teleported="false"
-                      popper-class="override-styles"
-                      name="dueDate"
+                        v-model="targetData.dueDate"
+                        type="date"
+                        placeholder="Select a date"
+                        :teleported="false"
+                        popper-class="override-styles"
+                        name="dueDate"
                     />
                   </el-form-item>
                   <!--end::Datepicker-->
@@ -127,78 +130,78 @@
               <!--end::Col-->
             </div>
             <!--end::Input group-->
-
+            
             <!--begin::Input group-->
             <div class="d-flex flex-column mb-8">
               <label class="fs-6 fw-semobold mb-2">Target Details</label>
-
+              
               <el-form-item prop="targetDetails">
                 <el-input
-                  v-model="targetData.targetDetails"
-                  type="textarea"
-                  rows="3"
-                  name="targetDetails"
-                  placeholder="Type Target Details"
+                    v-model="targetData.targetDetails"
+                    type="textarea"
+                    rows="3"
+                    name="targetDetails"
+                    placeholder="Type Target Details"
                 />
               </el-form-item>
             </div>
             <!--end::Input group-->
-
+            
             <!--begin::Input group-->
             <div class="d-flex flex-column mb-8 fv-row">
               <!--begin::Label-->
               <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
                 <span class="required">Tags</span>
                 <i
-                  class="fas fa-exclamation-circle ms-2 fs-7"
-                  data-bs-toggle="tooltip"
-                  title="Specify a target priorty"
+                    class="fas fa-exclamation-circle ms-2 fs-7"
+                    data-bs-toggle="tooltip"
+                    title="Specify a target priorty"
                 ></i>
               </label>
               <!--end::Label-->
-
+              
               <el-form-item prop="tags">
                 <el-select
-                  v-model="targetData.tags"
-                  multiple
-                  filterable
-                  allow-create
-                  default-first-option
-                  placeholder="Choose tags for your target"
+                    v-model="targetData.tags"
+                    multiple
+                    filterable
+                    allow-create
+                    default-first-option
+                    placeholder="Choose tags for your target"
                 >
-                  <el-option label="Important" value="important"> </el-option>
-                  <el-option label="Urgent" value="urgent"> </el-option>
-                  <el-option label="High" value="high"> </el-option>
-                  <el-option label="Low" value="low"> </el-option>
-                  <el-option label="Medium" value="medium"> </el-option>
+                  <el-option label="Important" value="important"></el-option>
+                  <el-option label="Urgent" value="urgent"></el-option>
+                  <el-option label="High" value="high"></el-option>
+                  <el-option label="Low" value="low"></el-option>
+                  <el-option label="Medium" value="medium"></el-option>
                 </el-select>
               </el-form-item>
             </div>
             <!--end::Input group-->
-
+            
             <!--begin::Input group-->
             <div class="d-flex flex-stack mb-8">
               <!--begin::Label-->
               <div class="me-5">
                 <label class="fs-6 fw-semobold"
-                  >Adding Users by Team Members</label
+                >Adding Users by Team Members</label
                 >
-
+                
                 <div class="fs-7 fw-semobold text-gray-400">
                   If you need more info, please check budget planning
                 </div>
               </div>
               <!--end::Label-->
-
+              
               <!--begin::Switch-->
               <label
-                class="form-check form-switch form-check-custom form-check-solid"
+                  class="form-check form-switch form-check-custom form-check-solid"
               >
                 <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="1"
-                  checked
+                    class="form-check-input"
+                    type="checkbox"
+                    value="1"
+                    checked
                 />
                 <span class="form-check-label fw-semobold text-gray-400">
                   Allowed
@@ -207,7 +210,7 @@
               <!--end::Switch-->
             </div>
             <!--end::Input group-->
-
+            
             <!--begin::Input group-->
             <div class="mb-15 fv-row">
               <!--begin::Wrapper-->
@@ -215,40 +218,40 @@
                 <!--begin::Label-->
                 <div class="fw-semobold me-5">
                   <label class="fs-6">Notifications</label>
-
+                  
                   <div class="fs-7 text-gray-400">
                     Allow Notifications by Phone or Email
                   </div>
                 </div>
                 <!--end::Label-->
-
+                
                 <!--begin::Checkboxes-->
                 <div class="d-flex align-items-center">
                   <!--begin::Checkbox-->
                   <label
-                    class="form-check form-check-custom form-check-solid me-10"
+                      class="form-check form-check-custom form-check-solid me-10"
                   >
                     <input
-                      class="form-check-input h-20px w-20px"
-                      type="checkbox"
-                      name="communication[]"
-                      value="email"
-                      checked
+                        class="form-check-input h-20px w-20px"
+                        type="checkbox"
+                        name="communication[]"
+                        value="email"
+                        checked
                     />
-
+                    
                     <span class="form-check-label fw-semobold"> Email </span>
                   </label>
                   <!--end::Checkbox-->
-
+                  
                   <!--begin::Checkbox-->
                   <label class="form-check form-check-custom form-check-solid">
                     <input
-                      class="form-check-input h-20px w-20px"
-                      type="checkbox"
-                      name="communication[]"
-                      value="phone"
+                        class="form-check-input h-20px w-20px"
+                        type="checkbox"
+                        name="communication[]"
+                        value="phone"
                     />
-
+                    
                     <span class="form-check-label fw-semobold"> Phone </span>
                   </label>
                   <!--end::Checkbox-->
@@ -258,22 +261,22 @@
               <!--end::Wrapper-->
             </div>
             <!--end::Input group-->
-
+            
             <!--begin::Actions-->
             <div class="text-center">
               <button
-                type="reset"
-                id="kt_modal_new_target_cancel"
-                class="btn btn-light me-3"
+                  type="reset"
+                  id="kt_modal_new_target_cancel"
+                  class="btn btn-light me-3"
               >
                 Cancel
               </button>
-
+              
               <!--begin::Button-->
               <button
-                :data-kt-indicator="loading ? 'on' : null"
-                class="btn btn-lg btn-primary"
-                type="submit"
+                  :data-kt-indicator="loading ? 'on' : null"
+                  class="btn btn-lg btn-primary"
+                  type="submit"
               >
                 <span v-if="!loading" class="indicator-label">
                   Submit
@@ -282,7 +285,7 @@
                 <span v-if="loading" class="indicator-progress">
                   Please wait...
                   <span
-                    class="spinner-border spinner-border-sm align-middle ms-2"
+                      class="spinner-border spinner-border-sm align-middle ms-2"
                   ></span>
                 </span>
               </button>
@@ -313,9 +316,9 @@
 </style>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { defineComponent, ref } from "vue";
-import { hideModal } from "@/core/helpers/dom";
+import {getAssetPath} from "@/core/helpers/assets";
+import {defineComponent, ref} from "vue";
+import {hideModal} from "@/core/helpers/dom";
 import Swal from "sweetalert2";
 
 interface NewAddressData {
@@ -333,7 +336,7 @@ export default defineComponent({
     const formRef = ref<null | HTMLFormElement>(null);
     const newTargetModalRef = ref<null | HTMLElement>(null);
     const loading = ref<boolean>(false);
-
+    
     const targetData = ref<NewAddressData>({
       targetTitle: "",
       assign: "",
@@ -341,7 +344,7 @@ export default defineComponent({
       targetDetails: "",
       tags: ["important", "urgent"],
     });
-
+    
     const rules = ref({
       targetTitle: [
         {
@@ -372,19 +375,19 @@ export default defineComponent({
         },
       ],
     });
-
+    
     const submit = () => {
       if (!formRef.value) {
         return;
       }
-
+      
       formRef.value.validate((valid: boolean) => {
         if (valid) {
           loading.value = true;
-
+          
           setTimeout(() => {
             loading.value = false;
-
+            
             Swal.fire({
               text: "Form has been successfully submitted!",
               icon: "success",
@@ -413,7 +416,7 @@ export default defineComponent({
         }
       });
     };
-
+    
     return {
       targetData,
       submit,

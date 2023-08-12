@@ -1,6 +1,6 @@
 <template>
   <!--begin::Statistics Widget 5-->
-  <a href="#" :class="[widgetClasses, `bg-${color}`]" class="card hoverable">
+  <a :class="[widgetClasses, `bg-${color}`]" class="card hoverable">
     <!--begin::Body-->
     <div class="d-flex flex-column p-6">
       <i :class="`bi-${iconName}`" class="bi text-white fs-2x"></i>

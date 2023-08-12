@@ -12,26 +12,26 @@
             <img :src="getAssetPath('media/avatars/300-13.jpg')" alt="" />
           </div>
           <!--end::Avatar-->
-
+          
           <!--begin::Info-->
           <div class="d-flex flex-column">
-            <a href="#" class="text-gray-800 text-hover-primary fs-6 fw-bold"
-              >Mat Dillon</a
+            <a class="text-gray-800 text-hover-primary fs-6 fw-bold"
+            >Mat Dillon</a
             >
             <span class="text-gray-400 fw-semobold">Last month</span>
           </div>
           <!--end::Info-->
         </div>
         <!--end::User-->
-
+        
         <!--begin::Menu-->
         <div class="my-0">
           <button
-            type="button"
-            class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary"
-            data-kt-menu-trigger="click"
-            data-kt-menu-placement="bottom-end"
-            data-kt-menu-flip="top-end"
+              type="button"
+              class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary"
+              data-kt-menu-trigger="click"
+              data-kt-menu-placement="bottom-end"
+              data-kt-menu-flip="top-end"
           >
             <KTIcon icon-name="category" icon-class="fs-2" />
           </button>
@@ -40,7 +40,7 @@
         <!--end::Menu-->
       </div>
       <!--end::Header-->
-
+      
       <!--begin::Post-->
       <div class="mb-6">
         <!--begin::Text-->
@@ -49,30 +49,30 @@
           thought-out metaphors
         </div>
         <!--end::Text-->
-
+        
         <!--begin::Video-->
         <div class="mb-5">
           <iframe
-            class="embed-responsive-item rounded h-300px w-100"
-            src="https://www.youtube.com/embed/qIHXpnASPAA"
-            :allowfullscreen="true"
+              class="embed-responsive-item rounded h-300px w-100"
+              src="https://www.youtube.com/embed/qIHXpnASPAA"
+              :allowfullscreen="true"
           ></iframe>
         </div>
         <!--end::Video-->
-
+        
         <!--begin::Toolbar-->
         <div class="d-flex align-items-center mb-5">
           <a
-            href="#"
-            class="btn btn-sm btn-light btn-color-muted btn-active-light-success px-4 py-2 me-4"
+              
+              class="btn btn-sm btn-light btn-color-muted btn-active-light-success px-4 py-2 me-4"
           >
             <KTIcon icon-name="message-text-2" icon-class="fs-3" />
             189
           </a>
-
+          
           <a
-            href="#"
-            class="btn btn-sm btn-light btn-color-muted btn-active-light-danger px-4 py-2"
+              
+              class="btn btn-sm btn-light btn-color-muted btn-active-light-danger px-4 py-2"
           >
             <KTIcon icon-name="heart" icon-class="fs-2" />
             229
@@ -81,25 +81,25 @@
         <!--end::Toolbar-->
       </div>
       <!--end::Bottom-->
-
+      
       <!--begin::Separator-->
       <div class="separator mb-4"></div>
       <!--end::Separator-->
-
+      
       <!--begin::Reply input-->
       <form class="position-relative mb-6">
         <textarea
-          class="form-control border-0 p-0 pe-10 resize-none min-h-25px"
-          data-kt-autosize="true"
-          rows="1"
-          placeholder="Reply.."
+            class="form-control border-0 p-0 pe-10 resize-none min-h-25px"
+            data-kt-autosize="true"
+            rows="1"
+            placeholder="Reply.."
         ></textarea>
-
+        
         <div class="position-absolute top-0 end-0 me-n5">
           <span class="btn btn-icon btn-sm btn-active-color-primary pe-0 me-2">
             <KTIcon icon-name="paper-clip" icon-class="fs-3 mb-3" />
           </span>
-
+          
           <span class="btn btn-icon btn-sm btn-active-color-primary ps-0">
             <KTIcon icon-name="geolocation" icon-class="fs-2 mb-3" />
           </span>
@@ -113,8 +113,8 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { defineComponent } from "vue";
+import {getAssetPath} from "@/core/helpers/assets";
+import {defineComponent} from "vue";
 import Dropdown3 from "@/components/dropdown/Dropdown3.vue";
 
 export default defineComponent({

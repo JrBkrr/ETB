@@ -54,7 +54,7 @@
                 <span class="required">Requested Fields</span>
               </label>
               
-              <el-form-item prop="hardwareVersions">
+              <el-form-item prop="requestedFields">
                 <el-select
                     v-model="targetData.requestedFields"
                     :value-key="'name'"

@@ -5,30 +5,30 @@
     <div class="card-body d-flex flex-column p-0">
       <div class="d-flex flex-stack flex-grow-1 card-p">
         <div class="d-flex flex-column me-2">
-          <a href="#" class="text-dark text-hover-primary fw-bold fs-3">{{
-            title
-          }}</a>
-
+          <a class="text-dark text-hover-primary fw-bold fs-3">{{
+                                                               title
+                                                               }}</a>
+          
           <span class="text-muted fw-semobold mt-1">{{ description }}</span>
         </div>
-
+        
         <span class="symbol symbol-50px">
           <span
-            :class="`bg-light-${color} text-${color}`"
-            class="symbol-label fs-5 fw-bold"
-            >{{ change }}</span
+              :class="`bg-light-${color} text-${color}`"
+              class="symbol-label fs-5 fw-bold"
+          >{{ change }}</span
           >
         </span>
       </div>
-
+      
       <!--begin::Chart-->
       <apexchart
-        ref="chartRef"
-        class="statistics-widget-3-chart card-rounded-bottom"
-        :options="chart"
-        :series="series"
-        :height="height"
-        type="area"
+          ref="chartRef"
+          class="statistics-widget-3-chart card-rounded-bottom"
+          :options="chart"
+          :series="series"
+          :height="height"
+          type="area"
       ></apexchart>
       <!--end::Chart-->
     </div>
@@ -38,11 +38,11 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { computed, defineComponent, onBeforeMount, ref, watch } from "vue";
-import { useThemeStore } from "@/stores/theme";
-import type { ApexOptions } from "apexcharts";
-import { getCSSVariableValue } from "@/assets/ts/_utils";
+import {getAssetPath} from "@/core/helpers/assets";
+import {computed, defineComponent, onBeforeMount, ref, watch} from "vue";
+import {useThemeStore} from "@/stores/theme";
+import type {ApexOptions} from "apexcharts";
+import {getCSSVariableValue} from "@/assets/ts/_utils";
 import type VueApexCharts from "vue3-apexcharts";
 
 export default defineComponent({
@@ -60,36 +60,36 @@ export default defineComponent({
     const chartRef = ref<typeof VueApexCharts | null>(null);
     let chart: ApexOptions = {};
     const store = useThemeStore();
-
+    
     const series = [
       {
         name: "Net Profit",
         data: [30, 45, 32, 70, 40],
       },
     ];
-
+    
     const themeMode = computed(() => {
       return store.mode;
     });
-
+    
     onBeforeMount(() => {
       Object.assign(chart, chartOptions(props.color, props.height));
     });
-
+    
     const refreshChart = () => {
       if (!chartRef.value) {
         return;
       }
-
+      
       Object.assign(chart, chartOptions(props.color, props.height));
-
+      
       chartRef.value.refresh();
     };
-
+    
     watch(themeMode, () => {
       refreshChart();
     });
-
+    
     return {
       chart,
       series,
@@ -100,13 +100,13 @@ export default defineComponent({
 });
 
 const chartOptions = (
-  color: string = "primary",
-  height: string = "auto"
+    color: string = "primary",
+    height: string = "auto"
 ): ApexOptions => {
   const labelColor = getCSSVariableValue("--bs-gray-800");
   const baseColor = getCSSVariableValue(`--bs-${color}`);
   const lightColor = getCSSVariableValue(`--bs-${color}-light`);
-
+  
   return {
     chart: {
       fontFamily: "inherit",

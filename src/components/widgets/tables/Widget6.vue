@@ -6,51 +6,51 @@
       <h3 class="card-title align-items-start flex-column">
         <span class="card-label fw-bold fs-3 mb-1">Authors Earnings</span>
         <span class="text-muted mt-1 fw-semobold fs-7"
-          >More than 400 new authors</span
+        >More than 400 new authors</span
         >
       </h3>
       <div class="card-toolbar">
         <ul class="nav">
           <li class="nav-item">
             <a
-              class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary active fw-bold px-4 me-1"
-              data-bs-toggle="tab"
-              href="#kt_table_widget_6_tab_1"
-              >Month</a
+                class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary active fw-bold px-4 me-1"
+                data-bs-toggle="tab"
+                href="#kt_table_widget_6_tab_1"
+            >Month</a
             >
           </li>
-
+          
           <li class="nav-item">
             <a
-              class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bold px-4 me-1"
-              data-bs-toggle="tab"
-              href="#kt_table_widget_6_tab_2"
-              >Week</a
+                class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bold px-4 me-1"
+                data-bs-toggle="tab"
+                href="#kt_table_widget_6_tab_2"
+            >Week</a
             >
           </li>
-
+          
           <li class="nav-item">
             <a
-              class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bold px-4"
-              data-bs-toggle="tab"
-              href="#kt_table_widget_6_tab_3"
-              >Day</a
+                class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bold px-4"
+                data-bs-toggle="tab"
+                href="#kt_table_widget_6_tab_3"
+            >Day</a
             >
           </li>
         </ul>
       </div>
     </div>
     <!--end::Header-->
-
+    
     <!--begin::Body-->
     <div class="card-body py-3">
       <div class="tab-content">
         <template v-for="(item, index) in items" :key="index">
           <!--begin::Tap pane-->
           <div
-            :class="[index === 0 && 'active show']"
-            class="tab-pane fade"
-            :id="`kt_table_widget_6_tab_${index + 1}`"
+              :class="[index === 0 && 'active show']"
+              class="tab-pane fade"
+              :id="`kt_table_widget_6_tab_${index + 1}`"
           >
             <!--begin::Table container-->
             <div class="table-responsive">
@@ -58,65 +58,65 @@
               <table class="table align-middle gs-0 gy-3">
                 <!--begin::Table head-->
                 <thead>
-                  <tr>
-                    <th class="p-0 w-50px"></th>
-                    <th class="p-0 min-w-150px"></th>
-                    <th class="p-0 min-w-140px"></th>
-                    <th class="p-0 min-w-120px"></th>
-                  </tr>
+                <tr>
+                  <th class="p-0 w-50px"></th>
+                  <th class="p-0 min-w-150px"></th>
+                  <th class="p-0 min-w-140px"></th>
+                  <th class="p-0 min-w-120px"></th>
+                </tr>
                 </thead>
                 <!--end::Table head-->
-
+                
                 <!--begin::Table body-->
                 <tbody>
-                  <template v-for="(item1, index1) in item" :key="index1">
-                    <tr>
-                      <td>
-                        <div class="symbol symbol-50px me-2">
+                <template v-for="(item1, index1) in item" :key="index1">
+                  <tr>
+                    <td>
+                      <div class="symbol symbol-50px me-2">
                           <span class="symbol-label">
                             <img
-                              :src="item1.image"
-                              class="h-75 align-self-end"
-                              alt=""
+                                :src="item1.image"
+                                class="h-75 align-self-end"
+                                alt=""
                             />
                           </span>
-                        </div>
-                      </td>
-                      <td>
-                        <a
-                          href="#"
+                      </div>
+                    </td>
+                    <td>
+                      <a
+                          
                           class="text-dark fw-bold text-hover-primary mb-1 fs-6"
-                          >{{ item1.user.name }}</a
-                        >
-                        <span class="text-muted fw-semobold d-block">{{
+                      >{{ item1.user.name }}</a
+                      >
+                      <span class="text-muted fw-semobold d-block">{{
                           item1.user.position
                         }}</span>
-                      </td>
-                      <td>
+                    </td>
+                    <td>
                         <span class="text-muted fw-semobold d-block fs-7"
-                          >Paid</span
+                        >Paid</span
                         >
-                        <span class="text-dark fw-bold d-block fs-5">{{
+                      <span class="text-dark fw-bold d-block fs-5">{{
                           item1.paid
                         }}</span>
-                      </td>
-                      <td class="text-end">
+                    </td>
+                    <td class="text-end">
                         <span
-                          :class="`text-${item1.progress.color}`"
-                          class="fs-7 fw-bold"
-                          >{{ item1.progress.value }}</span
+                            :class="`text-${item1.progress.color}`"
+                            class="fs-7 fw-bold"
+                        >{{ item1.progress.value }}</span
                         >
-                      </td>
-                      <td class="text-end">
-                        <a
-                          href="#"
+                    </td>
+                    <td class="text-end">
+                      <a
+                          
                           class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary"
-                        >
-                          <KTIcon icon-name="arrow-right" icon-class="fs-2" />
-                        </a>
-                      </td>
-                    </tr>
-                  </template>
+                      >
+                        <KTIcon icon-name="arrow-right" icon-class="fs-2" />
+                      </a>
+                    </td>
+                  </tr>
+                </template>
                 </tbody>
                 <!--end::Table body-->
               </table>
@@ -133,8 +133,8 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { defineComponent } from "vue";
+import {getAssetPath} from "@/core/helpers/assets";
+import {defineComponent} from "vue";
 
 export default defineComponent({
   name: "kt-widget-6",
@@ -206,7 +206,7 @@ export default defineComponent({
           },
         },
       ],
-
+      
       [
         {
           image: getAssetPath("media/svg/avatars/018-girl-9.svg"),
@@ -245,7 +245,7 @@ export default defineComponent({
           },
         },
       ],
-
+      
       [
         {
           image: getAssetPath("media/svg/avatars/047-girl-25.svg"),
@@ -297,7 +297,7 @@ export default defineComponent({
         },
       ],
     ];
-
+    
     return {
       items,
       getAssetPath,

@@ -60,7 +60,7 @@
                     <h4 class="text-gray-800 fw-bold">Warning</h4>
                     <div class="fs-6 text-gray-600">
                       Updating address may affter to your
-                      <a href="#">Tax Location</a>
+                      <a>Tax Location</a>
                     </div>
                   </div>
                   <!--end::Content-->
@@ -257,10 +257,6 @@
                   <label class="fs-6 fw-semobold"
                   >Adding Users by Team Members</label
                   >
-                  
-                  <div class="fs-7 fw-semobold text-gray-400">
-                    If you need more info, please check budget planning
-                  </div>
                 </div>
                 <!--end::Label-->
                 
@@ -401,10 +397,10 @@ export default defineComponent({
       username: Yup.string().min(4).required().label("username"),
       password: Yup.string().min(4).required().label("password"),
       passwordRepeat: Yup.string().min(4).required().label("passwordRepeat"),
-      email: Yup.string().min(4).required().label("email"),
-      phoneNumber: Yup.string().min(4).required().label("phoneNumber"),
-      name: Yup.string().required().min(4).label("name"),
-      surname: Yup.string().min(4).required().label("surname"),
+      // email: Yup.string().min(4).required().label("email"),
+      // phoneNumber: Yup.string().min(4).required().label("phoneNumber"),
+      // name: Yup.string().required().min(4).label("name"),
+      // surname: Yup.string().min(4).required().label("surname"),
     });
     
     const RoleList = [

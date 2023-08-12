@@ -4,13 +4,13 @@
     <!--begin::Body-->
     <div class="card-body d-flex align-items-center pt-3 pb-0">
       <div class="d-flex flex-column flex-grow-1 py-2 py-lg-13 me-2">
-        <a href="#" class="fw-bold text-dark fs-4 mb-2 text-hover-primary">{{
-          title
-        }}</a>
-
+        <a class="fw-bold text-dark fs-4 mb-2 text-hover-primary">{{
+                                                                  title
+                                                                  }}</a>
+        
         <span class="fw-semibold text-muted fs-5">{{ description }}</span>
       </div>
-
+      
       <img :src="avatar" alt="" class="align-self-end h-100px" />
     </div>
     <!--end::Body-->
@@ -19,8 +19,8 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { defineComponent } from "vue";
+import {getAssetPath} from "@/core/helpers/assets";
+import {defineComponent} from "vue";
 
 export default defineComponent({
   name: "kt-widget-2",

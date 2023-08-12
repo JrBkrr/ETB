@@ -90,7 +90,7 @@
             
             <div class="d-flex flex-column mb-8 fv-row">
               <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
-                <span class="required">Device</span>
+                <span class="required">{{ translate('cardSlot') }}</span>
               </label>
               <el-form-item prop="cardSlot">
                 <el-select
@@ -305,7 +305,8 @@ export default defineComponent({
       rules,
       newTargetModalRef,
       getAssetPath,
-      State
+      State,
+      translate,
     };
   },
 });

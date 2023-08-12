@@ -7,7 +7,7 @@
       <div class="flex-grow-1 card-p pb-0">
         <div class="d-flex flex-stack flex-wrap">
           <div class="me-2">
-            <a href="#" class="text-dark text-hover-primary fw-bold fs-3"
+            <a class="text-dark text-hover-primary fw-bold fs-3"
             >{{ title }}</a>
             
             <div class="text-muted fs-7 fw-semobold">

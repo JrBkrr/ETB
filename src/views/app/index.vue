@@ -39,7 +39,7 @@ import icons from '@/core/helpers/kt-icon/icons.json'
 import KTIcon from "@/core/helpers/kt-icon/KTIcon.vue";
 
 export default defineComponent({
-  name: "dashboard-main",
+  name: "app",
   components: {
     KTIcon,
     TableSearch,

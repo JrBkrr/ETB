@@ -188,7 +188,7 @@
           />
           <span class="form-check-label fw-semobold text-gray-700 fs-6">
             I Agree &
-            <a href="#" class="ms-1 link-primary">Terms and conditions</a>.
+            <a class="ms-1 link-primary">Terms and conditions</a>.
           </span>
         </label>
       </div>

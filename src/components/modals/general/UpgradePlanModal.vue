@@ -1,10 +1,10 @@
 <template>
   <!--begin::Modal - Upgrade plan-->
   <div
-    class="modal fade"
-    id="kt_modal_upgrade_plan"
-    tabindex="-1"
-    aria-hidden="true"
+      class="modal fade"
+      id="kt_modal_upgrade_plan"
+      tabindex="-1"
+      aria-hidden="true"
   >
     <!--begin::Modal dialog-->
     <div class="modal-dialog modal-xl">
@@ -14,52 +14,52 @@
         <div class="modal-header justify-content-end border-0 pb-0">
           <!--begin::Close-->
           <div
-            class="btn btn-sm btn-icon btn-active-color-primary"
-            data-bs-dismiss="modal"
+              class="btn btn-sm btn-icon btn-active-color-primary"
+              data-bs-dismiss="modal"
           >
             <KTIcon icon-name="cross" icon-class="fs-1" />
           </div>
           <!--end::Close-->
         </div>
         <!--end::Modal header-->
-
+        
         <!--begin::Modal body-->
         <div class="modal-body pt-0 pb-15 px-5 px-xl-20">
           <!--begin::Heading-->
           <div class="mb-13 text-center">
             <h1 class="mb-3">Upgrade a Plan</h1>
-
+            
             <div class="text-gray-400 fw-semobold fs-5">
               If you need more info, please check
-              <a href="#" class="link-primary fw-bold">Pricing Guidelines</a>.
+              <a class="link-primary fw-bold">Pricing Guidelines</a>.
             </div>
           </div>
           <!--end::Heading-->
-
+          
           <!--begin::Plans-->
           <div class="d-flex flex-column">
             <!--begin::Nav group-->
             <div
-              class="nav-group nav-group-outline mx-auto"
-              data-kt-buttons="true"
+                class="nav-group nav-group-outline mx-auto"
+                data-kt-buttons="true"
             >
               <button
-                @click="current = 'month'"
-                :class="[current === 'month' && 'active']"
-                class="btn btn-color-gray-400 btn-active btn-active-secondary px-6 py-3 me-2"
+                  @click="current = 'month'"
+                  :class="[current === 'month' && 'active']"
+                  class="btn btn-color-gray-400 btn-active btn-active-secondary px-6 py-3 me-2"
               >
                 Monthly
               </button>
               <button
-                @click="current = 'annual'"
-                :class="[current === 'annual' && 'active']"
-                class="btn btn-color-gray-400 btn-active btn-active-secondary px-6 py-3"
+                  @click="current = 'annual'"
+                  :class="[current === 'annual' && 'active']"
+                  class="btn btn-color-gray-400 btn-active btn-active-secondary px-6 py-3"
               >
                 Annual
               </button>
             </div>
             <!--end::Nav group-->
-
+            
             <!--begin::Row-->
             <div class="row mt-10">
               <!--begin::Col-->
@@ -69,43 +69,43 @@
                   <template v-for="(plan, index) in plans" :key="index">
                     <!--begin::Tab link-->
                     <div
-                      @click="selected = plan.title"
-                      class="nav-link btn btn-outline btn-outline-dashed btn-color-dark d-flex flex-stack text-start p-6"
-                      :class="[
+                        @click="selected = plan.title"
+                        class="nav-link btn btn-outline btn-outline-dashed btn-color-dark d-flex flex-stack text-start p-6"
+                        :class="[
                         index !== plans.length - 1 && 'mb-6',
                         plan.default && 'active',
                         !plan.custom && 'btn-active btn-active-primary',
                       ]"
-                      data-bs-toggle="tab"
-                      :data-bs-target="`#kt_upgrade_plan_${index}`"
+                        data-bs-toggle="tab"
+                        :data-bs-target="`#kt_upgrade_plan_${index}`"
                     >
                       <!--end::Description-->
                       <div class="d-flex align-items-center me-2">
                         <!--begin::Radio-->
                         <div
-                          class="form-check form-check-custom form-check-solid form-check-success me-6"
+                            class="form-check form-check-custom form-check-solid form-check-success me-6"
                         >
                           <input
-                            class="form-check-input"
-                            type="radio"
-                            name="plan"
-                            :value="plan.title"
-                            :checked="selected === plan.title"
+                              class="form-check-input"
+                              type="radio"
+                              name="plan"
+                              :value="plan.title"
+                              :checked="selected === plan.title"
                           />
                         </div>
                         <!--end::Radio-->
-
+                        
                         <!--begin::Info-->
                         <div class="flex-grow-1">
                           <h2
-                            class="d-flex align-items-center fs-2 fw-bold flex-wrap"
+                              class="d-flex align-items-center fs-2 fw-bold flex-wrap"
                           >
                             {{ plan.title }}
-
+                            
                             <span
-                              v-if="plan.label"
-                              class="badge badge-light-success ms-2 fs-7"
-                              >{{ plan.label }}</span
+                                v-if="plan.label"
+                                class="badge badge-light-success ms-2 fs-7"
+                            >{{ plan.label }}</span
                             >
                           </h2>
                           <div class="fw-semobold opacity-50">
@@ -115,18 +115,18 @@
                         <!--end::Info-->
                       </div>
                       <!--end::Description-->
-
+                      
                       <!--begin::Price-->
                       <div class="ms-5">
                         <button
-                          v-if="plan.custom"
-                          class="btn btn-sm btn-primary"
+                            v-if="plan.custom"
+                            class="btn btn-sm btn-primary"
                         >
                           Contact Us
                         </button>
                         <template v-else>
                           <span class="mb-2">$</span>
-
+                          
                           <span class="fs-3x fw-bold">
                             {{
                               current === "month"
@@ -134,9 +134,9 @@
                                 : plan.priceAnnual
                             }}
                           </span>
-
+                          
                           <span class="fs-7 opacity-50"
-                            >/
+                          >/
                             <span data-kt-element="period">Mon</span>
                           </span>
                         </template>
@@ -149,7 +149,7 @@
                 <!--end::Tabs-->
               </div>
               <!--end::Col-->
-
+              
               <!--begin::Col-->
               <div class="col-lg-6">
                 <!--begin::Tab content-->
@@ -157,58 +157,58 @@
                   <template v-for="(plan, index) in plans" :key="index">
                     <!--begin::Tab Pane-->
                     <div
-                      v-if="!plan.custom"
-                      :class="[plan.default && 'show active']"
-                      class="tab-pane fade"
-                      :id="`kt_upgrade_plan_${index}`"
+                        v-if="!plan.custom"
+                        :class="[plan.default && 'show active']"
+                        class="tab-pane fade"
+                        :id="`kt_upgrade_plan_${index}`"
                     >
                       <!--begin::Heading-->
                       <div class="pb-5">
                         <h2 class="fw-bold text-dark">
                           What’s in Startup Plan?
                         </h2>
-
+                        
                         <div class="text-gray-400 fw-semobold">
                           {{ plan.description }}
                         </div>
                       </div>
                       <!--end::Heading-->
-
+                      
                       <!--begin::Body-->
                       <div class="pt-1">
                         <template
-                          v-for="(feature, i) in plan.features"
-                          :key="i"
+                            v-for="(feature, i) in plan.features"
+                            :key="i"
                         >
                           <template v-if="plan.features">
                             <!--begin::Item-->
                             <div
-                              :class="{
+                                :class="{
                                 'mb-7': i !== plan.features.length - 1,
                               }"
-                              class="d-flex align-items-center"
+                                class="d-flex align-items-center"
                             >
                               <template v-if="feature.supported">
                                 <span
-                                  class="fw-semobold fs-5 text-gray-700 flex-grow-1"
+                                    class="fw-semobold fs-5 text-gray-700 flex-grow-1"
                                 >
                                   {{ feature.title }}
                                 </span>
-
+                                
                                 <KTIcon
-                                  icon-name="check-circle"
-                                  icon-class="fs-1 text-success"
+                                    icon-name="check-circle"
+                                    icon-class="fs-1 text-success"
                                 />
                               </template>
                               <template v-else>
                                 <span
-                                  class="fw-semobold fs-5 text-gray-400 flex-grow-1"
+                                    class="fw-semobold fs-5 text-gray-400 flex-grow-1"
                                 >
                                   {{ feature.title }}
                                 </span>
                                 <KTIcon
-                                  icon-name="cross-circle"
-                                  icon-class="fs-1"
+                                    icon-name="cross-circle"
+                                    icon-class="fs-1"
                                 />
                               </template>
                             </div>
@@ -228,17 +228,17 @@
             <!--end::Row-->
           </div>
           <!--end::Plans-->
-
+          
           <!--begin::Actions-->
           <div class="d-flex flex-center flex-row-fluid pt-12">
             <button
-              type="reset"
-              class="btn btn-light me-3"
-              data-bs-dismiss="modal"
+                type="reset"
+                class="btn btn-light me-3"
+                data-bs-dismiss="modal"
             >
               Cancel
             </button>
-
+            
             <button type="submit" class="btn btn-primary">Upgrade Plan</button>
           </div>
           <!--end::Actions-->
@@ -253,8 +253,8 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { defineComponent, ref } from "vue";
+import {getAssetPath} from "@/core/helpers/assets";
+import {defineComponent, ref} from "vue";
 
 interface IPlans {
   title: string;
@@ -273,9 +273,9 @@ export default defineComponent({
   components: {},
   setup() {
     const current = ref<"month" | "annual">("month");
-
+    
     const selected = ref("Startup");
-
+    
     const plans: Array<IPlans> = [
       {
         title: "Startup",
@@ -316,7 +316,7 @@ export default defineComponent({
           },
         ],
       },
-
+      
       {
         title: "Advanced",
         subTitle: "Best for 100+ team size",
@@ -356,7 +356,7 @@ export default defineComponent({
           },
         ],
       },
-
+      
       {
         title: "Enterprise",
         subTitle: "Best value for 1000+ team",
@@ -397,7 +397,7 @@ export default defineComponent({
           },
         ],
       },
-
+      
       {
         title: "Custom",
         subTitle: "Requet a custom license",
@@ -405,7 +405,7 @@ export default defineComponent({
         custom: true,
       },
     ];
-
+    
     return {
       plans,
       current,

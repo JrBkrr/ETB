@@ -33,9 +33,9 @@
                       class="text-gray-800 text-hover-primary fs-2 fw-bold me-1"
                   >{{ `${(Profile?.name ?? "-")} ${(Profile?.surname ?? "-")}` }}</a
                   >
-                  <a href="#">
-                    <KTIcon v-if="Profile.enabled" icon-name="verify" icon-class="fs-1 text-primary" />
-                    <KTIcon v-if="!Profile.enabled" icon-name="information" icon-class="fs-1 text-warning" />
+                  <a>
+                    <KTIcon v-if="Profile.enabled" icon-class="fs-1 text-primary" icon-name="verify" />
+                    <KTIcon v-if="!Profile.enabled" icon-class="fs-1 text-warning" icon-name="information" />
                   </a>
                 
                 </div>
@@ -44,24 +44,24 @@
                 <!--begin::Info-->
                 <div class="d-flex flex-wrap fw-semobold fs-6 mb-4 pe-2">
                   <a
-                      href="#"
+                      
                       class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2"
                   >
-                    <KTIcon icon-name="profile-circle" icon-class="fs-4 me-1" />
-                    {{ (Profile?.authorities[0].name || '-') }}
+                    <KTIcon icon-class="fs-4 me-1" icon-name="profile-circle" />
+                    <!--                    {{ (Profile?.authorities[0]?.name || '-') }}-->
                   </a>
                   <a
-                      href="#"
+                      
                       class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2"
                   >
-                    <KTIcon icon-name="geolocation" icon-class="fs-4 me-1" />
+                    <KTIcon icon-class="fs-4 me-1" icon-name="geolocation" />
                     İstanbul, Turkey
                   </a>
                   <a
-                      href="#"
+                      
                       class="d-flex align-items-center text-gray-400 text-hover-primary mb-2"
                   >
-                    <KTIcon icon-name="sms" icon-class="fs-4 me-1" />
+                    <KTIcon icon-class="fs-4 me-1" icon-name="sms" />
                     {{ (Profile?.email || '-') }}
                   </a>
                 </div>
@@ -79,8 +79,8 @@
                 <div class="col d-inline-flex flex-wrap">
                   <div v-for="auth in RoleList" :key="`${auth.name}`" class="col-4 col-md-3 d-flex align-items-center  pb-2">
                     <span class="d-flex align-items-center justify-content-center bg-light rounded p-2 me-2">
-                       <KTIcon :icon-name="RoleIcon(auth.id).icon"
-                               :icon-class="`fs-1 ${Profile.authorities.some(a => a.id === auth.id) ? 'text-primary' : 'text-gray'}`" />
+                       <KTIcon :icon-class="`fs-1 ${Profile.authorities?.some(a => a.id === auth.id) ? 'text-primary' : 'text-gray'}`"
+                               :icon-name="RoleIcon(auth.id).icon" />
                     </span>
                     <span>{{ RoleIcon(auth.id).name }}</span>
                   </div>
@@ -95,17 +95,17 @@
                 <span class="fw-semobold fs-6 text-gray-400"
                 >Profile Compleation</span
                 >
-                  <span class="fw-bold fs-6">50%</span>
+                  <span class="fw-bold fs-6">{{ 100 - EmptyValueCount * 10 }}</span>
                 </div>
                 
                 <div class="h-5px mx-3 w-100 bg-light mb-3">
                   <div
+                      :style="`width: ${100 - EmptyValueCount * 10}%`"
+                      aria-valuemax="100"
+                      aria-valuemin="0"
+                      aria-valuenow="0"
                       class="bg-success rounded h-5px"
                       role="progressbar"
-                      style="width: 50%"
-                      aria-valuenow="50"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
                   ></div>
                 </div>
               </div>
@@ -125,9 +125,9 @@
             <!--begin::Nav item-->
             <li class="nav-item">
               <a
-                  @click="Settings = false"
-                  class="nav-link text-active-primary me-6 cursor-pointer"
                   :class="[!Settings && 'active']"
+                  class="nav-link text-active-primary me-6 cursor-pointer"
+                  @click="Settings = false"
               >
                 Overview
               </a>
@@ -136,9 +136,9 @@
             <!--begin::Nav item-->
             <li class="nav-item">
               <a
-                  @click="Settings = true"
-                  class="nav-link text-active-primary me-6 cursor-pointer"
                   :class="[Settings && 'active']"
+                  class="nav-link text-active-primary me-6 cursor-pointer"
+                  @click="Settings = true"
               >
                 Settings
               </a>
@@ -157,7 +157,7 @@
 
 <script lang="ts">
 import {getAssetPath} from "@/core/helpers/assets";
-import {computed, defineComponent, ref} from "vue";
+import {computed, defineComponent, onMounted, ref, watch} from "vue";
 import Dropdown3 from "@/components/dropdown/Dropdown3.vue";
 import Settings from "@/components-ekds/profile/Settings.vue";
 import Overview from "@/components-ekds/profile/Overview.vue";
@@ -174,16 +174,9 @@ export default defineComponent({
   setup() {
     const {State} = GlobalStore()
     const Settings = ref(false)
-    const GetLocalProfile = localStorage.getItem('user')
     
     const Profile = computed(() => {
-      if (Object.keys(State.Profile).length > 0) {
-        return State.Profile
-      } else if (GetLocalProfile) {
-        return JSON.parse(GetLocalProfile)
-      } else {
-        // router.push('sign-in')
-      }
+      return State.Profile
     })
     
     const RoleList = [
@@ -272,12 +265,30 @@ export default defineComponent({
       }
     };
     
+    let EmptyValueCount = ref(0);
+    
+    const ProgressCalculate = () => {
+      EmptyValueCount.value = 0
+      Object.keys(State.Profile).map(key => {
+        if (key !== 'password' && key !== 'passwordRepeat' && !State.Profile[key]) EmptyValueCount.value += 1
+      })
+    }
+    
+    onMounted(() => {
+      ProgressCalculate()
+    })
+    
+    watch(Profile, (NV, OV) => {
+      ProgressCalculate()
+    })
+    
     return {
       Settings,
       getAssetPath,
       Profile,
       RoleIcon,
-      RoleList
+      RoleList,
+      EmptyValueCount
     };
   },
 });

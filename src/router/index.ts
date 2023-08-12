@@ -63,11 +63,39 @@ const routes: Array<RouteRecordRaw> = [
             {
                 path: "/settings",
                 name: "settings",
-                component: () => import("@/views/settings/index.vue"),
                 meta: {
                     pageTitle: "Settings",
                     breadcrumbs: ["Settings"],
                 },
+                children: [
+                    {
+                        path: "settings",
+                        name: "settings",
+                        component: () => import("@/views/settings/all/index.vue"),
+                        meta: {
+                            pageTitle: "Settings",
+                            breadcrumbs: ["Settings", "All"],
+                        },
+                    },
+                    {
+                        path: "settings-template",
+                        name: "settings-template",
+                        component: () => import("@/views/settings/settingsTemplate/index.vue"),
+                        meta: {
+                            pageTitle: "Setting Template",
+                            breadcrumbs: ["Settings", "Setting Template"],
+                        },
+                    },
+                    {
+                        path: "settings-updates",
+                        name: "settings-updates",
+                        component: () => import("@/views/settings/settingsUpdates/index.vue"),
+                        meta: {
+                            pageTitle: "Setting Updates",
+                            breadcrumbs: ["Settings", "Setting Updates"],
+                        },
+                    },
+                ]
             },
             {
                 path: "/verifications",
@@ -145,6 +173,15 @@ const routes: Array<RouteRecordRaw> = [
                 meta: {
                     pageTitle: "My Profile",
                     breadcrumbs: ["My Profile"],
+                },
+            },
+            {
+                path: "/map",
+                name: "map",
+                component: () => import("@/views/map/index.vue"),
+                meta: {
+                    pageTitle: "Map",
+                    breadcrumbs: ["Map"],
                 },
             },
             {

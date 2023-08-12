@@ -93,24 +93,22 @@
             </div>
             
             <div class="d-flex flex-column mb-8 fv-row">
-              
               <label class="d-flex align-items-center fs-6 fw-semobold mb-2">
                 <span class="required">Build Versions</span>
               </label>
               
               <el-form-item prop="hardwareVersions">
                 <el-select
-                    v-model="targetData.hardwareVersions"
-                    :value-key="'name'"
+                    :model-value="targetData.hardwareVersions"
+                    value-key="name"
                     allow-create
                     default-first-option
                     filterable
                     multiple
                     placeholder="Choose tags for your target"
+                    @change="e => targetData.hardwareVersions = e.map(a => a = {name: a.name})"
                 >
-                  <el-option v-for="hardware in State.HardwareVersions" :label="hardware.name" :value="{name: hardware.name}">
-                    {{ hardware.name }}
-                  </el-option>
+                  <el-option v-for="hardware in List" :key="`hardware-${hardware.name}`" :label="hardware.name" :value="hardware" />
                 </el-select>
               </el-form-item>
             </div>
@@ -174,10 +172,10 @@
 
 <script lang="ts">
 import {getAssetPath} from "@/core/helpers/assets";
-import {defineComponent, ref} from "vue";
+import {computed, defineComponent, ref, watch} from "vue";
 import {hideModal} from "@/core/helpers/dom";
-import Swal from "sweetalert2";
 import {GlobalStore} from "@/stores/global";
+import MultiDropDown from "@/components-ekds/dropdown/MultiDropDown.vue";
 
 interface payload {
   "versionNumberSemantic": string,
@@ -192,7 +190,7 @@ interface payload {
 
 export default defineComponent({
   name: "new-target-modal",
-  components: {},
+  components: {MultiDropDown},
   setup() {
     const {Action_Start, State} = GlobalStore()
     const formRef = ref<null | HTMLFormElement>(null);
@@ -200,15 +198,17 @@ export default defineComponent({
     const loading = ref<boolean>(false);
     
     const targetData = ref<payload>({
-      "versionNumberSemantic": "",
-      "name": "",
-      "file": [],
-      "hardwareVersions": [],
-      "deviceSerialNumber": "",
-      "deviceType": "",
-      "versionScheduleTime": "2023-09-11T16:40:02.58+03",
-      "forceUpdate": false
+      versionNumberSemantic: "",
+      name: "",
+      file: [],
+      hardwareVersions: [],
+      deviceSerialNumber: "",
+      deviceType: "",
+      versionScheduleTime: "2023-09-11T16:40:02.58+03",
+      forceUpdate: false
     });
+    
+    const List = computed(() => State.HVersions)
     
     const rules = ref({
       versionNumberSemantic: [
@@ -268,7 +268,6 @@ export default defineComponent({
         },
       ],
     });
-    
     const handleFileChange = (event: Event) => {
       const target = event.target as HTMLInputElement;
       const file = target.files?.[0];
@@ -309,7 +308,6 @@ export default defineComponent({
       });
     };
     
-    
     return {
       targetData,
       submit,
@@ -319,7 +317,8 @@ export default defineComponent({
       newTargetModalRef,
       getAssetPath,
       handleFileChange,
-      State
+      State,
+      List
     };
   },
 });

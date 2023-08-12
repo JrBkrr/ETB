@@ -7,12 +7,12 @@
       <div class="card-toolbar">
         <!--begin::Menu-->
         <button
-          type="button"
-          :class="`btn-active-color-${widgetColor}`"
-          class="btn btn-sm btn-icon btn-color-white btn-active-white border-0 me-n3"
-          data-kt-menu-trigger="click"
-          data-kt-menu-placement="bottom-end"
-          data-kt-menu-flip="top-end"
+            type="button"
+            :class="`btn-active-color-${widgetColor}`"
+            class="btn btn-sm btn-icon btn-color-white btn-active-white border-0 me-n3"
+            data-kt-menu-trigger="click"
+            data-kt-menu-placement="bottom-end"
+            data-kt-menu-flip="top-end"
         >
           <KTIcon icon-name="category" icon-class="fs-2" />
         </button>
@@ -25,13 +25,13 @@
     <div class="card-body p-0">
       <!--begin::Chart-->
       <apexchart
-        ref="chartRef"
-        :class="`bg-${widgetColor}`"
-        class="mixed-widget-2-chart card-rounded-bottom"
-        :options="chart"
-        :series="series"
-        height="200"
-        type="area"
+          ref="chartRef"
+          :class="`bg-${widgetColor}`"
+          class="mixed-widget-2-chart card-rounded-bottom"
+          :options="chart"
+          :series="series"
+          height="200"
+          type="area"
       ></apexchart>
       <!--end::Chart-->
       <!--begin::Stats-->
@@ -40,17 +40,17 @@
         <div class="row m-0">
           <div class="col bg-light-warning px-6 py-8 rounded-2 me-7 mb-7">
             <KTIcon
-              icon-name="chart-simple"
-              icon-class="fs-3x text-warning d-block my-2"
+                icon-name="chart-simple"
+                icon-class="fs-3x text-warning d-block my-2"
             />
-            <a href="#" class="text-warning fw-semobold fs-6"> Weekly Sales </a>
+            <a class="text-warning fw-semobold fs-6"> Weekly Sales </a>
           </div>
           <div class="col bg-light-primary px-6 py-8 rounded-2 mb-7">
             <KTIcon
-              icon-name="plus"
-              icon-class="fs-3x text-primary d-block my-2"
+                icon-name="plus"
+                icon-class="fs-3x text-primary d-block my-2"
             />
-            <a href="#" class="text-primary fw-semobold fs-6"> New Users </a>
+            <a class="text-primary fw-semobold fs-6"> New Users </a>
           </div>
         </div>
         <!--end::Row-->
@@ -58,19 +58,19 @@
         <div class="row m-0">
           <div class="col bg-light-danger px-6 py-8 rounded-2 me-7">
             <KTIcon
-              icon-name="abstract-26"
-              icon-class="fs-3x text-danger d-block my-2"
+                icon-name="abstract-26"
+                icon-class="fs-3x text-danger d-block my-2"
             />
-            <a href="#" class="text-danger fw-semobold fs-6 mt-2">
+            <a class="text-danger fw-semobold fs-6 mt-2">
               Item Orders
             </a>
           </div>
           <div class="col bg-light-success px-6 py-8 rounded-2">
             <KTIcon
-              icon-name="sms"
-              icon-class="fs-3x text-success d-block my-2"
+                icon-name="sms"
+                icon-class="fs-3x text-success d-block my-2"
             />
-            <a href="#" class="text-success fw-semobold fs-6 mt-2">
+            <a class="text-success fw-semobold fs-6 mt-2">
               Bug Reports
             </a>
           </div>
@@ -85,12 +85,12 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { computed, defineComponent, onBeforeMount, ref, watch } from "vue";
-import { useThemeStore } from "@/stores/theme";
-import type { ApexOptions } from "apexcharts";
+import {getAssetPath} from "@/core/helpers/assets";
+import {computed, defineComponent, onBeforeMount, ref, watch} from "vue";
+import {useThemeStore} from "@/stores/theme";
+import type {ApexOptions} from "apexcharts";
 import Dropdown3 from "@/components/dropdown/Dropdown3.vue";
-import { getCSSVariableValue } from "@/assets/ts/_utils";
+import {getCSSVariableValue} from "@/assets/ts/_utils";
 import type VueApexCharts from "vue3-apexcharts";
 
 export default defineComponent({
@@ -107,36 +107,36 @@ export default defineComponent({
     const chartRef = ref<typeof VueApexCharts | null>(null);
     let chart: ApexOptions = {};
     const store = useThemeStore();
-
+    
     const series = ref([
       {
         name: "Net Profit",
         data: [30, 45, 32, 70, 40, 40, 40],
       },
     ]);
-
+    
     const themeMode = computed(() => {
       return store.mode;
     });
-
+    
     onBeforeMount(() => {
       Object.assign(chart, chartOptions(props.widgetColor, props.strokeColor));
     });
-
+    
     const refreshChart = () => {
       if (!chartRef.value) {
         return;
       }
-
+      
       Object.assign(chart, chartOptions(props.widgetColor, props.strokeColor));
-
+      
       chartRef.value.refresh();
     };
-
+    
     watch(themeMode, () => {
       refreshChart();
     });
-
+    
     return {
       chart,
       series,
@@ -147,13 +147,13 @@ export default defineComponent({
 });
 
 const chartOptions = (
-  widgetColor: string = "primary",
-  strokeColor: string | undefined
+    widgetColor: string = "primary",
+    strokeColor: string | undefined
 ): ApexOptions => {
   const labelColor = getCSSVariableValue("--bs-gray-500");
   const borderColor = getCSSVariableValue("--bs-gray-200");
   const color = getCSSVariableValue(`--bs-${widgetColor}`);
-
+  
   return {
     chart: {
       fontFamily: "inherit",

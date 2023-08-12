@@ -6,12 +6,12 @@
       <h3 class="card-title align-items-start flex-column">
         <span class="card-label fw-bold fs-3 mb-1">Versions</span>
         
-        <span class="d-none text-muted mt-1 fw-semobold fs-7"
-        >Over 500 new products</span
+        <span class="text-muted mt-1 fw-semobold fs-7"
+        >{{ List.length }} products</span
         >
       </h3>
       <!--      <div class="card-toolbar">-->
-      <!--        <a href="#" class="btn btn-sm btn-light-primary">-->
+      <!--        <a  class="btn btn-sm btn-light-primary">-->
       <!--          <KTIcon icon-name="plus" icon-class="fs-2"/>-->
       <!--          New Member-->
       <!--        </a>-->
@@ -69,12 +69,11 @@
           <!--begin::Table body-->
           <tbody>
           <template v-for="(item, index) in List" :key="index">
-            <tr @mouseenter="Target = item">
+            <tr class="hover-right-5 transition-3ms" @mouseenter="Target = item">
               <td>
                 <div class="d-flex align-items-center">
                   <div class="symbol symbol-50px me-5">
                     <a
-                        href="#"
                         class="symbol-label me-1 fs-2 fw-bold"
                         :class="`bg-light-dark btn-active-color-${Target.id === item.id && 'primary'} text-${Target.id === item.id ? 'primary': 'dark'}`"
                     >
@@ -88,7 +87,6 @@
                 <div class="d-flex align-items-center">
                   <div class="d-flex justify-content-start flex-column">
                     <a
-                        href="#"
                         class="text-dark text-hover-primary fw-bold mb-1 fs-6"
                     >{{ item.versionNumberSemantic }}</a
                     >
@@ -102,7 +100,7 @@
               
               <td>
                 <a
-                    href="#"
+                    
                     class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
                 >{{ item.name || '-' }}</a
                 >
@@ -113,7 +111,7 @@
               
               <td>
                 <a
-                    href="#"
+                    
                     class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
                 >{{ item.deviceType }}</a
                 >
@@ -124,7 +122,7 @@
               
               <td>
                 <a
-                    href="#"
+                    
                     class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
                 >{{ item.hardwareVersions[0]?.name }}</a
                 >
@@ -164,28 +162,27 @@
     <!--begin::Body-->
     <RightWindow>
       <div v-if="Object.keys(Target).length > 0" class="p-5">
-        <h1 class="mb-6 display-7">{{ Target.name }}</h1>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
-          <span class="fw-semibold fs-5 me-2">versionNumberSemantic :</span>
-          <span class="fw-bold fs-3">{{ Target?.versionNumberSemantic }}</span>
-        </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">name :</span>
           <span class="fw-bold fs-3">{{ Target?.name }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
+          <span class="fw-semibold fs-5 me-2">versionNumberSemantic :</span>
+          <span class="fw-bold fs-3">{{ Target?.versionNumberSemantic }}</span>
+        </div>
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">deviceType :</span>
           <span class="fw-bold fs-3">{{ Target?.deviceType }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">hardwareVersions :</span>
           <span class="fw-bold fs-3">{{ Target?.hardwareVersions[0]?.name }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">versionNumber :</span>
           <span class="fw-bold fs-3">{{ Target?.versionNumber }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">forceUpdate :</span>
           <span class="fw-bold fs-3">{{ Target?.forceUpdate }}</span>
         </div>

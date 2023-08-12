@@ -6,12 +6,12 @@
       <h3 class="card-title align-items-start flex-column">
         <span class="card-label fw-bold fs-3 mb-1">Users</span>
         
-        <span class="d-none text-muted mt-1 fw-semobold fs-7"
-        >Over 500 new products</span
+        <span class="text-muted mt-1 fw-semobold fs-7"
+        >{{ List.length }} products</span
         >
       </h3>
       <!--      <div class="card-toolbar">-->
-      <!--        <a href="#" class="btn btn-sm btn-light-primary">-->
+      <!--        <a  class="btn btn-sm btn-light-primary">-->
       <!--          <KTIcon icon-name="plus" icon-class="fs-2"/>-->
       <!--          New Member-->
       <!--        </a>-->
@@ -69,12 +69,11 @@
           <!--begin::Table body-->
           <tbody>
           <template v-for="(item, index) in List" :key="index">
-            <tr @mouseenter="Target.id = item.id">
+            <tr class="hover-right-5 transition-3ms" @mouseenter="Target.id = item.id">
               <td>
                 <div class="d-flex align-items-center">
                   <div class="symbol symbol-50px me-5">
                     <a
-                        href="#"
                         class="symbol-label me-1 fs-2 fw-bold"
                         :class="`bg-light-dark btn-active-color-${Target.id === item.id && 'primary'} text-${Target.id === item.id ? 'primary': 'dark'}`"
                     >
@@ -88,7 +87,6 @@
                 <div class="d-flex align-items-center">
                   <div class="d-flex justify-content-start flex-column">
                     <a
-                        href="#"
                         class="text-dark text-hover-primary fw-bold mb-1 fs-6"
                     >{{ item.username }}</a
                     >
@@ -98,7 +96,7 @@
               
               <td>
                 <a
-                    href="#"
+                    
                     class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
                 >{{ item.email || '-' }}</a
                 >
@@ -106,7 +104,7 @@
               
               <td>
                 <a
-                    href="#"
+                    
                     class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
                 >{{ item.name }}</a
                 >
@@ -114,7 +112,7 @@
               
               <td>
                 <a
-                    href="#"
+                    
                     class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
                 >{{ item.surname }}</a
                 >
@@ -122,7 +120,7 @@
               
               <td>
                 <a
-                    href="#"
+                    
                     class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
                 >{{ moment(item.createdAt).format('YYYY-MM-DD') }}</a>
                 <span
@@ -159,48 +157,47 @@
     <!--begin::Body-->
     <RightWindow>
       <div v-if="Object.keys(Target).length > 0" class="p-5">
-        <h1 class="mb-6 display-7">{{ `${Target.name} ${Target.surname} ` }}</h1>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">username :</span>
           <span class="fw-bold fs-3">{{ Target?.username }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">email :</span>
           <span class="fw-bold fs-3">{{ Target?.email }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">phoneNumber :</span>
           <span class="fw-bold fs-3">{{ Target?.phoneNumber }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">name :</span>
           <span class="fw-bold fs-3">{{ Target?.name }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">surname :</span>
           <span class="fw-bold fs-3">{{ Target?.surname }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">enabled :</span>
           <span class="fw-bold fs-3">{{ Target?.enabled }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">createdAt :</span>
           <span class="fw-bold fs-3">{{ Target?.createdAt }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">authorities :</span>
           <span class="fw-bold fs-3">{{ Target?.authorities }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">accountNonExpired :</span>
           <span class="fw-bold fs-3">{{ Target?.accountNonExpired }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">credentialsNonExpired :</span>
           <span class="fw-bold fs-3">{{ Target?.credentialsNonExpired }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">accountNonLocked :</span>
           <span class="fw-bold fs-3">{{ Target?.accountNonLocked }}</span>
         </div>

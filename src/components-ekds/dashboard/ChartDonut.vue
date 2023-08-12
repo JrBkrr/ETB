@@ -33,10 +33,10 @@
         <!--begin::Chart-->
         <apexchart
             ref="chartRef"
-            class="mixed-widget-4-chart"
+            :height="300"
             :options="chart"
             :series="series"
-            :height="300"
+            class="mixed-widget-4-chart"
             type="donut"
         ></apexchart>
         <!--end::Chart-->
@@ -50,13 +50,14 @@
 
 <script lang="ts">
 import {getAssetPath} from "@/core/helpers/assets";
-import {computed, defineComponent, onBeforeMount, onMounted, reactive, ref, watch} from "vue";
+import {computed, defineComponent, onBeforeMount, onMounted, ref, watch,} from "vue";
 import Dropdown1 from "@/components/dropdown/Dropdown1.vue";
 import {getCSSVariableValue} from "@/assets/ts/_utils";
 import type VueApexCharts from "vue3-apexcharts";
 import type {ApexOptions} from "apexcharts";
 import {useThemeStore} from "@/stores/theme";
 import {GlobalStore} from "@/stores/global";
+
 
 export default defineComponent({
   name: "widget-1",
@@ -82,23 +83,18 @@ export default defineComponent({
     const chartRef = ref<typeof VueApexCharts | null>(null);
     let chart: ApexOptions = {};
     const store = useThemeStore();
+    const series = ref<number[]>([0, 100])
     
-    const series = ref([100, 50])
-    
-    // onMounted(() => {
-    //   const dashboardValue = State.Dashboard[props.series];
-    //   if (dashboardValue) {
-    //     console.log(dashboardValue)
-    //     series.value = [dashboardValue, dashboardValue];
-    //   } else {
-    //     // Eğer anahtar yoksa ya da değer uygun değilse bir varsayılan değeri kullanabilirsiniz:
-    //     series.value = [100, 50];
-    //   }
-    // })
+    onMounted(() => {
+      if (State.Dashboard[props.data]) {
+        series.value = [parseInt(State.Dashboard[props.data]), 100 - parseInt(State.Dashboard[props.data])]
+      }
+    })
     
     watch(State, () => {
-      const dashboardValue = State.Dashboard[props.data];
-      series.value = [parseInt(dashboardValue !== null ? dashboardValue : 1), parseInt(dashboardValue > 0 ? dashboardValue : 1)];
+      if (State.Dashboard[props.data]) {
+        series.value = [parseInt(State.Dashboard[props.data]), 100 - parseInt(State.Dashboard[props.data])]
+      }
     });
     
     const themeMode = computed(() => {

@@ -25,7 +25,7 @@
             >Pro</span
             >
           </div>
-          <a class="fw-semobold text-muted text-hover-primary fs-7" href="#"
+          <a class="fw-semobold text-muted text-hover-primary fs-7"
           >{{ (Profile?.email ?? "-") }}</a
           >
         </div>

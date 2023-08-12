@@ -180,6 +180,7 @@ const messages = {
         doPayment: "Do Payment",
         openKec: "Open Kec",
         didPayment: "Did Payment",
+        map: "Map"
     },
     es: {
         dashboard: "Tablero",

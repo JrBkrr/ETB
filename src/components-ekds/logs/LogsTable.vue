@@ -6,16 +6,10 @@
       <h3 class="card-title align-items-start flex-column">
         <span class="card-label fw-bold fs-3 mb-1">Logs</span>
         
-        <span class="d-none text-muted mt-1 fw-semobold fs-7"
-        >Over 500 new products</span
+        <span class="text-muted mt-1 fw-semobold fs-7"
+        >{{ List.length }} products</span
         >
       </h3>
-      <!--      <div class="card-toolbar">-->
-      <!--        <a href="#" class="btn btn-sm btn-light-primary">-->
-      <!--          <KTIcon icon-name="plus" icon-class="fs-2"/>-->
-      <!--          New Member-->
-      <!--        </a>-->
-      <!--      </div>-->
       <div class="d-flex align-items-center justify-content-center">
         <div class="aside-search py-0">
           <TableSearch v-model:payload="SearchText" />
@@ -69,12 +63,11 @@
           <!--begin::Table body-->
           <tbody>
           <template v-for="(item, index) in List" :key="index">
-            <tr @mouseenter="Target.id = item.id" @mouseleave="Target.id = ''">
+            <tr class="hover-right-5 transition-3ms" @click="Target = item; setRightWindow(true);" @mouseenter="Target = item">
               <td>
                 <div class="d-flex align-items-center">
                   <div class="symbol symbol-50px me-5">
                     <a
-                        href="#"
                         class="symbol-label me-1 fs-2 fw-bold"
                         :class="`bg-light-dark btn-active-color-${Target.id === item.id && 'primary'} text-${Target.id === item.id ? 'primary': 'dark'}`"
                     >
@@ -88,7 +81,6 @@
                 <div class="d-flex align-items-center">
                   <div class="d-flex justify-content-start flex-column">
                     <a
-                        href="#"
                         class="text-dark text-hover-primary fw-bold mb-1 fs-6"
                     >{{ item.device?.serialNumber }}</a
                     >
@@ -102,7 +94,7 @@
               
               <td>
                 <a
-                    href="#"
+                    
                     class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
                 >{{ item.level || '-' }}</a
                 >
@@ -113,7 +105,7 @@
               
               <td>
                 <a
-                    href="#"
+                    
                     class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
                 >{{ item.exceptionMessage }}</a
                 >
@@ -121,7 +113,7 @@
               
               <td>
                 <a
-                    href="#"
+                    
                     class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
                 >{{ item.message }}</a
                 >
@@ -129,7 +121,7 @@
               
               <td>
                 <a
-                    href="#"
+                    
                     class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
                 >{{ moment(item.createdAt).format('YYYY-MM-DD') }}</a>
                 <span
@@ -140,7 +132,7 @@
               
               <td class="d-flex justify-content-end">
                 <a
-                    href="#"
+                    
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                 >
                   <KTIcon icon-name="switch" icon-class="fs-3" />
@@ -188,7 +180,7 @@ export default defineComponent({
     widgetClasses: String,
   },
   setup() {
-    const {State, Action_Start} = GlobalStore();
+    const {State, Action_Start, setRightWindow} = GlobalStore();
     const Target = ref<Target>({} as Target);
     
     // Get List
@@ -212,6 +204,7 @@ export default defineComponent({
       Target,
       SearchText,
       List,
+      setRightWindow
     };
   }
 });

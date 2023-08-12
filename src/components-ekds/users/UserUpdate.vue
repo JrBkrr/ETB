@@ -60,7 +60,7 @@
                     <h4 class="text-gray-800 fw-bold">Warning</h4>
                     <div class="fs-6 text-gray-600">
                       Updating address may affter to your
-                      <a href="#">Tax Location</a>
+                      <a>Tax Location</a>
                     </div>
                   </div>
                   <!--end::Content-->
@@ -257,10 +257,6 @@
                   <label class="fs-6 fw-semobold"
                   >Adding Users by Team Members</label
                   >
-                  
-                  <div class="fs-7 fw-semobold text-gray-400">
-                    If you need more info, please check budget planning
-                  </div>
                 </div>
                 <!--end::Label-->
                 
@@ -406,25 +402,14 @@ export default defineComponent({
     
     const validationSchema = Yup.object().shape({
       username: Yup.string().min(4).required().label("username"),
-      password: Yup.string().min(4).nullable().label("password"),
-      passwordRepeat: Yup.string().min(4).nullable().label("passwordRepeat"),
-      email: Yup.string().min(4).required().label("email"),
-      phoneNumber: Yup.string().min(4).required().label("phoneNumber"),
-      name: Yup.string().required().min(4).label("name"),
-      surname: Yup.string().min(4).required().label("surname"),
+      // password: Yup.string().min(4).label("password"),
+      // passwordRepeat: Yup.string().min(4).label("passwordRepeat"),
+      // email: Yup.string().min(4).label("email"),
+      // phoneNumber: Yup.string().min(4).label("phoneNumber"),
+      // name: Yup.string().min(4).label("name"),
+      // surname: Yup.string().min(4).label("surname"),
     });
     
-    watch(payload, async (NV, OV) => {
-      userID.value = NV.id
-    }, {deep: true})
-    
-    watch(userID, async (NV, OV) => {
-      if (NV !== OV) {
-        await Action_Start('get', `users/${NV}`, '').then(Response => {
-          payload.value.authorities = Response.authorities
-        })
-      }
-    }, {deep: true})
     
     const RoleList = [
       {
@@ -532,7 +517,6 @@ export default defineComponent({
       await Action_Start('put', 'users/update', '', payload.value)
           .then(async Response => {
             setTimeout(() => {
-              
               State.Notifications.push({head: 'İşlem Başarılı', title: `${translate('userName')}: ${payload.value.username}`, variant: 'success', status: false})
               hideModal(newAddressModalRef.value);
             }, 500);
@@ -545,13 +529,23 @@ export default defineComponent({
               }
             }, 500);
           })
+      submitButtonRef.value.disabled = true;
+      
     };
+    
+    watch(userID, async (NV, OV) => {
+      if (NV !== OV) {
+        await Action_Start('get', `users/${NV}`, '').then(Response => {
+          payload.value.authorities = Response.authorities
+        })
+      }
+    }, {deep: true})
     
     watch(
         () => props.item,
         (newItem) => {
           if (newItem) {
-            payload.value.id = newItem.id;
+            payload.value.id = userID.value = newItem.id;
             payload.value.username = newItem.username;
             payload.value.password = newItem.password;
             payload.value.passwordRepeat = newItem.passwordRepeat;
@@ -562,7 +556,7 @@ export default defineComponent({
             payload.value.enabled = newItem.enabled;
             payload.value.authorities = newItem.authorities || [];
           }
-        }
+        }, {deep: true}
     );
     return {
       payload,

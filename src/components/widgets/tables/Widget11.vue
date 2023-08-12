@@ -5,20 +5,16 @@
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
         <span class="card-label fw-bold fs-3 mb-1">New Arrivals</span>
-
-        <span class="text-muted mt-1 fw-semobold fs-7"
-          >Over 500 new products</span
-        >
       </h3>
       <div class="card-toolbar">
-        <a href="#" class="btn btn-sm btn-light-primary">
+        <a class="btn btn-sm btn-light-primary">
           <KTIcon icon-name="plus" icon-class="fs-2" />
           New Member
         </a>
       </div>
     </div>
     <!--end::Header-->
-
+    
     <!--begin::Body-->
     <div class="card-body py-3">
       <!--begin::Table container-->
@@ -27,110 +23,109 @@
         <table class="table align-middle gs-0 gy-4">
           <!--begin::Table head-->
           <thead>
-            <tr class="fw-bold text-muted bg-light">
-              <th class="ps-4 min-w-325px rounded-start">Product</th>
-              <th class="min-w-125px">Price</th>
-              <th class="min-w-125px">Deposit</th>
-              <th class="min-w-200px">Agent</th>
-              <th class="min-w-150px">Status</th>
-              <th class="min-w-200px text-end rounded-end"></th>
-            </tr>
+          <tr class="fw-bold text-muted bg-light">
+            <th class="ps-4 min-w-325px rounded-start">Product</th>
+            <th class="min-w-125px">Price</th>
+            <th class="min-w-125px">Deposit</th>
+            <th class="min-w-200px">Agent</th>
+            <th class="min-w-150px">Status</th>
+            <th class="min-w-200px text-end rounded-end"></th>
+          </tr>
           </thead>
           <!--end::Table head-->
-
+          
           <!--begin::Table body-->
           <tbody>
-            <template v-for="(item, index) in list" :key="index">
-              <tr>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <div class="symbol symbol-50px me-5">
-                      <img :src="item.product.image" class="" alt="" />
-                    </div>
-
-                    <div class="d-flex justify-content-start flex-column">
-                      <a
-                        href="#"
-                        class="text-dark fw-bold text-hover-primary mb-1 fs-6"
-                        >{{ item.product.name }}</a
-                      >
-                      <span
-                        class="text-muted fw-semobold text-muted d-block fs-7"
-                        >{{ item.product.specs }}</span
-                      >
-                    </div>
+          <template v-for="(item, index) in list" :key="index">
+            <tr>
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="symbol symbol-50px me-5">
+                    <img :src="item.product.image" class="" alt="" />
                   </div>
-                </td>
-
-                <td>
-                  <a
-                    href="#"
+                  
+                  <div class="d-flex justify-content-start flex-column">
+                    <a
+                        class="text-dark fw-bold text-hover-primary mb-1 fs-6"
+                    >{{ item.product.name }}</a
+                    >
+                    <span
+                        class="text-muted fw-semobold text-muted d-block fs-7"
+                    >{{ item.product.specs }}</span
+                    >
+                  </div>
+                </div>
+              </td>
+              
+              <td>
+                <a
+                    
                     class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
-                    >{{ item.price }}</a
-                  >
-                  <span class="text-muted fw-semobold text-muted d-block fs-7"
-                    >Paid</span
-                  >
-                </td>
-
-                <td>
-                  <a
-                    href="#"
+                >{{ item.price }}</a
+                >
+                <span class="text-muted fw-semobold text-muted d-block fs-7"
+                >Paid</span
+                >
+              </td>
+              
+              <td>
+                <a
+                    
                     class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
-                    >{{ item.deposit }}</a
-                  >
-                  <span class="text-muted fw-semobold text-muted d-block fs-7"
-                    >Rejected</span
-                  >
-                </td>
-
-                <td>
-                  <a
-                    href="#"
+                >{{ item.deposit }}</a
+                >
+                <span class="text-muted fw-semobold text-muted d-block fs-7"
+                >Rejected</span
+                >
+              </td>
+              
+              <td>
+                <a
+                    
                     class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6"
-                    >{{ item.agent.name }}</a
-                  >
-                  <span
+                >{{ item.agent.name }}</a
+                >
+                <span
                     class="text-muted fw-semobold text-muted d-block fs-7"
-                    >{{ item.agent.position }}</span
-                  >
-                </td>
-
-                <td>
+                >{{ item.agent.position }}</span
+                >
+              </td>
+              
+              <td>
                   <span
-                    :class="`
+                      :class="`
                       badge badge-light-${item.status.color}
                       fs-7
                       fw-bold
                     `"
-                    >{{ item.status.label }}</span
+                  >{{ item.status.label }}</span
                   >
-                </td>
-
-                <td class="text-end">
-                  <a
-                    href="#"
+              </td>
+              
+              <td class="text-end">
+                <a
+                    
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                  >
-                    <KTIcon icon-name="switch" icon-class="fs-3" />
-                  </a>
-
-                  <a
-                    href="#"
+                >
+                  <KTIcon icon-name="switch" icon-class="fs-3" />
+                </a>
+                
+                <a
+                    
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                  >
-                    <KTIcon icon-name="pencil" icon-class="fs-3" />
-                  </a>
-
-                  <a
-                    href="#"
+                >
+                  <KTIcon icon-name="pencil" icon-class="fs-3" />
+                </a>
+                
+                <a
+                    
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
-                  >
-                    <KTIcon icon-name="trash" icon-class="fs-3" />
-                  </a>
-                </td>
-              </tr>
-            </template>
+                >
+                  <KTIcon icon-name="trash" icon-class="fs-3" />
+                </a>
+              </td>
+            </tr>
+          </template>
           </tbody>
           <!--end::Table body-->
         </table>
@@ -144,8 +139,8 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { defineComponent } from "vue";
+import {getAssetPath} from "@/core/helpers/assets";
+import {defineComponent} from "vue";
 
 export default defineComponent({
   name: "kt-widget-11",
@@ -241,7 +236,7 @@ export default defineComponent({
         },
       },
     ];
-
+    
     return {
       list,
       getAssetPath,

@@ -9,7 +9,7 @@
           <span class="text-muted fw-bold fs-5 flex-grow-1">
             {{ time }}
           </span>
-
+          
           <div class="symbol symbol-50px">
             <span class="symbol-label bg-light">
               <img :src="image" class="h-50 align-self-center" alt="" />
@@ -17,45 +17,45 @@
           </div>
         </div>
         <!--end::Info-->
-
+        
         <!--begin::Link-->
-        <a href="#" class="text-dark fw-bold text-hover-primary fs-4">
+        <a class="text-dark fw-bold text-hover-primary fs-4">
           {{ title }}
         </a>
         <!--end::Link-->
-
+        
         <!--begin::Desc-->
         <p class="py-3">
           <span v-html="description"></span>
         </p>
         <!--end::Desc-->
       </div>
-
+      
       <!--begin::Team-->
       <div class="d-flex align-items-center">
         <a
-          href="#"
-          class="symbol symbol-35px me-2"
-          data-bs-toggle="tooltip"
-          title="Ana Stone"
+            
+            class="symbol symbol-35px me-2"
+            data-bs-toggle="tooltip"
+            title="Ana Stone"
         >
           <img :src="getAssetPath('media/avatars/300-6.jpg')" alt="" />
         </a>
-
+        
         <a
-          href="#"
-          class="symbol symbol-35px me-2"
-          data-bs-toggle="tooltip"
-          title="Mark Larson"
+            
+            class="symbol symbol-35px me-2"
+            data-bs-toggle="tooltip"
+            title="Mark Larson"
         >
           <img :src="getAssetPath('media/avatars/300-5.jpg')" alt="" />
         </a>
-
+        
         <a
-          href="#"
-          class="symbol symbol-35px me-2"
-          data-bs-toggle="tooltip"
-          title="Sam Harris"
+            
+            class="symbol symbol-35px me-2"
+            data-bs-toggle="tooltip"
+            title="Sam Harris"
         >
           <img :src="getAssetPath('media/avatars/300-9.jpg')" alt="" />
         </a>
@@ -68,8 +68,8 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { defineComponent } from "vue";
+import {getAssetPath} from "@/core/helpers/assets";
+import {defineComponent} from "vue";
 
 export default defineComponent({
   name: "widget-1",

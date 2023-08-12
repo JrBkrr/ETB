@@ -37,10 +37,24 @@ const MainMenuConfig: Array<MenuItem> = [
                 bootstrapIcon: "bi-layers",
             },
             {
-                heading: "settings",
+                sectionTitle: "settings",
                 route: "/settings",
                 keenthemesIcon: "setting-2",
                 bootstrapIcon: "bi-layers",
+                sub: [
+                    {
+                        heading: "settings",
+                        route: "/settings/settings",
+                    },
+                    {
+                        heading: "settingTemplate",
+                        route: "/settings/settings-template",
+                    },
+                    {
+                        heading: "settingUpdates",
+                        route: "/settings/settings-updates",
+                    },
+                ],
             },
             {
                 sectionTitle: "verifications",
@@ -85,6 +99,12 @@ const MainMenuConfig: Array<MenuItem> = [
                         route: "/payments/did-payment",
                     },
                 ],
+            },
+            {
+                heading: "map",
+                route: "/map",
+                keenthemesIcon: "geolocation",
+                bootstrapIcon: "bi-layers",
             },
             {
                 heading: "icons",

@@ -4,28 +4,28 @@
     <!--begin::Body-->
     <div class="card-body my-3">
       <a
-        href="#"
-        :class="`text-${color}`"
-        class="card-title fw-bold fs-5 mb-3 d-block"
+          
+          :class="`text-${color}`"
+          class="card-title fw-bold fs-5 mb-3 d-block"
       >
         {{ description }}
       </a>
-
+      
       <div class="py-1">
         <span class="text-dark fs-1 fw-bold me-2">{{ progress }}</span>
-
+        
         <span class="fw-semobold text-muted fs-7">{{ title }}</span>
       </div>
-
+      
       <div :class="`bg-${color}`" class="progress h-7px bg-opacity-50 mt-7">
         <div
-          :class="`bg-${color}`"
-          class="progress-bar"
-          role="progressbar"
-          :style="`width: ${progress}`"
-          aria-valuenow="50"
-          aria-valuemin="0"
-          aria-valuemax="100"
+            :class="`bg-${color}`"
+            class="progress-bar"
+            role="progressbar"
+            :style="`width: ${progress}`"
+            aria-valuenow="50"
+            aria-valuemin="0"
+            aria-valuemax="100"
         ></div>
       </div>
     </div>
@@ -35,8 +35,8 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { defineComponent } from "vue";
+import {getAssetPath} from "@/core/helpers/assets";
+import {defineComponent} from "vue";
 
 export default defineComponent({
   name: "kt-widget-6",

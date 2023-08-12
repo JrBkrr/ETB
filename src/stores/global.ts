@@ -2,6 +2,7 @@ import {reactive, ref} from "vue";
 import {defineStore} from "pinia";
 import ApiService from "@/core/services/ApiService";
 import router from "@/router";
+import SettingsTemplate from "@/views/settings/settingsTemplate/index.vue";
 
 interface Dashboard {
     fingerPrintSuccessRate: string | null;
@@ -38,7 +39,7 @@ interface DeviceVersion {
     versionScheduleTime: null | any
 }
 
-interface HardwareVersion {
+interface HVersion {
     id: string;
     name: string;
 }
@@ -51,7 +52,7 @@ interface Device {
     serialNumber: string;
     version?: DeviceVersion;
     operatingSystemVersion: string;
-    hardwareVersion?: HardwareVersion;
+    hardwareVersion?: HVersion;
     province: string;
     district: string;
     branch: string;
@@ -74,7 +75,7 @@ interface Version {
     buildNumber: number,
     forceUpdate: boolean,
     file: any,
-    hardwareVersions: HardwareVersion[],
+    hardwareVersions: HVersion[],
     createdAt: number,
     deviceSerialNumber: string,
     deviceType: string,
@@ -186,11 +187,6 @@ interface Authority {
     authority: string;
 }
 
-interface HardwareVersion {
-    "id": string;
-    "name": string
-}
-
 interface Setting {
     "id": string;
     "name": string
@@ -202,6 +198,37 @@ interface Notification {
     subtitle: string,
     status: boolean,
     variant: 'success' | 'danger' | 'warning' | 'primary'
+}
+
+interface City {
+    "id": number,
+    "name": string,
+    "latitude": string,
+    "longitude": string,
+    "population": number,
+    "region": string
+}
+
+interface SeTemplate {
+    "id": string,
+    "name": string | null,
+    "description": string | null,
+    "devices": string | null,
+    "versions": string | null,
+    "settingValues": string | null
+}
+
+interface SeUpdate {
+    "id": string,
+    "name": string | null,
+    "description": string | null,
+    "devices": string | null,
+    "versions": string | null,
+    "settingValues": string | null,
+    "createdAt": number | null,
+    "effectiveDateTime": number | null,
+    "comment": string | null,
+    "statuses": any
 }
 
 export const GlobalStore = defineStore("main", () => {
@@ -221,9 +248,14 @@ export const GlobalStore = defineStore("main", () => {
         RightWindow: ref({status: false}),
         Profile: ref<Profile>({} as Profile),
         Variables: ref(['primary', 'success', 'info', 'danger', 'warning', 'primary', 'success', 'info', 'danger', 'warning']),
-        HardwareVersions: ref<HardwareVersion[]>([]),
+        HVersions: ref<HVersion[]>([]),
         Settings: ref<Setting[]>([]),
-        Notifications: ref<Notification[]>([])
+        SeTemplates: ref<SeTemplate[]>([]),
+        SeUpdates: ref<SeUpdate[]>([]),
+        Notifications: ref<Notification[]>([]),
+        TargetLocation: ref({coordinates: []} as any),
+        Cities: ref<City[]>([])
+
     })
 
     const Errors = ref(null);
@@ -235,7 +267,7 @@ export const GlobalStore = defineStore("main", () => {
 
         try {
             const {data} = await ApiService[method](url, method === 'query' ? {params} : payload)
-            SetData(data, target);
+            State[target] = data;
             State.Errors = null
             setTimeout(() => {
                 State.Loading = false
@@ -244,7 +276,7 @@ export const GlobalStore = defineStore("main", () => {
         } catch (Error: any) {
             State.Notifications.push({
                 head: `${Error.response.data.code === 400 ? 'Uyarı' : Error.response.data.code === 500 ? 'Uyarı' : 'Bir sorun oluştu'}`,
-                title: `${Error.response.data.code === 400 ? `${Object.values(Error?.response?.data?.fieldErrors)[0]}` : Error.response.data.code === 500 ? `${Error?.response?.data?.message}` : 'Developer ile iletişime geçin'}`,
+                title: `${Error.response.data.code === 400 ? `${Object.values(Error?.response?.data?.fieldErrors)[0]}` : Error.response.data.code === 500 ? `${Error?.response?.data?.message}` : 'Teknik birim ile iletişime geçin'}`,
                 variant: `${Error.response.data.code === 400 ? 'warning' : Error.response.data.code === 500 ? 'warning' : 'danger'}`,
                 status: false
             })
@@ -257,49 +289,8 @@ export const GlobalStore = defineStore("main", () => {
 
     }
 
-    function SetData(data: any, target: string) {
-
-        if (target === 'Devices') {
-            Errors.value = null
-            State.Devices = []
-            data.forEach((item, index: number) => State.Devices.push(ReplayDevice(item, index)))
-        } else if (target === 'Versions') {
-            console.log(data)
-            Errors.value = null
-            State.Versions = []
-            data.forEach((item, index: number) => State.Versions.push(ReplayVersions(item, index)))
-        } else {
-            State[target] = data;
-        }
-
-    }
-
     function setError(error: any) {
-
         State.Errors = {...error};
-
-    }
-
-    function ReplayDevice(item: any, index: number) {
-
-        let Clone: Device;
-        const name = variables[index % 10];
-        const color = {name: name};
-        const status = {label: name, name: name};
-        Clone = {...item, status, color};
-        return Clone;
-
-    }
-
-    function ReplayVersions(item: any, index: number) {
-
-        let Clone: Version;
-        const name = variables[index % 10];
-        const color = {name: name};
-        const status = {label: name, name: name};
-        Clone = {...item, status, color};
-        return Clone;
-
     }
 
     function setRightWindow(value) {

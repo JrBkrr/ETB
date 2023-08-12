@@ -8,14 +8,14 @@
         <h2 class="fw-bold">Credit Balance</h2>
       </div>
       <!--end::Card title-->
-
+      
       <!--begin::Card toolbar-->
       <div class="card-toolbar">
         <a
-          href="#"
-          class="btn btn-sm btn-flex btn-light-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#kt_modal_adjust_balance"
+            
+            class="btn btn-sm btn-flex btn-light-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#kt_modal_adjust_balance"
         >
           <KTIcon icon-name="pencil" icon-class="fs-3" />
           Adjust Balance
@@ -24,7 +24,7 @@
       <!--end::Card toolbar-->
     </div>
     <!--end::Card header-->
-
+    
     <!--begin::Card body-->
     <div class="card-body pt-0">
       <div class="fw-bold fs-2">
@@ -40,8 +40,8 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { defineComponent } from "vue";
+import {getAssetPath} from "@/core/helpers/assets";
+import {defineComponent} from "vue";
 
 export default defineComponent({
   name: "credit-bilance",

@@ -4,15 +4,15 @@
     <!--begin::Header-->
     <div class="card-header border-0">
       <h3 class="card-title fw-bold text-dark">Notifications</h3>
-
+      
       <div class="card-toolbar">
         <!--begin::Menu-->
         <button
-          type="button"
-          class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary"
-          data-kt-menu-trigger="click"
-          data-kt-menu-placement="bottom-end"
-          data-kt-menu-flip="top-end"
+            type="button"
+            class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary"
+            data-kt-menu-trigger="click"
+            data-kt-menu-placement="bottom-end"
+            data-kt-menu-flip="top-end"
         >
           <KTIcon icon-name="category" icon-class="fs-2" />
         </button>
@@ -21,35 +21,35 @@
       </div>
     </div>
     <!--end::Header-->
-
+    
     <!--begin::Body-->
     <div class="card-body pt-0">
       <template v-for="(item, index) in list" :key="index">
         <!--begin::Item-->
         <div
-          :class="[
+            :class="[
             'mb-7' && list.length - 1 !== index,
             `bg-light-${item.color}`,
           ]"
-          class="d-flex align-items-center rounded p-5 mb-7"
+            class="d-flex align-items-center rounded p-5 mb-7"
         >
           <!--begin::Icon-->
           <KTIcon
-            icon-name="abstract-26"
-            :icon-class="`text-${item.color} fs-1 me-5`"
+              icon-name="abstract-26"
+              :icon-class="`text-${item.color} fs-1 me-5`"
           />
           <!--end::Icon-->
-
+          
           <!--begin::Title-->
           <div class="flex-grow-1 me-2">
-            <a href="#" class="fw-bold text-gray-800 text-hover-primary fs-6">{{
-              item.title
-            }}</a>
-
+            <a class="fw-bold text-gray-800 text-hover-primary fs-6">{{
+                                                                     item.title
+                                                                     }}</a>
+            
             <span class="text-muted fw-semobold d-block">{{ item.text }}</span>
           </div>
           <!--end::Title-->
-
+          
           <!--begin::Lable-->
           <span :class="`text-${item.color}`" class="fw-bold py-1">{{
             item.number
@@ -65,8 +65,8 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { defineComponent, ref } from "vue";
+import {getAssetPath} from "@/core/helpers/assets";
+import {defineComponent, ref} from "vue";
 import Dropdown3 from "@/components/dropdown/Dropdown3.vue";
 
 export default defineComponent({
@@ -108,7 +108,7 @@ export default defineComponent({
         number: "+8%",
       },
     ]);
-
+    
     return {
       list,
       getAssetPath,

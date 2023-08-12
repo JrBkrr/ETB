@@ -4,7 +4,7 @@
     <!--begin::Timeline line-->
     <div class="timeline-line w-40px"></div>
     <!--end::Timeline line-->
-
+    
     <!--begin::Timeline icon-->
     <div class="timeline-icon symbol symbol-circle symbol-40px">
       <div class="symbol-label bg-light">
@@ -12,32 +12,32 @@
       </div>
     </div>
     <!--end::Timeline icon-->
-
+    
     <!--begin::Timeline content-->
     <div class="timeline-content mb-10 mt-n1">
       <!--begin::Timeline heading-->
       <div class="pe-3 mb-5">
         <!--begin::Title-->
         <div class="fs-5 fw-semobold mb-2">
-          Task <a href="#" class="text-primary fw-bold me-1">#45890</a> merged
-          with <a href="#" class="text-primary fw-bold me-1">#45890</a> in “Ads
+          Task <a class="text-primary fw-bold me-1">#45890</a> merged
+          with <a class="text-primary fw-bold me-1">#45890</a> in “Ads
           Pro Admin Dashboard project:
         </div>
         <!--end::Title-->
-
+        
         <!--begin::Description-->
         <div class="d-flex align-items-center mt-1 fs-6">
           <!--begin::Info-->
           <div class="text-muted me-2 fs-7">Initiated at 4:23 PM by</div>
           <!--end::Info-->
-
+          
           <!--begin::User-->
           <div
-            class="symbol symbol-circle symbol-25px"
-            data-bs-toggle="tooltip"
-            data-bs-boundary="window"
-            data-bs-placement="top"
-            title="Nina Nilson"
+              class="symbol symbol-circle symbol-25px"
+              data-bs-toggle="tooltip"
+              data-bs-boundary="window"
+              data-bs-placement="top"
+              title="Nina Nilson"
           >
             <img :src="getAssetPath('media/avatars/300-14.jpg')" alt="img" />
           </div>
@@ -53,8 +53,8 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { defineComponent } from "vue";
+import {getAssetPath} from "@/core/helpers/assets";
+import {defineComponent} from "vue";
 
 export default defineComponent({
   name: "item-4",

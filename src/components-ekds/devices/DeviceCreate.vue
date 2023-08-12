@@ -1,10 +1,10 @@
 <template>
   <div
-      class="modal fade"
       id="kt_modal_new_device"
       ref="newTargetModalRef"
-      tabindex="-1"
       aria-hidden="true"
+      class="modal fade"
+      tabindex="-1"
   >
     <div class="modal-dialog modal-dialog-centered mw-650px">
       <div class="modal-content rounded">
@@ -13,18 +13,18 @@
               class="btn btn-sm btn-icon btn-active-color-primary"
               data-bs-dismiss="modal"
           >
-            <KTIcon icon-name="cross" icon-class="fs-1" />
+            <KTIcon icon-class="fs-1" icon-name="cross" />
           </div>
         </div>
         
         <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
           <el-form
               id="kt_modal_new_target_form"
-              @submit.prevent="submit()"
+              ref="formRef"
               :model="targetData"
               :rules="rules"
-              ref="formRef"
               class="form"
+              @submit.prevent="submit()"
           >
             <div class="mb-13 text-center">
               <h1 class="mb-3">Create New Version</h1>
@@ -38,8 +38,8 @@
               <el-form-item prop="serialNumber">
                 <el-input
                     v-model="targetData.serialNumber"
-                    placeholder="serialNumber"
                     name="serialNumber"
+                    placeholder="serialNumber"
                 ></el-input>
               </el-form-item>
             </div>
@@ -50,11 +50,15 @@
               </label>
               
               <el-form-item prop="province">
-                <el-input
+                <el-select
                     v-model="targetData.province"
-                    placeholder="province"
+                    as="select"
                     name="province"
-                ></el-input>
+                    placeholder="province"
+                >
+                  <el-option value="">Select type...</el-option>
+                  <el-option v-for="city in State.Cities" :label="city.name" :value="city.name"></el-option>
+                </el-select>
               </el-form-item>
             </div>
             
@@ -66,8 +70,8 @@
               <el-form-item prop="district">
                 <el-input
                     v-model="targetData.district"
-                    placeholder="district"
                     name="district"
+                    placeholder="district"
                 ></el-input>
               </el-form-item>
             </div>
@@ -80,8 +84,8 @@
               <el-form-item prop="branch">
                 <el-input
                     v-model="targetData.branch"
-                    placeholder="branch"
                     name="branch"
+                    placeholder="branch"
                 ></el-input>
               </el-form-item>
             </div>
@@ -93,12 +97,12 @@
               <el-form-item prop="hardwareVersion">
                 <el-select
                     v-model="targetData.hardwareVersion.name"
-                    placeholder="hardwareVersionName"
-                    name="hardwareVersion"
                     as="select"
+                    name="hardwareVersion"
+                    placeholder="hardwareVersionName"
                 >
                   <el-option value="">Select type...</el-option>
-                  <el-option v-for="hardware in State.HardwareVersions" :label="hardware.name" :value="hardware.name">
+                  <el-option v-for="hardware in State.HVersions" :label="hardware.name" :value="hardware.name">
                     {{ hardware.name }}
                   </el-option>
                 </el-select>
@@ -113,8 +117,8 @@
               <el-form-item prop="">
                 <el-input
                     v-model="targetData.version.versionNumberSemantic"
-                    placeholder="versionNumberSemantic"
                     name="versionNumberSemantic"
+                    placeholder="versionNumberSemantic"
                 ></el-input>
               </el-form-item>
             </div>
@@ -127,8 +131,8 @@
               <el-form-item prop="">
                 <el-input
                     v-model="targetData.version.name"
-                    placeholder="versionName"
                     name="versionName"
+                    placeholder="versionName"
                 ></el-input>
               </el-form-item>
             </div>
@@ -139,9 +143,9 @@
               <el-form-item prop="">
                 <el-select
                     v-model="targetData.version.deviceType"
-                    placeholder="deviceType"
-                    name="deviceType"
                     as="select"
+                    name="deviceType"
+                    placeholder="deviceType"
                 >
                   <el-option value="">Select type...</el-option>
                   <el-option label="Type 2" value="2">Type 2</el-option>
@@ -153,9 +157,9 @@
             
             <div class="text-center">
               <button
-                  type="reset"
                   id="kt_modal_new_target_cancel"
                   class="btn btn-light me-3"
+                  type="reset"
               >
                 Cancel
               </button>
@@ -168,7 +172,7 @@
               >
                 <span v-if="!loading" class="indicator-label">
                   Submit
-                  <KTIcon icon-name="arrow-right" icon-class="fs-3 ms-2 me-0" />
+                  <KTIcon icon-class="fs-3 ms-2 me-0" icon-name="arrow-right" />
                 </span>
                 <span v-if="loading" class="indicator-progress">
                   Please wait...
@@ -199,7 +203,7 @@
 
 <script lang="ts">
 import {getAssetPath} from "@/core/helpers/assets";
-import {defineComponent, ref} from "vue";
+import {defineComponent, onMounted, ref} from "vue";
 import {hideModal} from "@/core/helpers/dom";
 import {GlobalStore} from "@/stores/global";
 
@@ -241,6 +245,10 @@ export default defineComponent({
         deviceType: "2",
       },
     });
+    
+    onMounted(async () => {
+      // await Action_Start('get', 'hardwareVersions', 'HVersions')
+    })
     
     const rules = ref({
       serialNumber: [

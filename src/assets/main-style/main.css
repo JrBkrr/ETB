@@ -2,7 +2,7 @@
     transition: background-color .2s;
     }
 
-.hover-up-5:hover {
+.hover-right-5:hover {
     transform: translateX(10px);
     cursor:    pointer;
     }

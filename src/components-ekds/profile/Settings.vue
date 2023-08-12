@@ -3,12 +3,12 @@
   <div class="card mb-5 mb-xl-10">
     <!--begin::Card header-->
     <div
-        class="card-header border-0 cursor-pointer"
-        role="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#kt_account_profile_details"
-        aria-expanded="true"
         aria-controls="kt_account_profile_details"
+        aria-expanded="true"
+        class="card-header border-0 cursor-pointer"
+        data-bs-target="#kt_account_profile_details"
+        data-bs-toggle="collapse"
+        role="button"
     >
       <!--begin::Card title-->
       <div class="card-title m-0">
@@ -23,77 +23,13 @@
       <!--begin::Form-->
       <VForm
           id="kt_account_profile_details_form"
+          :validation-schema="profileDetailsValidator"
           class="form"
           novalidate
           @submit="saveChanges1()"
-          :validation-schema="profileDetailsValidator"
       >
         <!--begin::Card body-->
         <div class="card-body border-top p-9">
-          <!--begin::Input group-->
-          <div class="row mb-6">
-            <!--begin::Label-->
-            <label class="col-lg-4 col-form-label fw-semobold fs-6"
-            >Avatar</label
-            >
-            <!--end::Label-->
-            
-            <!--begin::Col-->
-            <div class="col-lg-8">
-              <!--begin::Image input-->
-              <div
-                  class="image-input image-input-outline"
-                  data-kt-image-input="true"
-                  :style="{
-                  backgroundImage: `url(${getAssetPath(
-                    '/media/avatars/blank.png'
-                  )})`,
-                }"
-              >
-                <!--begin::Preview existing avatar-->
-                <div
-                    class="image-input-wrapper w-125px h-125px"
-                    :style="`background-image: url(${profileDetails.avatar})`"
-                ></div>
-                <!--end::Preview existing avatar-->
-                
-                <!--begin::Label-->
-                <label
-                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                    data-kt-image-input-action="change"
-                    data-bs-toggle="tooltip"
-                    title="Change avatar"
-                >
-                  <i class="bi bi-pencil-fill fs-7"></i>
-                  
-                  <!--begin::Inputs-->
-                  <input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
-                  <input type="hidden" name="avatar_remove" />
-                  <!--end::Inputs-->
-                </label>
-                <!--end::Label-->
-                
-                <!--begin::Remove-->
-                <span
-                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                    data-kt-image-input-action="remove"
-                    data-bs-toggle="tooltip"
-                    @click="removeImage()"
-                    title="Remove avatar"
-                >
-                  <i class="bi bi-x fs-2"></i>
-                </span>
-                <!--end::Remove-->
-              </div>
-              <!--end::Image input-->
-              
-              <!--begin::Hint-->
-              <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
-              <!--end::Hint-->
-            </div>
-            <!--end::Col-->
-          </div>
-          <!--end::Input group-->
           
           <!--begin::Input group-->
           <div class="row mb-6">
@@ -110,11 +46,11 @@
                 <!--begin::Col-->
                 <div class="col-lg-6 fv-row">
                   <Field
-                      type="text"
-                      name="fname"
-                      class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
-                      placeholder="First name"
                       v-model="profileDetails.name"
+                      class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                      name="fname"
+                      placeholder="First name"
+                      type="text"
                   />
                   <div class="fv-plugins-message-container">
                     <div class="fv-help-block">
@@ -127,11 +63,11 @@
                 <!--begin::Col-->
                 <div class="col-lg-6 fv-row">
                   <Field
-                      type="text"
-                      name="lname"
-                      class="form-control form-control-lg form-control-solid"
-                      placeholder="Last name"
                       v-model="profileDetails.surname"
+                      class="form-control form-control-lg form-control-solid"
+                      name="lname"
+                      placeholder="Last name"
+                      type="text"
                   />
                   <div class="fv-plugins-message-container">
                     <div class="fv-help-block">
@@ -158,11 +94,11 @@
             <!--begin::Col-->
             <div class="col-lg-8 fv-row">
               <Field
-                  type="text"
-                  name="username"
-                  class="form-control form-control-lg form-control-solid"
-                  placeholder="Username"
                   v-model="profileDetails.username"
+                  class="form-control form-control-lg form-control-solid"
+                  name="username"
+                  placeholder="Username"
+                  type="text"
               />
               <div class="fv-plugins-message-container">
                 <div class="fv-help-block">
@@ -184,11 +120,11 @@
             <!--begin::Col-->
             <div class="col-lg-8 fv-row">
               <Field
-                  type="text"
-                  name="email"
-                  class="form-control form-control-lg form-control-solid"
-                  placeholder="Email"
                   v-model="profileDetails.email"
+                  class="form-control form-control-lg form-control-solid"
+                  name="email"
+                  placeholder="Email"
+                  type="text"
               />
               <div class="fv-plugins-message-container">
                 <div class="fv-help-block">
@@ -210,11 +146,11 @@
             <!--begin::Col-->
             <div class="col-lg-8 fv-row">
               <Field
-                  type="text"
-                  name="phoneNumber"
-                  class="form-control form-control-lg form-control-solid"
-                  placeholder="Phone Number"
                   v-model="profileDetails.phoneNumber"
+                  class="form-control form-control-lg form-control-solid"
+                  name="phoneNumber"
+                  placeholder="Phone Number"
+                  type="text"
               />
               <div class="fv-plugins-message-container">
                 <div class="fv-help-block">
@@ -232,17 +168,17 @@
         <!--begin::Actions-->
         <div class="card-footer d-flex justify-content-end py-6 px-9">
           <button
-              type="reset"
               class="btn btn-light btn-active-light-primary me-2"
+              type="reset"
           >
             Discard
           </button>
           
           <button
-              type="submit"
               id="kt_account_profile_details_submit"
               ref="submitButton1"
               class="btn btn-primary"
+              type="submit"
           >
             <span class="indicator-label"> Save Changes </span>
             <span class="indicator-progress">
@@ -266,9 +202,9 @@
     <!--begin::Card header-->
     <div
         class="card-header border-0 cursor-pointer"
-        role="button"
-        data-bs-toggle="collapse"
         data-bs-target="#kt_account_signin_method"
+        data-bs-toggle="collapse"
+        role="button"
     >
       <div class="card-title m-0">
         <h3 class="fw-bolder m-0">Sign-in Method</h3>
@@ -285,7 +221,7 @@
           <div id="kt_signin_email" :class="{ 'd-none': emailFormDisplay }">
             <div class="fs-4 fw-bolder mb-1">Email Address</div>
             <div class="fs-6 fw-semobold text-gray-600">
-              support@keenthemes.com
+              {{ profileDetails.email }}
             </div>
           </div>
           
@@ -297,26 +233,26 @@
             <!--begin::Form-->
             <VForm
                 id="kt_signin_change_email"
+                :validation-schema="changeEmail"
                 class="form"
                 novalidate
                 @submit="updateEmail()"
-                :validation-schema="changeEmail"
             >
               <div class="row mb-6">
                 <div class="col-lg-6 mb-4 mb-lg-0">
                   <div class="fv-row mb-0">
                     <label
-                        for="emailaddress"
                         class="form-label fs-6 fw-bold mb-3"
+                        for="emailaddress"
                     >Enter New Email Address</label
                     >
                     <Field
-                        type="email"
-                        class="form-control form-control-lg form-control-solid fw-semobold fs-6"
                         id="emailaddress"
-                        placeholder="Email Address"
+                        v-model="profileDetails.email"
+                        class="form-control form-control-lg form-control-solid fw-semobold fs-6"
                         name="emailaddress"
-                        value="support@keenthemes.com"
+                        placeholder="Email Address"
+                        type="email"
                     />
                     <div class="fv-plugins-message-container">
                       <div class="fv-help-block">
@@ -328,15 +264,15 @@
                 <div class="col-lg-6">
                   <div class="fv-row mb-0">
                     <label
-                        for="confirmemailpassword"
                         class="form-label fs-6 fw-bold mb-3"
+                        for="confirmemailpassword"
                     >Confirm Password</label
                     >
                     <Field
-                        type="password"
+                        id="confirmemailpassword"
                         class="form-control form-control-lg form-control-solid fw-semobold fs-6"
                         name="confirmemailpassword"
-                        id="confirmemailpassword"
+                        type="password"
                     />
                     <div class="fv-plugins-message-container">
                       <div class="fv-help-block">
@@ -349,9 +285,9 @@
               <div class="d-flex">
                 <button
                     id="kt_signin_submit"
-                    type="submit"
                     ref="updateEmailButton"
                     class="btn btn-primary me-2 px-6"
+                    type="submit"
                 >
                   <span class="indicator-label"> Update Email </span>
                   <span class="indicator-progress">
@@ -363,8 +299,8 @@
                 </button>
                 <button
                     id="kt_signin_cancel"
-                    type="button"
                     class="btn btn-color-gray-400 btn-active-light-primary px-6"
+                    type="button"
                     @click="emailFormDisplay = !emailFormDisplay"
                 >
                   Cancel
@@ -399,8 +335,8 @@
           </div>
           <div
               id="kt_signin_password_edit"
-              class="flex-row-fluid"
               :class="{ 'd-none': !passwordFormDisplay }"
+              class="flex-row-fluid"
           >
             <div class="fs-6 fw-semobold text-gray-600 mb-4">
               Password must be at least 8 character and contain symbols
@@ -409,24 +345,24 @@
             <!--begin::Form-->
             <VForm
                 id="kt_signin_change_password"
+                :validation-schema="changePassword"
                 class="form"
                 novalidate
                 @submit="updatePassword()"
-                :validation-schema="changePassword"
             >
               <div class="row mb-6">
                 <div class="col-lg-4">
                   <div class="fv-row mb-0">
                     <label
-                        for="currentpassword"
                         class="form-label fs-6 fw-bold mb-3"
+                        for="currentpassword"
                     >Current Password</label
                     >
                     <Field
-                        type="password"
+                        id="currentpassword"
                         class="form-control form-control-lg form-control-solid fw-semobold fs-6"
                         name="currentpassword"
-                        id="currentpassword"
+                        type="password"
                     />
                     <div class="fv-plugins-message-container">
                       <div class="fv-help-block">
@@ -438,15 +374,15 @@
                 <div class="col-lg-4">
                   <div class="fv-row mb-0">
                     <label
-                        for="newpassword"
                         class="form-label fs-6 fw-bold mb-3"
+                        for="newpassword"
                     >New Password</label
                     >
                     <Field
-                        type="password"
+                        id="newpassword"
                         class="form-control form-control-lg form-control-solid fw-semobold fs-6"
                         name="newpassword"
-                        id="newpassword"
+                        type="password"
                     />
                     <div class="fv-plugins-message-container">
                       <div class="fv-help-block">
@@ -458,15 +394,15 @@
                 <div class="col-lg-4">
                   <div class="fv-row mb-0">
                     <label
-                        for="confirmpassword"
                         class="form-label fs-6 fw-bold mb-3"
+                        for="confirmpassword"
                     >Confirm New Password</label
                     >
                     <Field
-                        type="password"
+                        id="confirmpassword"
                         class="form-control form-control-lg form-control-solid fw-semobold fs-6"
                         name="confirmpassword"
-                        id="confirmpassword"
+                        type="password"
                     />
                     <div class="fv-plugins-message-container">
                       <div class="fv-help-block">
@@ -479,9 +415,9 @@
               <div class="d-flex">
                 <button
                     id="kt_password_submit"
-                    type="submit"
                     ref="updatePasswordButton"
                     class="btn btn-primary me-2 px-6"
+                    type="submit"
                 >
                   <span class="indicator-label"> Update Password </span>
                   <span class="indicator-progress">
@@ -493,9 +429,9 @@
                 </button>
                 <button
                     id="kt_password_cancel"
+                    class="btn btn-color-gray-400 btn-active-light-primary px-6"
                     type="button"
                     @click="passwordFormDisplay = !passwordFormDisplay"
-                    class="btn btn-color-gray-400 btn-active-light-primary px-6"
                 >
                   Cancel
                 </button>
@@ -505,12 +441,12 @@
           </div>
           <div
               id="kt_signin_password_button"
-              class="ms-auto"
               :class="{ 'd-none': passwordFormDisplay }"
+              class="ms-auto"
           >
             <button
-                @click="passwordFormDisplay = !passwordFormDisplay"
                 class="btn btn-light fw-bolder"
+                @click="passwordFormDisplay = !passwordFormDisplay"
             >
               Reset Password
             </button>
@@ -523,254 +459,6 @@
     <!--end::Content-->
   </div>
   <!--end::Sign-in Method-->
-  
-  <!--begin::Notifications-->
-  <div class="card mb-5 mb-xl-10">
-    <!--begin::Card header-->
-    <div
-        class="card-header border-0 cursor-pointer"
-        role="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#kt_account_notifications"
-        aria-expanded="true"
-        aria-controls="kt_account_notifications"
-    >
-      <div class="card-title m-0">
-        <h3 class="fw-bold m-0">Notifications</h3>
-      </div>
-    </div>
-    <!--begin::Card header-->
-    
-    <!--begin::Content-->
-    <!--    <div id="kt_account_notifications" class="collapse show">-->
-    <!--      &lt;!&ndash;begin::Form&ndash;&gt;-->
-    <!--      <form class="form" @submit.prevent="saveChanges4()">-->
-    <!--        &lt;!&ndash;begin::Card body&ndash;&gt;-->
-    <!--        <div class="card-body border-top px-9 pt-3 pb-4">-->
-    <!--          &lt;!&ndash;begin::Table&ndash;&gt;-->
-    <!--          <div class="table-responsive">-->
-    <!--            <table-->
-    <!--                class="table table-row-dashed border-gray-300 align-middle gy-6"-->
-    <!--            >-->
-    <!--              <tbody class="fs-6 fw-semobold">-->
-    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-    <!--              <tr>-->
-    <!--                <td class="min-w-250px fs-4 fw-bold">Notifications</td>-->
-    <!--                <td class="w-125px">-->
-    <!--                  <div class="form-check form-check-solid">-->
-    <!--                    <input-->
-    <!--                        class="form-check-input"-->
-    <!--                        type="checkbox"-->
-    <!--                        value=""-->
-    <!--                        id="kt_settings_notification_email"-->
-    <!--                        checked-->
-    <!--                        data-kt-check="true"-->
-    <!--                        data-kt-check-target="[data-kt-settings-notification=email]"-->
-    <!--                    />-->
-    <!--                    <label-->
-    <!--                        class="form-check-label ps-2"-->
-    <!--                        for="kt_settings_notification_email"-->
-    <!--                    >-->
-    <!--                      Email-->
-    <!--                    </label>-->
-    <!--                  </div>-->
-    <!--                </td>-->
-    <!--                <td class="w-125px">-->
-    <!--                  <div class="form-check form-check-solid">-->
-    <!--                    <input-->
-    <!--                        class="form-check-input"-->
-    <!--                        type="checkbox"-->
-    <!--                        value=""-->
-    <!--                        id="kt_settings_notification_phone"-->
-    <!--                        checked-->
-    <!--                        data-kt-check="true"-->
-    <!--                        data-kt-check-target="[data-kt-settings-notification=phone]"-->
-    <!--                    />-->
-    <!--                    <label-->
-    <!--                        class="form-check-label ps-2"-->
-    <!--                        for="kt_settings_notification_phone"-->
-    <!--                    >-->
-    <!--                      Phone-->
-    <!--                    </label>-->
-    <!--                  </div>-->
-    <!--                </td>-->
-    <!--              </tr>-->
-    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-    
-    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-    <!--              <tr>-->
-    <!--                <td>Billing Updates</td>-->
-    <!--                <td>-->
-    <!--                  <div class="form-check form-check-solid">-->
-    <!--                    <input-->
-    <!--                        class="form-check-input"-->
-    <!--                        type="checkbox"-->
-    <!--                        value="1"-->
-    <!--                        id="billing1"-->
-    <!--                        checked-->
-    <!--                        data-kt-settings-notification="email"-->
-    <!--                    />-->
-    <!--                    <label-->
-    <!--                        class="form-check-label ps-2"-->
-    <!--                        for="billing1"-->
-    <!--                    ></label>-->
-    <!--                  </div>-->
-    <!--                </td>-->
-    <!--                <td>-->
-    <!--                  <div class="form-check form-check-solid">-->
-    <!--                    <input-->
-    <!--                        class="form-check-input"-->
-    <!--                        type="checkbox"-->
-    <!--                        value=""-->
-    <!--                        id="billing2"-->
-    <!--                        checked-->
-    <!--                        data-kt-settings-notification="phone"-->
-    <!--                    />-->
-    <!--                    <label-->
-    <!--                        class="form-check-label ps-2"-->
-    <!--                        for="billing2"-->
-    <!--                    ></label>-->
-    <!--                  </div>-->
-    <!--                </td>-->
-    <!--              </tr>-->
-    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-    
-    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-    <!--              <tr>-->
-    <!--                <td>New Team Members</td>-->
-    <!--                <td>-->
-    <!--                  <div class="form-check form-check-solid">-->
-    <!--                    <input-->
-    <!--                        class="form-check-input"-->
-    <!--                        type="checkbox"-->
-    <!--                        value=""-->
-    <!--                        id="team1"-->
-    <!--                        checked-->
-    <!--                        data-kt-settings-notification="email"-->
-    <!--                    />-->
-    <!--                    <label class="form-check-label ps-2" for="team1"></label>-->
-    <!--                  </div>-->
-    <!--                </td>-->
-    <!--                <td>-->
-    <!--                  <div class="form-check form-check-solid">-->
-    <!--                    <input-->
-    <!--                        class="form-check-input"-->
-    <!--                        type="checkbox"-->
-    <!--                        value=""-->
-    <!--                        id="team2"-->
-    <!--                        data-kt-settings-notification="phone"-->
-    <!--                    />-->
-    <!--                    <label class="form-check-label ps-2" for="team2"></label>-->
-    <!--                  </div>-->
-    <!--                </td>-->
-    <!--              </tr>-->
-    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-    
-    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-    <!--              <tr>-->
-    <!--                <td>Completed Projects</td>-->
-    <!--                <td>-->
-    <!--                  <div class="form-check form-check-solid">-->
-    <!--                    <input-->
-    <!--                        class="form-check-input"-->
-    <!--                        type="checkbox"-->
-    <!--                        value=""-->
-    <!--                        id="project1"-->
-    <!--                        data-kt-settings-notification="email"-->
-    <!--                    />-->
-    <!--                    <label-->
-    <!--                        class="form-check-label ps-2"-->
-    <!--                        for="project1"-->
-    <!--                    ></label>-->
-    <!--                  </div>-->
-    <!--                </td>-->
-    <!--                <td>-->
-    <!--                  <div class="form-check form-check-solid">-->
-    <!--                    <input-->
-    <!--                        class="form-check-input"-->
-    <!--                        type="checkbox"-->
-    <!--                        value=""-->
-    <!--                        id="project2"-->
-    <!--                        checked-->
-    <!--                        data-kt-settings-notification="phone"-->
-    <!--                    />-->
-    <!--                    <label-->
-    <!--                        class="form-check-label ps-2"-->
-    <!--                        for="project2"-->
-    <!--                    ></label>-->
-    <!--                  </div>-->
-    <!--                </td>-->
-    <!--              </tr>-->
-    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-    
-    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-    <!--              <tr>-->
-    <!--                <td class="border-bottom-0">Newsletters</td>-->
-    <!--                <td class="border-bottom-0">-->
-    <!--                  <div class="form-check form-check-solid">-->
-    <!--                    <input-->
-    <!--                        class="form-check-input"-->
-    <!--                        type="checkbox"-->
-    <!--                        value=""-->
-    <!--                        id="newsletter1"-->
-    <!--                        data-kt-settings-notification="email"-->
-    <!--                    />-->
-    <!--                    <label-->
-    <!--                        class="form-check-label ps-2"-->
-    <!--                        for="newsletter1"-->
-    <!--                    ></label>-->
-    <!--                  </div>-->
-    <!--                </td>-->
-    <!--                <td class="border-bottom-0">-->
-    <!--                  <div class="form-check form-check-solid">-->
-    <!--                    <input-->
-    <!--                        class="form-check-input"-->
-    <!--                        type="checkbox"-->
-    <!--                        value=""-->
-    <!--                        id="newsletter2"-->
-    <!--                        data-kt-settings-notification="phone"-->
-    <!--                    />-->
-    <!--                    <label-->
-    <!--                        class="form-check-label ps-2"-->
-    <!--                        for="newsletter2"-->
-    <!--                    ></label>-->
-    <!--                  </div>-->
-    <!--                </td>-->
-    <!--              </tr>-->
-    <!--              &lt;!&ndash;begin::Table row&ndash;&gt;-->
-    <!--              </tbody>-->
-    <!--            </table>-->
-    <!--          </div>-->
-    <!--          &lt;!&ndash;end::Table&ndash;&gt;-->
-    <!--        </div>-->
-    <!--        &lt;!&ndash;end::Card body&ndash;&gt;-->
-    
-    <!--        &lt;!&ndash;begin::Card footer&ndash;&gt;-->
-    <!--        <div class="card-footer d-flex justify-content-end py-6 px-9">-->
-    <!--          <button class="btn btn-light btn-active-light-primary me-2">-->
-    <!--            Discard-->
-    <!--          </button>-->
-    <!--          <button-->
-    <!--              ref="submitButton4"-->
-    <!--              type="submit"-->
-    <!--              class="btn btn-primary px-6"-->
-    <!--          >-->
-    <!--            <span class="indicator-label"> Save Changes </span>-->
-    <!--            <span class="indicator-progress">-->
-    <!--              Please wait...-->
-    <!--              <span-->
-    <!--                  class="spinner-border spinner-border-sm align-middle ms-2"-->
-    <!--              ></span>-->
-    <!--            </span>-->
-    <!--          </button>-->
-    <!--        </div>-->
-    <!--        &lt;!&ndash;end::Card footer&ndash;&gt;-->
-    <!--      </form>-->
-    <!--      &lt;!&ndash;end::Form&ndash;&gt;-->
-    <!--    </div>-->
-    <!--end::Content-->
-  </div>
-  <!--end::Notifications-->
 
 </template>
 
@@ -778,13 +466,11 @@
 import {getAssetPath} from "@/core/helpers/assets";
 import {computed, defineComponent, onMounted, ref, watch} from "vue";
 import {ErrorMessage, Field, Form as VForm} from "vee-validate";
-import Swal from "sweetalert2";
 import * as Yup from "yup";
 import {GlobalStore} from "@/stores/global";
-import router from "@/router";
+import {useI18n} from "vue-i18n";
 
 interface ProfileDetails {
-  avatar: string;
   id: string;
   username: string;
   password: null | string;
@@ -824,6 +510,7 @@ export default defineComponent({
     VForm,
   },
   setup() {
+    const {State, Action_Start} = GlobalStore()
     const submitButton1 = ref<HTMLElement | null>(null);
     const updateEmailButton = ref<HTMLElement | null>(null);
     const updatePasswordButton = ref<HTMLElement | null>(null);
@@ -831,89 +518,16 @@ export default defineComponent({
     const emailFormDisplay = ref(false);
     const passwordFormDisplay = ref(false);
     
-    const profileDetailsValidator = Yup.object().shape({
-      fname: Yup.string().required().label("First name"),
-      lname: Yup.string().required().label("Last name"),
-      username: Yup.string().required().label("Username"),
-      email: Yup.string().required().label("Email"),
-      phoneNumber: Yup.string().required().label("Phone Number"),
-      enabled: Yup.string().required().label("Enabled"),
-    });
-    
-    const changeEmail = Yup.object().shape({
-      emailaddress: Yup.string().required().email().label("Email"),
-      confirmemailpassword: Yup.string().required().label("Password"),
-    });
-    
-    const changePassword = Yup.object().shape({
-      currentpassword: Yup.string().required().label("Current password"),
-      newpassword: Yup.string().min(4).required().label("Password"),
-      confirmpassword: Yup.string()
-          .min(4)
-          .required()
-          .oneOf([Yup.ref("newpassword"), null], "Passwords must match")
-          .label("Password Confirmation"),
-    });
-    
-    
-    const saveChanges1 = () => {
-      if (submitButton1.value) {
-        // Activate indicator
-        submitButton1.value.setAttribute("data-kt-indicator", "on");
-        
-        setTimeout(() => {
-          submitButton1.value?.removeAttribute("data-kt-indicator");
-        }, 2000);
+    const {t, te} = useI18n();
+    const translate = (text: string) => {
+      if (te(text)) {
+        return t(text);
+      } else {
+        return text;
       }
     };
-    
-    
-    const updateEmail = () => {
-      if (updateEmailButton.value) {
-        // Activate indicator
-        updateEmailButton.value.setAttribute("data-kt-indicator", "on");
-        
-        setTimeout(() => {
-          updateEmailButton.value?.removeAttribute("data-kt-indicator");
-          
-          emailFormDisplay.value = false;
-        }, 2000);
-      }
-    };
-    
-    const updatePassword = () => {
-      if (updatePasswordButton.value) {
-        // Activate indicator
-        updatePasswordButton.value.setAttribute("data-kt-indicator", "on");
-        
-        setTimeout(() => {
-          updatePasswordButton.value?.removeAttribute("data-kt-indicator");
-          
-          Swal.fire({
-            text: "Password is successfully changed!",
-            icon: "success",
-            confirmButtonText: "Ok",
-            buttonsStyling: false,
-            heightAuto: false,
-            customClass: {
-              confirmButton: "btn btn-light-primary",
-            },
-          }).then(() => {
-            passwordFormDisplay.value = false;
-          });
-        }, 2000);
-      }
-    };
-    
-    const removeImage = () => {
-      profileDetails.value.avatar = "/media/avatars/blank.png";
-    };
-    
-    const {State} = GlobalStore()
-    const GetLocalProfile = localStorage.getItem('user')
     
     const profileDetails = ref<ProfileDetails>({
-      avatar: getAssetPath("media/avatars/300-1.jpg"),
       id: '',
       username: '',
       password: '',
@@ -938,12 +552,89 @@ export default defineComponent({
       },
     });
     
+    const profileDetailsValidator = Yup.object().shape({
+      // fname: Yup.string().required().label("First name"),
+      // lname: Yup.string().required().label("Last name"),
+      // username: Yup.string().required().label("Username"),
+      // email: Yup.string().required().label("Email"),
+      // phoneNumber: Yup.string().required().label("Phone Number"),
+      // enabled: Yup.string().required().label("Enabled"),
+    });
+    
+    const changeEmail = Yup.object().shape({
+      emailaddress: Yup.string().required().email().label("Email"),
+      confirmemailpassword: Yup.string().required().label("Password"),
+    });
+    
+    const changePassword = Yup.object().shape({
+      currentpassword: Yup.string().required().label("Current password"),
+      newpassword: Yup.string().min(4).required().label("Password"),
+      confirmpassword: Yup.string()
+          .min(4)
+          .required()
+          .oneOf([Yup.ref("newpassword"), null], "Passwords must match")
+          .label("Password Confirmation"),
+    });
+    
+    const UpdateUser = async () => {
+      await Action_Start('put', 'users/update', '', profileDetails.value)
+          .then(async Response => {
+            setTimeout(() => {
+              State.Notifications.push({head: 'İşlem Başarılı', title: `${translate('userName')}: ${profileDetails.value.username}`, variant: 'success', status: false})
+              submitButton1.value?.removeAttribute("data-kt-indicator");
+            }, 500);
+            Action_Start('get', `users/info/${localStorage.getItem('username')}`, 'Profile').then(Response => {
+              localStorage.setItem('user', JSON.stringify(Response))
+            })
+          }).catch(Error => {
+            setTimeout(() => {
+              if (submitButton1.value) {
+                submitButton1.value?.removeAttribute("data-kt-indicator");
+              }
+            }, 500);
+          })
+    }
+    const saveChanges1 = async () => {
+      if (submitButton1.value) {
+        // Activate indicator
+        submitButton1.value.setAttribute("data-kt-indicator", "on");
+        await UpdateUser()
+      }
+    };
+    
+    const updateEmail = async () => {
+      if (updateEmailButton.value) {
+        // Activate indicator
+        updateEmailButton.value.setAttribute("data-kt-indicator", "on");
+        await UpdateUser()
+        
+        setTimeout(() => {
+          updateEmailButton.value?.removeAttribute("data-kt-indicator");
+          emailFormDisplay.value = false;
+        }, 2000);
+      }
+    };
+    
+    const updatePassword = async () => {
+      if (updatePasswordButton.value) {
+        // Activate indicator
+        updatePasswordButton.value.setAttribute("data-kt-indicator", "on");
+        await UpdateUser()
+        setTimeout(() => {
+          updatePasswordButton.value?.removeAttribute("data-kt-indicator");
+          passwordFormDisplay.value = false;
+        }, 1000);
+      }
+    };
+    
+    const GetLocalProfile = localStorage.getItem('user')
+    
     const Profile = computed<ProfileDetails>(() => {
       if (Object.keys(State.Profile).length > 0) {
         return State.Profile;
       } else if (GetLocalProfile) {
         const localProfile = JSON.parse(GetLocalProfile);
-        profileDetails.value.name = localProfile.username;
+        profileDetails.value.name = localProfile.name;
         return localProfile;
       } else {
         // router.push('sign-in');
@@ -963,7 +654,6 @@ export default defineComponent({
       profileDetails,
       emailFormDisplay,
       passwordFormDisplay,
-      removeImage,
       profileDetailsValidator,
       changeEmail,
       changePassword,

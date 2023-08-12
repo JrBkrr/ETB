@@ -6,51 +6,51 @@
       <h3 class="card-title align-items-start flex-column">
         <span class="card-label fw-bold fs-3 mb-1">Latest Products</span>
         <span class="text-muted mt-1 fw-semobold fs-7"
-          >More than 100 new orders</span
+        >More than 100 new orders</span
         >
       </h3>
       <div class="card-toolbar">
         <ul class="nav">
           <li class="nav-item">
             <a
-              class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary active fw-bold px-4 me-1"
-              data-bs-toggle="tab"
-              href="#kt_table_widget_8_tab_1"
-              >Month</a
+                class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary active fw-bold px-4 me-1"
+                data-bs-toggle="tab"
+                href="#kt_table_widget_8_tab_1"
+            >Month</a
             >
           </li>
-
+          
           <li class="nav-item">
             <a
-              class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bold px-4 me-1"
-              data-bs-toggle="tab"
-              href="#kt_table_widget_8_tab_2"
-              >Week</a
+                class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bold px-4 me-1"
+                data-bs-toggle="tab"
+                href="#kt_table_widget_8_tab_2"
+            >Week</a
             >
           </li>
-
+          
           <li class="nav-item">
             <a
-              class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bold px-4"
-              data-bs-toggle="tab"
-              href="#kt_table_widget_8_tab_3"
-              >Day</a
+                class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bold px-4"
+                data-bs-toggle="tab"
+                href="#kt_table_widget_8_tab_3"
+            >Day</a
             >
           </li>
         </ul>
       </div>
     </div>
     <!--end::Header-->
-
+    
     <!--begin::Body-->
     <div class="card-body py-3">
       <div class="tab-content">
         <template v-for="(item, index) in items" :key="index">
           <!--begin::Tap pane-->
           <div
-            :class="[index === 0 && 'active show']"
-            class="tab-pane fade"
-            :id="`kt_table_widget_8_tab_${index + 1}`"
+              :class="[index === 0 && 'active show']"
+              class="tab-pane fade"
+              :id="`kt_table_widget_8_tab_${index + 1}`"
           >
             <!--begin::Table container-->
             <div class="table-responsive">
@@ -58,60 +58,60 @@
               <table class="table align-middle gs-0 gy-3">
                 <!--begin::Table head-->
                 <thead>
-                  <tr>
-                    <th class="p-0 w-50px"></th>
-                    <th class="p-0 min-w-150px"></th>
-                    <th class="p-0 min-w-120px"></th>
-                  </tr>
+                <tr>
+                  <th class="p-0 w-50px"></th>
+                  <th class="p-0 min-w-150px"></th>
+                  <th class="p-0 min-w-120px"></th>
+                </tr>
                 </thead>
                 <!--end::Table head-->
-
+                
                 <!--begin::Table body-->
                 <tbody>
-                  <template v-for="(item1, index1) in item" :key="index1">
-                    <tr>
-                      <td>
-                        <div class="symbol symbol-50px me-2">
+                <template v-for="(item1, index1) in item" :key="index1">
+                  <tr>
+                    <td>
+                      <div class="symbol symbol-50px me-2">
                           <span
-                            :class="`bg-light-${item1.icon.color}`"
-                            class="symbol-label"
+                              :class="`bg-light-${item1.icon.color}`"
+                              class="symbol-label"
                           >
                             <KTIcon
-                              :icon-name="item1.icon.file"
-                              :icon-class="`text-${item1.icon.color} fs-2x`"
+                                :icon-name="item1.icon.file"
+                                :icon-class="`text-${item1.icon.color} fs-2x`"
                             />
                           </span>
-                        </div>
-                      </td>
-                      <td>
-                        <a
-                          href="#"
+                      </div>
+                    </td>
+                    <td>
+                      <a
+                          
                           class="text-dark fw-bold text-hover-primary mb-1 fs-6"
-                          >{{ item1.info.event }}</a
-                        >
-                        <span class="text-muted fw-semobold d-block fs-7">{{
+                      >{{ item1.info.event }}</a
+                      >
+                      <span class="text-muted fw-semobold d-block fs-7">{{
                           item1.info.user
                         }}</span>
-                      </td>
-                      <td class="text-end">
+                    </td>
+                    <td class="text-end">
                         <span class="text-dark fw-bold d-block fs-7">{{
                           item1.date
                         }}</span>
-
-                        <span class="text-muted fw-semobold d-block fs-8"
-                          >Date</span
-                        >
-                      </td>
-                      <td class="text-end">
-                        <a
-                          href="#"
+                      
+                      <span class="text-muted fw-semobold d-block fs-8"
+                      >Date</span
+                      >
+                    </td>
+                    <td class="text-end">
+                      <a
+                          
                           class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary"
-                        >
-                          <i class="bi bi-three-dots fs-5"></i>
-                        </a>
-                      </td>
-                    </tr>
-                  </template>
+                      >
+                        <i class="bi bi-three-dots fs-5"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </template>
                 </tbody>
                 <!--end::Table body-->
               </table>
@@ -128,7 +128,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import {defineComponent} from "vue";
 
 export default defineComponent({
   name: "kt-widget-8",
@@ -195,7 +195,7 @@ export default defineComponent({
           date: "6:20PM, 07 Sep",
         },
       ],
-
+      
       [
         {
           icon: {
@@ -231,7 +231,7 @@ export default defineComponent({
           date: "4:20PM, 03 Sep",
         },
       ],
-
+      
       [
         {
           icon: {
@@ -279,7 +279,7 @@ export default defineComponent({
         },
       ],
     ];
-
+    
     return {
       items,
     };

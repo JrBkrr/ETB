@@ -5,18 +5,18 @@
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
         <span class="card-label fw-bold text-dark">Trends</span>
-
+        
         <span class="text-muted mt-1 fw-semobold fs-7">Latest tech trends</span>
       </h3>
-
+      
       <div class="card-toolbar">
         <!--begin::Menu-->
         <button
-          type="button"
-          class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary"
-          data-kt-menu-trigger="click"
-          data-kt-menu-placement="bottom-end"
-          data-kt-menu-flip="top-end"
+            type="button"
+            class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary"
+            data-kt-menu-trigger="click"
+            data-kt-menu-placement="bottom-end"
+            data-kt-menu-flip="top-end"
         >
           <KTIcon icon-name="category" icon-class="fs-2" />
         </button>
@@ -25,14 +25,14 @@
       </div>
     </div>
     <!--end::Header-->
-
+    
     <!--begin::Body-->
     <div class="card-body pt-5">
       <template v-for="(item, index) in list" :key="index">
         <!--begin::Item-->
         <div
-          :class="{ 'mb-7': list.length - 1 !== index }"
-          class="d-flex align-items-sm-center"
+            :class="{ 'mb-7': list.length - 1 !== index }"
+            class="d-flex align-items-sm-center"
         >
           <!--begin::Symbol-->
           <div class="symbol symbol-50px me-5">
@@ -41,21 +41,21 @@
             </span>
           </div>
           <!--end::Symbol-->
-
+          
           <!--begin::Section-->
           <div class="d-flex align-items-center flex-row-fluid flex-wrap">
             <div class="flex-grow-1 me-2">
               <a
-                href="#"
-                class="text-gray-800 text-hover-primary fs-6 fw-bold"
-                >{{ item.title }}</a
+                  
+                  class="text-gray-800 text-hover-primary fs-6 fw-bold"
+              >{{ item.title }}</a
               >
-
+              
               <span class="text-muted fw-semobold d-block fs-7">{{
                 item.text
               }}</span>
             </div>
-
+            
             <span class="badge badge-light fw-bold my-2">{{ item.badge }}</span>
           </div>
           <!--end::Section-->
@@ -69,8 +69,8 @@
 </template>
 
 <script lang="ts">
-import { getAssetPath } from "@/core/helpers/assets";
-import { defineComponent, ref } from "vue";
+import {getAssetPath} from "@/core/helpers/assets";
+import {defineComponent, ref} from "vue";
 import Dropdown3 from "@/components/dropdown/Dropdown3.vue";
 
 export default defineComponent({
@@ -121,7 +121,7 @@ export default defineComponent({
         space: "",
       },
     ]);
-
+    
     return {
       list,
       getAssetPath,

@@ -56,15 +56,17 @@
       </div>
       
       <div class="d-flex flex-wrap col-xl-4">
-        <router-link class="col-6 mb-8 mb-xl-0 pe-4" to="/verifications/all">
+        <VersionCreate></VersionCreate>
+        <a class="col-6 mb-8 mb-xl-0 pe-4 cursor-pointer" data-bs-toggle="modal" :data-bs-target="`#${'kt_modal_new_version'}`">
           <Card2 color="primary"
                  description="Departmanlar ile ilgili veriler"
                  icon-color="white"
                  icon-name="shield-fill-check"
                  title="Verifications"
-                 widget-classes="card-xl-stretch mb-xl-8 bg-opacity-75" />
-        </router-link>
-        <router-link class="col-6 mb-8 mb-xl-0 ps-4" to="/settings">
+                 widget-classes="card-xl-stretch mb-xl-8 bg-opacity-75"
+          />
+        </a>
+        <router-link class="col-6 mb-8 mb-xl-0 ps-4" to="/settings/settings">
           <Card2 color="warning"
                  description="Departmanlar ile ilgili veriler"
                  icon-color="white"
@@ -72,22 +74,23 @@
                  title="Settings"
                  widget-classes="card-xl-stretch mb-xl-8 bg-opacity-75" />
         </router-link>
-        <router-link class="col-6 mb-8 mb-xl-0 pe-4" to="/user-management">
+        <router-link class="col-6 mb-8 mb-xl-0 pe-4" to="/payments/do-payment">
           <Card2 color="danger"
                  description="Departmanlar ile ilgili veriler"
                  icon-color="white"
-                 icon-name="person-fill"
-                 title="Users"
+                 icon-name="award-fill"
+                 title="Do Payment"
                  widget-classes="card-xl-stretch mb-xl-8 bg-opacity-75" />
         </router-link>
-        <router-link class="col-6 mb-8 mb-xl-0 ps-4" to="/versions">
+        <RoleVerificationCreate></RoleVerificationCreate>
+        <a class="col-6 mb-8 mb-xl-0 ps-4 cursor-pointer" data-bs-toggle="modal" :data-bs-target="`#${'kt_modal_mew_role'}`">
           <Card2 color="success"
                  description="Departmanlar ile ilgili veriler"
                  icon-color="white"
                  icon-name="lightning-fill"
-                 title="Versions"
+                 title="Role Verifications"
                  widget-classes="card-xl-stretch mb-xl-8 bg-opacity-75" />
-        </router-link>
+        </a>
       </div>
     
     </div>
@@ -115,7 +118,7 @@
         <ChartDonut
             :description="State.Dashboard.fingerPrintSuccessRate"
             :labels="['Successful','Unsuccessful']"
-            :labelsColor="['info','success']"
+            :labelsColor="['success','info']"
             btn-color="primary"
             chart-color="primary"
             chart-height="100"
@@ -184,7 +187,7 @@
                       <div class="ms-5">
                         <a
                             class="fs-5 fw-bold text-gray-900 text-hover-primary mb-2"
-                            href="#"
+                        
                         >{{ item.serialNumber }}</a
                         >
                         <div class="fw-semobold text-gray-400">
@@ -242,18 +245,22 @@ import LatestLogs from "@/components-ekds/dashboard/LatestLogs.vue";
 import MixedWidget4 from "@/components/widgets/mixed/Widget4.vue";
 import ChartDonut from "@/components-ekds/dashboard/ChartDonut.vue";
 import ChartBar from "@/components-ekds/dashboard/ChartBar.vue";
-import Map from "@/components/custom/Map.vue";
+import Map from "@/components-ekds/dashboard/Map.vue";
 import moment from "moment";
 import Card2 from "@/components-ekds/dashboard/Card2.vue";
+import VersionCreate from "@/components-ekds/versions/VersionCreate.vue";
+import RoleVerificationCreate from "@/components-ekds/verifications/roleverifications/RoleVerificationCreate.vue";
 
 export default defineComponent({
-  name: "dashboard-main",
+  name: "dashboard",
   computed: {
     moment() {
       return moment
     }
   },
   components: {
+    RoleVerificationCreate,
+    VersionCreate,
     Card2,
     Map,
     ChartBar,

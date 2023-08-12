@@ -6,16 +6,8 @@
       <h3 class="card-title align-items-start flex-column">
         <span class="card-label fw-bold fs-3 mb-1">Devices</span>
         
-        <span class="text-muted mt-1 fw-semobold fs-7"
-        >{{ List.length }} products</span
-        >
+        <span class="text-muted mt-1 fw-semobold fs-7">{{ List.length }} products</span>
       </h3>
-      <!--      <div class="card-toolbar">-->
-      <!--        <a  class="btn btn-sm btn-light-primary">-->
-      <!--          <KTIcon icon-name="plus" icon-class="fs-2"/>-->
-      <!--          New Member-->
-      <!--        </a>-->
-      <!--      </div>-->
       <div class="d-flex align-items-center justify-content-center">
         <div class="aside-search py-0 me-5">
           <TableSearch v-model:payload="SearchText" />
@@ -78,7 +70,7 @@
           <!--begin::Table body-->
           <tbody>
           <template v-for="(item, index) in List" :key="index">
-            <tr class="hover-up-5 transition-3ms" @click="Target = item; setRightWindow(true);" @mouseenter="Target = item">
+            <tr class="hover-right-5 transition-3ms" @click="Target = item; setRightWindow(true);" @mouseenter="Target = item">
               <td>
                 <div class="d-flex align-items-center rounded-start-5">
                   <div class="symbol symbol-50px me-5">
@@ -104,27 +96,19 @@
               
               <td>
                 <a class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ item.version?.versionNumberSemantic }}</a>
-                <span class="text-muted fw-semobold text-muted d-block fs-7"
-                >Rejected</span
-                >
               </td>
               
               <td>
                 <a class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ item.operatingSystemVersion }}</a>
-                <span class="text-muted fw-semobold text-muted d-block fs-7">{{ item.hardwareVersion?.name }}</span>
               </td>
               
               <td>
-                <a class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ item.details.find(a => a.name === 'fingerprint_success_rate')?.value || '' }}</a>
+                <a class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ item.details?.find(a => a.name === 'fingerprint_success_rate')?.value || '' }}</a>
               </td>
               
               
               <td>
-                <a class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ moment(item.lastOnlineTime).format('YYYY-MM-DD') }}</a>
-                <span
-                    class="text-muted fw-semobold text-muted d-block fs-7"
-                >{{ moment(item.lastOnlineTime).format('hh:mm:ss') }}</span
-                >
+                <a class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ moment(item.lastOnlineTime).format('YYYY-MM-DD hh:mm:ss') }}</a>
               </td>
               <td>
                   <span :class="`badge badge-light-${!item.version.forceUpdate ? 'primary' : 'success'}fs-7fw-bold`">
@@ -163,32 +147,31 @@
     <!--begin::Body-->
     <RightWindow>
       <div v-if="Object.keys(Target).length > 0" class="p-5">
-        <h1 class="mb-6 display-6">{{ Target.serialNumber }}</h1>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">gemNumber :</span>
           <span class="fw-bold fs-3">{{ Target?.gemNumber }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">versionNumberSemantic :</span>
           <span class="fw-bold fs-3">{{ Target?.versionNumberSemantic }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">operatingSystemVersion :</span>
           <span class="fw-bold fs-3">{{ Target?.operatingSystemVersion }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">hardwareVersion :</span>
           <span class="fw-bold fs-3">{{ Target?.hardwareVersion?.name }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">createdAt :</span>
           <span class="fw-bold fs-3">{{ Target?.createdAt }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">forceUpdate :</span>
           <span class="fw-bold fs-3">{{ Target?.forceUpdate }}</span>
         </div>
-        <div class="bg-success bg-opacity-25 rounded p-2 mb-5">
+        <div class="bg-dark bg-opacity-25 rounded p-2 mb-5">
           <span class="fw-semibold fs-5 me-2">online :</span>
           <span class="fw-bold fs-3">{{ Target?.online }}</span>
         </div>
@@ -237,12 +220,6 @@ export default defineComponent({
   setup(props, {emit}) {
     const {State, Action_Start, setRightWindow} = GlobalStore();
     const Target = ref<Target>({} as Target);
-    
-    // Get List
-    onMounted(async () => {
-      await Action_Start('get', 'devices', 'Devices')
-      await Action_Start('get', 'hardwareVersions', 'HardwareVersions')
-    });
     
     // Filter List
     const SearchText = ref<string>('');

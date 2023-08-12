@@ -107,12 +107,22 @@ export default defineComponent({
     });
     
     onMounted(async () => {
+      await nextTick(() => {
+        reinitializeComponents();
+      });
+    });
+    
+    onMounted(async () => {
       Action_Start('get', `users/info/${localStorage.getItem('username')}`, 'Profile').then(Response => {
         localStorage.setItem('user', JSON.stringify(Response))
       })
       
       await Action_Start('get', 'statistics', 'Dashboard')
       await Action_Start('get', 'devices', 'Devices')
+      await Action_Start('get', 'cities', 'Cities')
+      await Action_Start('get', 'settings', 'Settings')
+      await Action_Start('get', 'versions', 'Versions')
+      await Action_Start('get', 'hardwareVersions', 'HVersions')
       
       const queryParams = {
         createdAtFromDateTime: '2021-06-24',
@@ -120,11 +130,7 @@ export default defineComponent({
       };
       await Action_Start('query', 'logs', 'Logs', '', queryParams)
       
-      await nextTick(() => {
-        reinitializeComponents();
-      });
-    });
-    
+    })
     watch(
         () => route.path,
         () => {

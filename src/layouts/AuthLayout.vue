@@ -36,7 +36,7 @@
               <a
                   :class="{ active: currentLanguage === lang.key }"
                   class="menu-link d-flex px-5"
-                  href="#"
+                  
                   @click="setLang(lang.key)"
               >
             <span class="symbol symbol-20px me-4">
@@ -69,11 +69,11 @@
       <div class="d-flex flex-center flex-wrap px-5">
         <!--begin::Links-->
         <div class="d-flex fw-semibold text-primary fs-base">
-          <a class="px-5" href="#" target="_blank">{{ translate('terms') }}</a>
+          <a class="px-5" target="_blank">{{ translate('terms') }}</a>
           
-          <a class="px-5" href="#" target="_blank">{{ translate('plans') }}</a>
+          <a class="px-5" target="_blank">{{ translate('plans') }}</a>
           
-          <a class="px-5" href="#" target="_blank">{{ translate('contactUs') }}</a>
+          <a class="px-5" target="_blank">{{ translate('contactUs') }}</a>
         </div>
         <!--end::Links-->
       </div>
@@ -123,14 +123,14 @@
         
         <!--        <div class="d-none d-lg-block text-white fs-base text-center">-->
         <!--          In this kind of post,-->
-        <!--          <a href="#" class="opacity-75-hover text-warning fw-bold me-1"-->
+        <!--          <a  class="opacity-75-hover text-warning fw-bold me-1"-->
         <!--          >the blogger</a-->
         <!--          >-->
         <!--          -->
         <!--          introduces a person they’ve interviewed <br />-->
         <!--          and provides some background information about-->
         <!--          -->
-        <!--          <a href="#" class="opacity-75-hover text-warning fw-bold me-1"-->
+        <!--          <a  class="opacity-75-hover text-warning fw-bold me-1"-->
         <!--          >the interviewee</a-->
         <!--          >-->
         <!--          and their <br />-->
