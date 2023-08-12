@@ -1,0 +1,82 @@
+- Filtre !!
+
+ 
+
+#Cihazlar
+
+** Sadece online cihazlar dashboard'ta gözükecek(unutulmasın diye yazdım)
+ 
+
+#MyProfile
+
+- Myprofile ekranında foto ekleme ve kullanıcı bilgileri değiştirme çalışmıyor orasıda update user servisine bağlanabilir, !!
+
+- Aside içerisinde ki user bilgileri doğru çalışmıyor. Düzenleme yapılacak. ++
+
+- Resim olayını kaldırıyoruz. username in ilk harfini basıyor bunun yerine. !! ++
+
+ 
+
+#Footer
+
+- Keenthemes yerine ETB nin sitesine gidecek https://www.etb.com.tr/ ++
+
+- Support a https://www.etb.com.tr/iletisim ++
+
+                **Support yazısına tıklandığında https://www.etb.com.tr/iletisim url’ine gidilecek urlde dikkat edilmesi gereken unsur /iletişim ++
+
+- About https://www.etb.com.tr/hakkimizda ++
+
+- Blog https://www.etb.com.tr/blog ++
+
+ 
+
+#RightWindow
+
+- Arkada ki yeşil renk değişecek !! ++
+
+- Yazı fontları aynı olacak hatta belkide sol tarafın yazıları biraz daha büyük olabilir !! ++
+
+- Başlık ilgili sayfanın detayları diye bir şeklinde değiştirilecek !! ++
+
+ 
+
+#To-Do List
+
+- Kendimize sweetAlert2 gibi bir popup ve sağ üst köşede çıkan bir notification yazacağız. (Responsive ve dark-light temaya uygun olacak. Background a opacity i düşük durum renkleri verebilirsin) ++
+
+ 
+
+#Features
+
+- Role-verification ları yapılan device lar RightWindow da bir sekme açarak gösterebiliriz. !!
+
+ 
+
+#Payment
+
+**OpenKec açıldığında sağ üstten çıkan bildirim düzeltilecek. (`e-Bio-Kec Pro uygulamsı cihazda açılmıştır` ++
+
+ 
+
+Saygılarımla,
+
+
+11.08 toplantı notları E-imza sayfası
+1. Firma seçecek
+2. Alanaları doldurduktan sonra yukarıda ki ilk adım kimlik doğrulama olmalı. (Kimlik doğrulama için servise gittiğimizde minium 15 saniye beklenmesi gereken bir popup çıkaracağız)
+3. Kimlik doğrulama tamamladıktan sonrada Başvuru belgesi oluştur butonuna basılmalı.
+4. ve sırasıyla tüm doğrulama işlemleir kullanıcın aksiyon alması gerekiyor
+5. Nes üret yaz bölümüne geldiğimizde belge oluşturduğunda telefon numarasına gelen OTP kodunu girmesi gerekiyor kullanıcının
+
+6. Alanlar inputu sürekli e-imze olarak kalmalı ama Role Doğrulama sayfasında form da ki datalarda görünmeli ve kullanıcı başka bir doğrulama yaparsa tüm bu işlemleri gerçekleştiremeyecek. ve Role Verification Fields ları servisten çekeceğiz aynı zamanda dil entegrasyonlarını yapacağız. Sadece E-imza sayfasında bu işlemi yapacağız role verification sayfasına dokunmayacağız
+7. Doğrulama yöntemi inputunu Doğrulama sayfasında doğrulamalardan alacağız. 2 firma oluşturacağız field kısmına birinde sadece "Pin ve Biometri doğrulama" oalcak diğerinde tüm doğrulama yöntemleri gelecek
+
+
+
+#butonların sırası
+1. Kimlik doğrulama
+2. Başvuru belgesi oluşturma
+3. Rol gi kur
+4. Nes üret yaz
+5. Tahhutname oluştur 
