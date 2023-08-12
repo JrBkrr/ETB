@@ -261,9 +261,9 @@ export const GlobalStore = defineStore("main", () => {
     const Errors = ref(null);
     const variables = ['primary', 'success', 'info', 'danger', 'warning', 'primary', 'success', 'info', 'danger', 'warning'];
 
-    async function Action_Start(method: string, url: string, target: string, payload?: any, params?: any) {
+    async function Action_Start(method: string, url: string, target: string, payload?: any, params?: any, loading: boolean = true) {
 
-        if (method === 'get') State.Loading = true
+        if (method === 'get' && loading) State.Loading = true
 
         try {
             const {data} = await ApiService[method](url, method === 'query' ? {params} : payload)

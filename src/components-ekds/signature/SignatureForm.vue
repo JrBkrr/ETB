@@ -1,63 +1,72 @@
 <template>
   <!--begin::Form-->
   <form id="kt_modal_create_app_form" class="form" @submit="handleStep">
-    <div v-if="false" class="vh-50 overflow-y-scroll px-3">
+    <div v-show="!Progress" class="vh-50 overflow-y-scroll px-3">
       <CreateAppStep1></CreateAppStep1>
       <CreateAppStep2></CreateAppStep2>
       <CreateAppStep3></CreateAppStep3>
       <CreateAppStep4></CreateAppStep4>
       <CreateAppStep5></CreateAppStep5>
     </div>
-    <div v-else class="vh-50 overflow-y-scroll px-3 d-flex flex-column align-items-center justify-content-center">
-      <div class="border border-2 border-warning rounded-circle p-6 m-4 animated_warning">
-        <i :class="`bi-${'exclamation-circle'}`"
-           class="bi fs-3hx text-warning fw-bold"></i>
+    <div v-if="Progress" class="vh-50 overflow-y-scroll px-3 d-flex flex-column align-items-center justify-content-center">
+      
+      <div v-if="Progress === 'warning'" class="d-flex align-items-start">
+        <div class="d-flex align-items-center justify-content-center border border-2 border-warning rounded-circle p-3 mx-4 animated_warning">
+          <i :class="`bi-${'exclamation-circle'}`" class="bi fs-2hx text-warning fw-bold"></i>
+        </div>
+        <div>
+          <p class="fs-4 text-dark fw-bold mb-0">Warning</p>
+          <p class="fs-5 text-dark">The server or the device is not available right now. Please try again later</p>
+        </div>  
       </div>
-      <div class="border border-2 border-primary rounded-circle p-6 m-4 animated_primary">
-        <i :class="`bi-${'lightning'}`"
-           class="bi fs-3hx text-primary fw-bold"></i>
+
+      <div v-if="Progress === 'connecting'" class="d-flex align-items-start">
+        <div class="d-flex align-items-center justify-content-center border border-2 border-primary rounded-circle p-3 mx-4 animated_primary">
+          <i :class="`bi-${'lightning'}`" class="bi fs-2hx text-primary fw-bold"></i>
+        </div>
+        <div>
+          <p class="fs-4 text-dark fw-bold mb-0">Connecting</p>
+          <p class="fs-5 text-dark">Connecting to device please hold</p>
+        </div>  
       </div>
-      <div class="border border-2 border-success rounded-circle p-6 m-4 animated_success">
-        <i :class="`bi-${'broadcast'}`"
-           class="bi fs-3hx text-success fw-bold"></i>
+
+      <div v-if="Progress === 'connected'" class="d-flex align-items-start">
+        <div class="d-flex align-items-center justify-content-center border border-2 border-success rounded-circle p-3 mx-4 animated_success">
+          <i :class="`bi-${'broadcast'}`" class="bi fs-2hx text-success fw-bold"></i>
+        </div>
+        <div>
+          <p class="fs-4 text-dark fw-bold mb-0">Connected</p>
+          <p class="fs-5 text-dark">Connection completed successfully</p>
+        </div>  
       </div>
+    
     </div>
     <!--begin::Actions-->
     <div class="d-flex flex-stack pt-10">
       <!--begin::Wrapper-->
       <div class="me-2">
-        <button
-            class="btn btn-lg btn-light-primary me-3"
-            data-kt-stepper-action="previous"
-            type="button"
-            @click="previousStep()"
-        >
+        <button class="btn btn-lg btn-light-primary me-3" data-kt-stepper-action="previous" type="button"
+          @click="previousStep()">
           <KTIcon icon-class="fs-3 me-1" icon-name="arrow-left" />
           Back
         </button>
       </div>
       <!--end::Wrapper-->
-      
+
       <!--begin::Wrapper-->
       <div>
-        <button
-            v-if="currentStepIndex === totalSteps - 1"
-            class="btn btn-lg btn-primary"
-            type="submit"
-            @click="formSubmit()"
-        >
+        <button v-if="currentStepIndex === totalSteps - 1" class="btn btn-lg btn-primary" type="submit"
+          @click="formSubmit()">
           <span class="indicator-label">
             Submit
             <KTIcon icon-class="fs-3 ms-2 me-0" icon-name="arrow-right" />
           </span>
           <span class="indicator-progress">
             Please wait...
-            <span
-                class="spinner-border spinner-border-sm align-middle ms-2"
-            ></span>
+            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
           </span>
         </button>
-        
+
         <button v-else class="btn btn-lg btn-primary" type="submit">
           Continue
           <KTIcon icon-class="fs-3 ms-1 me-0" icon-name="arrow-right" />
@@ -71,12 +80,12 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, nextTick, onMounted, ref} from "vue";
+import { computed, nextTick, onMounted, ref } from "vue";
 
 import Swal from "sweetalert2";
-import {useForm} from "vee-validate";
+import { useForm } from "vee-validate";
 import * as Yup from "yup";
-import {StepperComponent} from "@/assets/ts/components";
+import { StepperComponent } from "@/assets/ts/components";
 import type {
   ICreateApp,
   IStep1,
@@ -90,7 +99,7 @@ import CreateAppStep3 from "@/components-ekds/signature/steps/Step3.vue";
 import CreateAppStep4 from "@/components-ekds/signature/steps/Step4.vue";
 import CreateAppStep5 from "@/components-ekds/signature/steps/Step5.vue";
 import KTIcon from "@/core/helpers/kt-icon/KTIcon.vue";
-
+import { GlobalStore } from "@/stores/global";
 interface Props {
   stepperEl: HTMLElement | null;
 }
@@ -99,6 +108,9 @@ const props = defineProps<Props>();
 
 const currentStepIndex = ref(0);
 const stepperObj = ref<StepperComponent | null>(null);
+
+const { Action_Start } = GlobalStore()
+const Progress = ref('')
 
 onMounted(() => {
   nextTick(() => {
@@ -172,41 +184,57 @@ const totalSteps = computed(() => {
   }
 });
 
-const {resetForm, handleSubmit} = useForm<IStep1 | IStep2 | IStep3 | IStep4>({
+const { resetForm, handleSubmit } = useForm<IStep1 | IStep2 | IStep3 | IStep4>({
   validationSchema: currentSchema,
   initialValues: formData.value,
 });
 
 const previousStep = () => {
   currentStepIndex.value--;
-  
+
   if (!stepperObj.value) {
     return;
   }
-  
+
   stepperObj.value.goPrev();
 };
 
-const handleStep = handleSubmit((values) => {
+const handleStep = handleSubmit(async (values) => {
   console.log(values);
-  
+
   formData.value = {
     ...formData.value,
     ...values,
   };
-  
+
+  Progress.value = 'connecting'
+
+  await Action_Start('get', 'devices', 'Devices', '', '', false).then(() => {
+    setTimeout(() => {
+      Progress.value = 'connected'
+    }, 2000);
+  })
+
+  setTimeout(() => {
+    Progress.value = 'warning'
+  }, 4000);
+
+  setTimeout(() => {
+    Progress.value = ''
+  }, 6000);
+
   resetForm({
     values: {
       ...formData.value,
     },
   });
-  
+
   currentStepIndex.value++;
-  
+
   if (!stepperObj.value) {
     return;
   }
-  
+
   stepperObj.value.goNext();
 });
 
@@ -223,7 +251,7 @@ const formSubmit = () => {
   }).then(() => {
     stepperObj.value?.goFirst();
     currentStepIndex.value = 0;
-    
+
     resetForm({
       values: {
         ...formInitData.value,
@@ -236,49 +264,49 @@ const formSubmit = () => {
 <style>
 .animated_warning {
   animation: drop_warning 1s linear infinite alternate;
-  }
+}
 
 @keyframes drop_warning {
   0% {
-    filter:     drop-shadow(0 0 1px rgba(255, 193, 7, 1));
-    box-shadow: 0 0 1px rgba(255, 193, 7, 0.2);
-    }
-  
-  100% {
-    filter:     drop-shadow(0 0 5px rgba(255, 193, 7, 1));
-    box-shadow: 0 0 20px rgba(255, 193, 7, 0.5);
-    }
+    filter: drop-shadow(0 0 1px rgb(255, 156, 7));
+    box-shadow: 0 0 1px rgba(255, 156, 7, 0.2);
   }
+
+  100% {
+    filter: drop-shadow(0 0 5px rgba(255, 156, 7, 1));
+    box-shadow: 0 0 20px rgba(255, 156, 7, 0.5);
+  }
+}
 
 .animated_primary {
   animation: drop_primary 1s linear infinite alternate;
-  }
+}
 
 @keyframes drop_primary {
   0% {
-    filter:     drop-shadow(0 0 1px rgba(13, 110, 253, 1));
+    filter: drop-shadow(0 0 1px rgba(13, 110, 253, 1));
     box-shadow: 0 0 1px rgba(13, 110, 253, .2);
-    }
-  
-  100% {
-    filter:     drop-shadow(0 0 5px rgba(13, 110, 253, 1));
-    box-shadow: 0 0 20px rgba(13, 110, 253, .5);
-    }
   }
+
+  100% {
+    filter: drop-shadow(0 0 5px rgba(13, 110, 253, 1));
+    box-shadow: 0 0 20px rgba(13, 110, 253, .5);
+  }
+}
 
 .animated_success {
   animation: drop_success 1s linear infinite alternate;
-  }
+}
 
 @keyframes drop_success {
   0% {
-    filter:     drop-shadow(0 0 1px rgba(25, 135, 84, 1));
+    filter: drop-shadow(0 0 1px rgba(25, 135, 84, 1));
     box-shadow: 0 0 1px rgba(25, 135, 84, .2);
-    }
-  
-  100% {
-    filter:     drop-shadow(0 0 5px rgba(25, 135, 84, 1));
-    box-shadow: 0 0 20px rgba(25, 135, 84, .5);
-    }
   }
+
+  100% {
+    filter: drop-shadow(0 0 5px rgba(25, 135, 84, 1));
+    box-shadow: 0 0 20px rgba(25, 135, 84, .5);
+  }
+}
 </style>
